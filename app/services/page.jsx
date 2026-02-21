@@ -300,13 +300,13 @@ export default function Services() {
       {Object.entries(groupedServices).map(([category, categoryServices], categoryIndex) => (
         <div key={category}>
           {/* Category Header */}
-          <section className=\"py-12 px-4 bg-[#111111]\">
-            <div className=\"container mx-auto\">
+          <section className="py-12 px-4 bg-[#111111]">
+            <div className="container mx-auto">
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className=\"text-3xl md:text-4xl font-bold\"
+                className="text-3xl md:text-4xl font-bold"
               >
                 {category}
               </motion.h2>
@@ -318,9 +318,9 @@ export default function Services() {
             <section
               key={service.id}
               id={service.id}
-              className=\"py-24 px-4 scroll-mt-20\"
+              className="py-24 px-4 scroll-mt-20"
             >
-              <div className=\"container mx-auto\">
+              <div className="container mx-auto">
                 <div className={`grid md:grid-cols-2 gap-16 items-center ${
                   index % 2 === 1 ? 'md:flex-row-reverse' : ''
                 }`}>
@@ -332,14 +332,14 @@ export default function Services() {
                     transition={{ duration: 0.6 }}
                     className={index % 2 === 1 ? 'md:order-2' : ''}
                   >
-                    <div className=\"relative aspect-video rounded-2xl overflow-hidden group\">
+                    <div className="relative aspect-video rounded-2xl overflow-hidden group">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className=\"object-cover group-hover:scale-105 transition-transform duration-500\"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className=\"absolute inset-0 bg-gradient-to-t from-black/60 to-transparent\" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
                   </motion.div>
 
@@ -351,41 +351,41 @@ export default function Services() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className={index % 2 === 1 ? 'md:order-1' : ''}
                   >
-                    <h3 className=\"text-4xl md:text-5xl font-bold mb-6\">
+                    <h3 className="text-4xl md:text-5xl font-bold mb-6">
                       {service.title}
                     </h3>
-                    <p className=\"text-lg text-neutral-400 leading-relaxed mb-8\">
+                    <p className="text-lg text-neutral-400 leading-relaxed mb-8">
                       {service.overview}
                     </p>
 
                     {service.whyItMatters && (
-                      <div className=\"bg-[#111111] border-l-4 border-white p-4 mb-8\">
-                        <p className=\"text-neutral-300 italic\">{service.whyItMatters}</p>
+                      <div className="bg-[#111111] border-l-4 border-white p-4 mb-8">
+                        <p className="text-neutral-300 italic">{service.whyItMatters}</p>
                       </div>
                     )}
 
-                    <div className=\"mb-8\">
-                      <h4 className=\"text-xl font-semibold mb-4\">What We Deliver:</h4>
-                      <ul className=\"space-y-3\">
+                    <div className="mb-8">
+                      <h4 className="text-xl font-semibold mb-4">What We Deliver:</h4>
+                      <ul className="space-y-3">
                         {service.deliverables.map((item, i) => (
-                          <li key={i} className=\"flex items-start space-x-3\">
-                            <CheckCircle className=\"text-white mt-1 flex-shrink-0\" size={20} />
-                            <span className=\"text-neutral-300\">{item}</span>
+                          <li key={i} className="flex items-start space-x-3">
+                            <CheckCircle className="text-white mt-1 flex-shrink-0" size={20} />
+                            <span className="text-neutral-300">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {service.process && (
-                      <div className=\"mb-8\">
-                        <h4 className=\"text-xl font-semibold mb-3\">Process:</h4>
-                        <p className=\"text-neutral-400\">{service.process}</p>
+                      <div className="mb-8">
+                        <h4 className="text-xl font-semibold mb-3">Process:</h4>
+                        <p className="text-neutral-400">{service.process}</p>
                       </div>
                     )}
 
-                    <Button className=\"bg-white text-black hover:bg-neutral-200 group\">
+                    <Button className="bg-white text-black hover:bg-neutral-200 group">
                       Discuss Your {service.title.split(' ')[0]} Project
-                      <ArrowRight className=\"ml-2 group-hover:translate-x-1 transition-transform\" size={16} />
+                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                     </Button>
                   </motion.div>
                 </div>
@@ -396,22 +396,22 @@ export default function Services() {
       ))}
 
       {/* Final CTA Section */}
-      <section className=\"py-24 px-4 bg-[#111111]\">
-        <div className=\"container mx-auto max-w-4xl text-center\">
+      <section className="py-24 px-4 bg-[#111111]">
+        <div className="container mx-auto max-w-4xl text-center">
           <motion.div {...fadeIn}>
-            <h2 className=\"text-4xl md:text-5xl font-bold mb-6\">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Ready to Produce Something Exceptional?
             </h2>
-            <p className=\"text-lg text-neutral-400 mb-8\">
+            <p className="text-lg text-neutral-400 mb-8">
               Whether you need corporate storytelling, event coverage, or immersive digital media — 
               let's create visuals that represent your brand at its highest standard.
             </p>
-            <div className=\"flex flex-col sm:flex-row justify-center gap-4\">
-              <Button size=\"lg\" className=\"bg-white text-black hover:bg-neutral-200\">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button size="lg" className="bg-white text-black hover:bg-neutral-200">
                 Book Consultation
               </Button>
-              <Link href=\"/contact\">
-                <Button size=\"lg\" variant=\"outline\" className=\"border-white text-white hover:bg-white hover:text-black\">
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
                   Contact Us
                 </Button>
               </Link>
