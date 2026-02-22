@@ -103,7 +103,7 @@ export default function WhyVideography() {
                         {item.stat}
                       </span>
                     </div>
-                    <span className="block mt-2 font-barlow text-[0.55rem] tracking-[0.12em] uppercase text-white/30 text-center">
+                    <span className="block mt-2 font-barlow text-[0.55rem] tracking-[0.12em] uppercase text-white/20 text-center">
                       {item.label}
                     </span>
                   </div>
@@ -141,7 +141,7 @@ export default function WhyVideography() {
               <div className="relative overflow-hidden rounded-lg border border-white/[0.08] shadow-2xl" style={{ aspectRatio: '4/5' }}>
                 <motion.div style={{ y: imageY }} className="absolute inset-[-6%]">
                   <Image
-                    src="https://images.unsplash.com/photo-1627736619924-ce6c159dedca?w=900&q=85"
+                    src="/why1.png"
                     alt="Videography"
                     fill
                     className="object-cover"
@@ -167,7 +167,7 @@ export default function WhyVideography() {
       <div className="relative h-[160px] overflow-hidden border-t border-white/[0.05]">
 
         <Image
-          src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1920&auto=format&fit=crop"
+          src="/why.png"
           alt="Cinematic background"
           fill
           className="object-cover opacity-20"

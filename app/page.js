@@ -122,7 +122,7 @@ export default function Home() {
         </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
           <span className="font-barlow-condensed text-[0.6rem] tracking-[0.22em] uppercase text-orange-500/60">Scroll</span>
           <motion.div
             animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
@@ -130,13 +130,13 @@ export default function Home() {
             className="w-px h-10"
             style={{ background: 'linear-gradient(to bottom, #F97316, transparent)' }}
           />
-        </div>
+        </div> */}
       </section>
 
       {/* ══════════════════════════════════════════
           STATS BAR
       ══════════════════════════════════════════ */}
-      <section className="bg-orange-500">
+      {/* <section className="bg-orange-500">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 stats-bar">
           {stats.map((s, i) => (
             <div key={i}
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* ══════════════════════════════════════════
           CLIENT LOGOS
