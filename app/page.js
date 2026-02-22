@@ -3,673 +3,450 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { 
-  Camera, 
-  Film, 
-  Briefcase, 
-  Users, 
-  Building, 
-  Sparkles, 
-  Video,
-  TrendingUp,
-  Globe,
-  Lightbulb,
-  PlayCircle,
-  Palette,
-  Box,
-  Boxes,
-  Smartphone,
-  Plane,
-  PartyPopper,
-  GraduationCap,
-  Radio
-} from 'lucide-react'
-
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
+import { PlayCircle } from 'lucide-react'
+import ServicesSection from '@/components/homeservice'
+import ProcessSection from '@/components/process'
+import TestimonialSection from '@/components/testimonials'
+import WhyVideography from '@/components/whyvideo'
+// ── Animation variants ──
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
 }
 
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
+// ── Data ──
+const whyPoints = [
+  { n: '01', title: 'Attention Is Shorter Than Ever',          body: 'Your audience scrolls in seconds. Professional videography stops the scroll and signals authority before a single word is spoken.' },
+  { n: '02', title: 'Trust Is Built Visually',                body: 'Low-quality production subconsciously signals inexperience. Cinematic visuals signal structure, reliability, and premium positioning.' },
+  { n: '03', title: 'Premium Visuals Attract Premium Clients', body: 'High-end videography tells your audience you operate at a higher standard — and premium clients are drawn to premium presentation.' },
+  { n: '04', title: 'Editing Determines Performance',         body: 'Retention-focused editing improves watch time and increases conversions. Good visuals impress — strategic editing performs.' },
+  { n: '05', title: 'Video Works Across Every Platform',      body: 'Website, Instagram, LinkedIn, YouTube, paid ads. One strong video becomes multiple strategic assets for growth.' },
+]
+
+
+
+const logos  = ['/clients/client1.jpeg', '/clients/client2.png', '/clients/client3.jpeg', '/clients/client4.jpeg', '/clients/client5.jpeg']
+
+const stats  = [
+  { val: '200+', label: 'Projects Delivered' },
+  { val: '8+',   label: 'Years Experience'  },
+  { val: '3',    label: 'Countries Active'  },
+  { val: '50+',  label: 'Brand Clients'     },
+]
+
+const equipmentList = [
+  {
+    title: 'Sony FX3',
+    desc: 'Full-frame cinema camera with 4K 120fps capability and S-Cinetone colour science.',
+  },
+  {
+    title: 'Sony A7 IV',
+    desc: 'Hybrid mirrorless system for high-resolution stills and cinematic video.',
+  },
+  {
+    title: 'Sony A7 III',
+    desc: 'Reliable full-frame performance for commercial and event productions.',
+  },
+  {
+    title: '20mm Prime Lens',
+    desc: 'Ultra-wide perspective ideal for immersive cinematic compositions.',
+  },
+  {
+    title: '24mm Prime Lens',
+    desc: 'Versatile focal length for dynamic storytelling and interior coverage.',
+  },
+  {
+    title: '50mm Prime Lens',
+    desc: 'Natural perspective with beautiful depth and subject separation.',
+  },
+]
 
 export default function Home() {
-  const services = [
-    {
-      icon: Camera,
-      title: 'Exhibitions, Conference & Trade Show Filming',
-      description: 'Capture large-scale events with cinematic precision, multi-camera coverage, and professional audio.',
-      href: '/services#trade-show'
-    },
-    {
-      icon: Briefcase,
-      title: 'Corporate Films',
-      description: 'Brand stories crafted to build authority, trust, and long-term positioning.',
-      href: '/services#corporate-films'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Promotional Brand Videos',
-      description: 'Strategic promotional videos designed to elevate brand perception and drive engagement.',
-      href: '/services#brand-videos'
-    },
-    {
-      icon: Users,
-      title: 'Executive Interviews',
-      description: 'High-quality interview production with cinematic lighting and structured storytelling.',
-      href: '/services#executive-interviews'
-    },
-    {
-      icon: Building,
-      title: 'Real Estate Product Demo',
-      description: 'Luxury property walkthroughs and real estate visuals built to attract premium buyers.',
-      href: '/services#real-estate'
-    },
-    {
-      icon: Sparkles,
-      title: 'Teaser / Trailer Videos',
-      description: 'Short-form cinematic trailers that generate anticipation and audience excitement.',
-      href: '/services#trailers'
-    },
-    {
-      icon: Video,
-      title: 'Behind The Scenes Videos',
-      description: 'Authentic behind-the-scenes coverage that builds brand transparency and connection.',
-      href: '/services#bts'
-    },
-    {
-      icon: Film,
-      title: 'Event Filming',
-      description: 'Full-scale event production for corporate, political, and business gatherings.',
-      href: '/services#event-filming'
-    },
-    {
-      icon: PartyPopper,
-      title: 'Wedding Videos',
-      description: 'Cinematic wedding films designed to preserve memories with elegance and emotion.',
-      href: '/services#wedding'
-    },
-    {
-      icon: PartyPopper,
-      title: 'Save The Date',
-      description: 'Creative pre-wedding cinematic invitations designed for digital sharing.',
-      href: '/services#save-the-date'
-    },
-    {
-      icon: GraduationCap,
-      title: 'Graduation Videos',
-      description: 'Professional coverage for academic milestones and institutional events.',
-      href: '/services#graduation'
-    },
-    {
-      icon: Radio,
-      title: 'Event AV Setup with Live Feed',
-      description: 'Complete AV solutions with real-time broadcasting and live production management.',
-      href: '/services#live-av'
-    },
-    {
-      icon: Building,
-      title: 'Burj Khalifa Projection',
-      description: 'Large-scale projection production and execution for landmark events.',
-      href: '/services#burj-projection'
-    },
-    {
-      icon: Smartphone,
-      title: 'Social Media Reels',
-      description: 'High-impact short-form vertical videos optimized for reach and engagement.',
-      href: '/services#reels'
-    },
-    {
-      icon: Palette,
-      title: '2D Animation Videos',
-      description: 'Custom 2D animated videos for explainers, corporate messaging, and campaigns.',
-      href: '/services#2d-animation'
-    },
-    {
-      icon: Box,
-      title: '3D Animation Videos',
-      description: 'High-end 3D visual production for immersive brand storytelling.',
-      href: '/services#3d-animation'
-    },
-    {
-      icon: Globe,
-      title: '360 / VR Videos',
-      description: 'Immersive virtual experiences designed to elevate digital interaction.',
-      href: '/services#vr'
-    },
-    {
-      icon: Plane,
-      title: 'Aerial / Drone / Chopper Cinematography',
-      description: 'Professional aerial cinematography for real estate, events, and large-scale productions.',
-      href: '/services#aerial'
-    }
-  ]
-
-  const processSteps = [
-    {
-      number: '01',
-      title: 'Discovery & Strategy',
-      description: 'We begin by understanding your brand, audience, and goals. Every successful production starts with clarity.',
-      image: 'https://images.unsplash.com/photo-1597421568622-6ce6c2713887?w=800'
-    },
-    {
-      number: '02',
-      title: 'Creative Planning',
-      description: 'Script development, concept direction, visual mood boards, and execution planning tailored to your vision.',
-      image: 'https://images.unsplash.com/photo-1580168500910-a57358352f14?w=800'
-    },
-    {
-      number: '03',
-      title: 'Production',
-      description: 'Our crew captures cinematic visuals using industry-grade equipment and structured direction.',
-      image: 'https://images.unsplash.com/photo-1597421568622-6ce6c2713887?w=800'
-    },
-    {
-      number: '04',
-      title: 'Post-Production',
-      description: 'Editing, sound design, color grading, and motion graphics crafted for engagement and retention.',
-      image: 'https://images.pexels.com/photos/4793163/pexels-photo-4793163.jpeg?w=800'
-    },
-    {
-      number: '05',
-      title: 'Delivery & Optimization',
-      description: 'Final formats optimized for web, social platforms, ads, and broadcast — ensuring maximum impact.',
-      image: 'https://images.unsplash.com/photo-1599706747273-8e6caa20d436?w=800'
-    }
-  ]
-
   return (
-    <div className="bg-black text-white">
-      {/* Hero Section */}
+    <div className="bg-[var(--navy)] text-[var(--off-white)] overflow-x-hidden">
+
+      {/* ══════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════ */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image - Replace with video in production */}
+
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1597421568622-6ce6c2713887?w=1920"
-            alt="Cinematic production background"
-            fill
+            alt="Cinematic production"
+            fill priority
             className="object-cover"
-            priority
           />
-          <div className="absolute inset-0 hero-gradient" />
+          <div className="absolute inset-0"
+            style={{ background: 'linear-gradient(to bottom, rgba(7,11,22,0.55), rgba(7,11,22,0.9))' }}
+          />
         </div>
 
+        {/* Content */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 text-center px-4"
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          className="relative z-10 text-center px-6 max-w-4xl mx-auto"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            PrimeFrame Productions
+          {/* Eyebrow */}
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+            className="flex items-center justify-center gap-3.5 mb-6"
+          >
+            <span className="w-8 h-px bg-orange-500" />
+            <span className="eyebrow">Dubai · India · Global</span>
+            <span className="w-8 h-px bg-orange-500" />
+          </motion.div>
+
+          {/* Headline — tighter, more refined */}
+          <h1 className="font-bebas text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-[0.05em] text-white mb-5"
+            style={{ textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}>
+            PRIME<span className="text-orange-500">FRAME</span><br />PRODUCTIONS
           </h1>
-          <p className="text-lg md:text-xl text-neutral-300 mb-8 max-w-2xl mx-auto">
-            Working with brands and creators across India, UAE, and US.
+
+          {/* Subheadline */}
+          <p className="font-barlow font-normal text-[clamp(0.95rem,1.8vw,1.15rem)] text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2.5">
+            Strategic visual production for brands that demand precision, clarity, and measurable impact.
           </p>
-          <Button size="lg" className="bg-white text-black hover:bg-neutral-200">
-            Explore Our Work
-          </Button>
+          <p className="font-barlow font-light text-sm text-slate-400 mb-10">
+            Working across India, UAE, and the United States.
+          </p>
+
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link href="/work"><button className="btn-primary">Explore Our Work</button></Link>
+            <Link href="/contact"><button className="btn-outline">Book Consultation</button></Link>
+          </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-white rounded-full"
-            />
-          </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <span className="font-barlow-condensed text-[0.6rem] tracking-[0.22em] uppercase text-orange-500/60">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 1.6, repeat: Infinity }}
+            className="w-px h-10"
+            style={{ background: 'linear-gradient(to bottom, #F97316, transparent)' }}
+          />
         </div>
       </section>
 
-      {/* Client Logo Strap */}
-      <section className="py-16 border-y border-neutral-800 overflow-hidden">
-        <motion.div {...fadeIn} className="mb-8 text-center">
-          <h2 className="text-3xl font-bold">Brands Under Our Roof</h2>
-        </motion.div>
-        <div className="relative">
-          <div className="flex animate-marquee space-x-16">
-            {[...Array(10)].map((_, i) => (
-              <div
-                key={i}
-                className="text-neutral-500 text-2xl font-bold whitespace-nowrap"
-              >
-                BRAND LOGO
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About the Agency */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.div {...fadeIn}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Built Around Story, Execution, and Detail.
-            </h2>
-            <p className="text-lg text-neutral-300 leading-relaxed mb-4">
-              PrimeFrame Productions was built on a simple belief — <span className="text-white font-semibold">Every frame should serve a purpose.</span>
-            </p>
-            <p className="text-lg text-neutral-400 leading-relaxed mb-4">
-              We combine cinematic production with performance strategy. From planning to post-production, 
-              every step is handled with clarity and precision.
-            </p>
-            <p className="text-lg text-neutral-400 leading-relaxed mb-8">
-              As we scale from India to Dubai, our mission remains the same: 
-              Deliver visuals that elevate brands beyond noise.
-            </p>
-            <Link href="/about">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                Learn About Our Journey →
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Videography Matters */}
-      <section className="py-24 px-4 bg-[#111111]">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Sticky Image */}
-            <div className="md:sticky md:top-32">
-              <motion.div {...fadeIn}>
-                <Image
-                  src="https://images.unsplash.com/photo-1627736619924-ce6c159dedca?w=800"
-                  alt="Professional videography equipment"
-                  width={600}
-                  height={800}
-                  className="rounded-2xl"
-                />
-              </motion.div>
-            </div>
-
-            {/* Content */}
-            <div className="space-y-12">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                  Why Serious Brands Invest in High-Quality Videography
-                </h2>
-                <p className="text-xl text-neutral-400">
-                  In today's market, attention is currency. The brands that win are the ones 
-                  that are seen, remembered, and trusted.
-                </p>
-              </div>
-
-              <motion.div variants={staggerContainer} initial="initial" whileInView="animate" viewport={{ once: true }}>
-                {[
-                  {
-                    number: '01',
-                    title: 'Attention Is Shorter Than Ever',
-                    content: 'Your audience scrolls in seconds. If your visuals don\'t immediately communicate quality and clarity, they move on. Professional videography stops the scroll. It signals authority before a single word is spoken.'
-                  },
-                  {
-                    number: '02',
-                    title: 'Trust Is Built Visually',
-                    content: 'People trust what looks credible. Low-quality production subconsciously signals inexperience. Cinematic production signals structure, reliability, and professionalism. Before someone contacts you — they judge you.'
-                  },
-                  {
-                    number: '03',
-                    title: 'Premium Visuals Attract Premium Clients',
-                    content: 'High-end videography positions your brand differently. It tells your audience: You take your business seriously. You value presentation. You operate at a higher standard. And premium clients are naturally drawn to premium presentation.'
-                  },
-                  {
-                    number: '04',
-                    title: 'Editing Determines Performance',
-                    content: 'A video is not just about shooting — it\'s about structure. Retention-focused editing keeps viewers engaged, improves watch time, and increases inquiries and conversions. Good visuals impress. Strategic editing performs.'
-                  },
-                  {
-                    number: '05',
-                    title: 'Video Works Across Every Platform',
-                    content: 'Your website. Instagram. LinkedIn. YouTube. Paid ads. One strong video becomes multiple strategic assets for growth.'
-                  }
-                ].map((item, index) => (
-                  <motion.div key={index} variants={fadeIn} className="space-y-3">
-                    <div className="flex items-start space-x-4">
-                      <span className="text-5xl font-bold text-neutral-800">{item.number}</span>
-                      <div>
-                        <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
-                        <p className="text-neutral-400 leading-relaxed">{item.content}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              <div className="pt-8 border-t border-neutral-800">
-                <p className="text-lg text-neutral-300 italic mb-6">
-                  When done correctly, videography is not an expense. It is a brand asset that compounds over time. 
-                  That is how we approach every project.
-                </p>
-                <Button className="bg-white text-black hover:bg-neutral-200">
-                  See How We Apply This →
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
-            <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-              Comprehensive cinematic production services designed for modern brands
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <Link href={service.href}>
-                  <div className="bg-[#111111] border border-neutral-800 rounded-2xl p-8 h-full hover:bg-[#1A1A1A] transition-all duration-300 group">
-                    <div className="bg-neutral-900 rounded-xl p-3 w-fit mb-4 group-hover:bg-neutral-800 transition-colors">
-                      <service.icon className="text-neutral-400 group-hover:text-white transition-colors" size={24} />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-neutral-400 text-sm leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                    <span className="text-sm text-neutral-500 group-hover:text-white transition-colors">
-                      Read More →
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div {...fadeIn} className="text-center mt-16 space-y-4">
-            <h3 className="text-2xl font-bold">Not Sure Which Service Fits Your Vision?</h3>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-white text-black hover:bg-neutral-200">
-                Book a Consultation
-              </Button>
-              <Link href="/services">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                  Explore Full Services →
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Equipment Section */}
-      <section className="py-24 px-4 bg-[#111111]">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeIn}>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Professional Equipment. Professional Results.
-              </h2>
-              <p className="text-lg text-neutral-400 leading-relaxed">
-                We invest in industry-standard cinema cameras, lighting systems, and professional 
-                audio setups to ensure consistency across every project.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+      {/* ══════════════════════════════════════════
+          STATS BAR
+      ══════════════════════════════════════════ */}
+      <section className="bg-orange-500">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 stats-bar">
+          {stats.map((s, i) => (
+            <div key={i}
+              className={`py-6 px-8 text-center ${i < 3 ? 'border-r border-white/20' : ''}`}
             >
-              {/* Replace with actual equipment image */}
-              <Image
-                src="https://images.unsplash.com/photo-1548552554-ac8ad1b37d6b?w=800"
-                alt="Professional video equipment"
-                width={600}
-                height={400}
-                className="rounded-2xl"
-              />
-              <p className="text-xs text-neutral-600 mt-2 italic">
-                /* Replace this placeholder with actual equipment image provided by client */
-              </p>
-            </motion.div>
+              <p className="font-bebas text-4xl leading-none text-white tracking-[0.04em]">{s.val}</p>
+              <p className="font-barlow-condensed text-[0.65rem] tracking-[0.18em] uppercase text-white/75 mt-1.5">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          CLIENT LOGOS
+      ══════════════════════════════════════════ */}
+      <section className="py-16 bg-[var(--navy-mid)] border-b border-white/5 overflow-hidden">
+        <div className="text-center mb-10">
+          <span className="eyebrow block mb-2">Trusted By</span>
+          <h2 className="font-bebas text-[clamp(1.6rem,3.5vw,2.5rem)] tracking-[0.06em] text-white">
+            BRANDS UNDER OUR ROOF
+          </h2>
+        </div>
+        <div className="relative">
+          <div className="animate-marquee flex gap-20 items-center">
+            {[...logos, ...logos].map((logo, i) => (
+              <div key={i} className="min-w-[120px] flex items-center justify-center">
+                <Image src={logo} alt={`Client ${i}`} width={110} height={36}
+                  className="object-contain opacity-35 grayscale brightness-200 transition-all duration-400
+                             hover:opacity-90 hover:grayscale-0"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Process Timeline */}
-      <section className="py-24 px-4 relative overflow-hidden">
-        {/* Background SVG Illustration */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1A1A1A" strokeWidth="1"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
+     {/* ══════════════════════════════════════════
+        ABOUT
+*/}
+<section className="py-32 bg-[var(--navy)]">
+  <div className="max-w-[850px] mx-auto px-6 text-center">
 
-        <div className="container mx-auto relative z-10">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <p className="text-sm uppercase tracking-wider text-neutral-500 mb-2">PROCESS</p>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Production Process</h2>
-            <p className="text-lg text-neutral-400">
-              A structured workflow designed for clarity, efficiency, and premium results.
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.22,1,0.36,1] }}
+      viewport={{ once: true }}
+    >
+
+      {/* Eyebrow */}
+      <span className="eyebrow block mb-6">
+        About the Studio
+      </span>
+
+      {/* Headline */}
+      <h2 className="font-bebas text-[clamp(2.4rem,4vw,3.6rem)] leading-[1] tracking-[0.05em] text-white mb-10">
+        BUILT AROUND <span className="text-orange-500">STORY,</span><br />
+        EXECUTION AND DETAIL.
+      </h2>
+
+      {/* Accent Divider */}
+      <div className="w-12 h-px bg-orange-500 mx-auto mb-10" />
+
+      {/* Body Copy */}
+      <div className="space-y-6 max-w-[620px] mx-auto">
+
+        <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.9]">
+          PrimeFrame Productions was built on a simple belief —
+          <span className="text-white font-medium"> every frame should serve a purpose.</span>
+          We combine cinematic production with performance strategy,
+          handling every step from planning to post-production with clarity and precision.
+        </p>
+
+        <p className="font-barlow font-light text-[0.92rem] text-[var(--muted)] leading-[1.9]">
+          As we expand from India to Dubai and beyond, our mission remains unchanged:
+          deliver visuals that elevate brands above the noise.
+        </p>
+
+      </div>
+
+      {/* CTA */}
+      <div className="mt-12">
+        <Link href="/about">
+          <button className="btn-outline">
+            Our Journey →
+          </button>
+        </Link>
+      </div>
+
+    </motion.div>
+
+  </div>
+</section>
+    {/* ══════════════════════════════════════════
+    WHY VIDEOGRAPHY
+══════════════════════════════════════════ */}
+<WhyVideography />
+      {/* ══════════════════════════════════════════
+          SERVICES
+      ══════════════════════════════════════════ */}
+      <ServicesSection />
+
+      {/* ══════════════════════════════════════════
+          EQUIPMENT
+      ══════════════════════════════════════════ */}
+    
+<section className="py-32 bg-[var(--navy-mid)] relative overflow-hidden">
+
+  {/* Subtle accent glow */}
+  <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none"
+       style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.06))' }} />
+
+  <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+
+    {/* ── Left: Image Composition ── */}
+    <motion.div
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.9, ease: [0.22,1,0.36,1] }}
+      viewport={{ once: true }}
+      className="relative"
+    >
+      {/* Main Image */}
+      <div className="aspect-[4/5] relative overflow-hidden rounded-lg">
+        <Image
+          src="/equip/equipmentsmain.jpeg"
+          alt="PrimeFrame Equipment"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+      </div>
+
+      {/* Floating Secondary Frame */}
+      <div className="absolute -bottom-10 -right-10 w-40 aspect-square overflow-hidden rounded-md border border-orange-500/30 shadow-xl">
+        <Image
+          src="/equip/equipmentsmain.jpeg"
+          alt="Gear Detail"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Corner accents */}
+      <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-orange-500" />
+      <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-orange-500" />
+    </motion.div>
+
+    {/* ── Right: Content ── */}
+    <div>
+
+      <motion.span
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="eyebrow block mb-6"
+      >
+        Our Equipment
+      </motion.span>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="font-bebas text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] tracking-[0.04em] text-white mb-8"
+      >
+        CINEMA-GRADE<br />
+        <span className="text-orange-500">TOOLS.</span><br />
+        PROFESSIONAL OUTPUT.
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="font-barlow font-light text-[0.9rem] text-[var(--muted)] leading-[1.85] mb-12 max-w-[480px]"
+      >
+        We operate with full-frame cinema cameras and professional prime lenses,
+        ensuring colour accuracy, dynamic range, and cinematic depth in every production.
+      </motion.p>
+
+      {/* Equipment List */}
+      <div className="space-y-6">
+        {equipmentList.map((item, i) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: 0.25 + i * 0.1,
+              ease: [0.22,1,0.36,1]
+            }}
+            viewport={{ once: true }}
+            className="border-b border-white/5 pb-4 group"
+          >
+            <h3 className="font-bebas text-lg tracking-[0.05em] text-white mb-2 group-hover:text-orange-400 transition-colors">
+              {item.title.toUpperCase()}
+            </h3>
+            <p className="font-barlow font-light text-[0.8rem] text-[var(--muted)] leading-[1.8]">
+              {item.desc}
             </p>
           </motion.div>
+        ))}
+      </div>
 
-          {/* Desktop: Zig-zag layout */}
-          <div className="hidden md:block space-y-24">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
-                }`}
-              >
-                <div className={index % 2 === 1 ? 'md:order-2' : ''}>
-                  <div className="relative">
-                    <span className="absolute -top-8 -left-8 text-8xl font-bold text-neutral-900 opacity-50">
-                      {step.number}
-                    </span>
-                    <div className="bg-[#111111] border border-neutral-800 rounded-2xl p-8 relative z-10">
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        width={500}
-                        height={300}
-                        className="rounded-xl mb-6 w-full"
-                      />
-                      <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                      <p className="text-neutral-400 leading-relaxed">{step.description}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+    </div>
+  </div>
+</section>
+   {/* ══════════════════════════════════════════
+          PROCESS
+      ══════════════════════════════════════════ */}
+     
+      <ProcessSection />
 
-          {/* Mobile: Vertical timeline */}
-          <div className="md:hidden space-y-8">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="relative pl-8 border-l-2 border-neutral-800"
-              >
-                <div className="absolute -left-3 top-0 w-6 h-6 bg-white rounded-full" />
-                <div className="bg-[#111111] border border-neutral-800 rounded-2xl p-6">
-                  <span className="text-4xl font-bold text-neutral-800 block mb-2">
-                    {step.number}
-                  </span>
-                  <Image
-                    src={step.image}
-                    alt={step.title}
-                    width={400}
-                    height={250}
-                    className="rounded-xl mb-4 w-full"
-                  />
-                  <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">{step.description}</p>
-                </div>
-              </motion.div>
-            ))}
+      {/* ══════════════════════════════════════════
+          TESTIMONIALS
+      ══════════════════════════════════════════ */}
+     <TestimonialSection />
+
+      {/* ══════════════════════════════════════════
+          FINAL CTA
+      ══════════════════════════════════════════ */}
+      <section className="py-24 bg-[var(--navy)] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-2/5 h-full pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.07))' }} />
+        <motion.div {...fadeUp} viewport={{ once: true }} whileInView="animate" initial="initial"
+          className="max-w-[720px] mx-auto px-6 text-center relative z-10">
+          <span className="eyebrow block mb-5">Start a Project</span>
+          <h2 className="font-bebas text-[clamp(3rem,8vw,6.5rem)] tracking-[0.04em] text-white leading-[0.9] mb-5">
+            READY TO<br />CREATE SOMETHING<br /><span className="text-orange-500">WORTH WATCHING?</span>
+          </h2>
+          <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.85] max-w-[440px] mx-auto mb-10">
+            Whether building a brand in Dubai or growing across India — let's produce visuals that represent your ambition.
+          </p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link href="/contact"><button className="btn-primary">Book a Consultation</button></Link>
+            <Link href="/contact"><button className="btn-outline">Contact Us</button></Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Testimonial Preview */}
-      <section className="py-24 px-4 bg-[#111111]">
-        <div className="container mx-auto">
-          <motion.div {...fadeIn} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Work That Speaks Before We Do
+      {/* ══════════════════════════════════════════
+          CONTACT FORM
+      ══════════════════════════════════════════ */}
+      <section className="py-24 bg-[var(--navy-mid)]">
+        <div className="max-w-[780px] mx-auto px-6">
+          <motion.div {...fadeUp} viewport={{ once: true }} whileInView="animate" initial="initial" className="mb-12">
+            <span className="eyebrow block mb-4">Get In Touch</span>
+            <h2 className="font-bebas text-[clamp(2rem,5vw,3.8rem)] tracking-[0.04em] text-white leading-[0.95] mb-3">
+              LET'S START A<br /><span className="text-orange-500">CONVERSATION</span>
             </h2>
+            <p className="font-barlow font-light text-[0.875rem] text-[var(--muted)]">
+              Tell us about your project and we'll respond within 24 hours.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-black border border-neutral-800 rounded-2xl p-6"
-              >
-                <div className="aspect-video bg-neutral-900 rounded-xl mb-4 flex items-center justify-center">
-                  <PlayCircle size={48} className="text-neutral-700" />
+          <form className="flex flex-col gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 form-grid">
+              {[
+                { label: 'Full Name',    type: 'text',  placeholder: 'Your name'           },
+                { label: 'Email',        type: 'email', placeholder: 'your@email.com'       },
+                { label: 'Phone',        type: 'tel',   placeholder: '+971 00 000 0000'     },
+                { label: 'Project Type', type: 'text',  placeholder: 'e.g. Corporate Film'  },
+              ].map(({ label, type, placeholder }) => (
+                <div key={label}>
+                  <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-orange-500/70 block mb-2.5 font-bold">
+                    {label}
+                  </label>
+                  <input type={type} placeholder={placeholder} className="input-dark" />
                 </div>
-                <p className="text-neutral-400 italic">
-                  "Working with PrimeFrame elevated our brand presence significantly..."
-                </p>
-                <p className="text-sm text-neutral-600 mt-2">- Client Name, Company</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Link href="/testimonials">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                View All Testimonials →
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.div {...fadeIn}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Create Something Worth Watching?
-            </h2>
-            <p className="text-lg text-neutral-400 mb-8 leading-relaxed">
-              Whether you're building a brand in Dubai or growing in India — let's produce 
-              visuals that represent your ambition.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="bg-white text-black hover:bg-neutral-200">
-                Book a Consultation
-              </Button>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                  Contact Us
-                </Button>
-              </Link>
+              ))}
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Contact Form Section */}
-      <section className="py-24 px-4 bg-[#111111]">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div {...fadeIn} className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Start a Conversation</h2>
-            <p className="text-lg text-neutral-400">
-              Tell us about your project, and we'll get back to you within 24 hours.
-            </p>
-          </motion.div>
-
-          <form className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Input
-                type="text"
-                placeholder="Your Name"
-                className="bg-black border-neutral-800 text-white placeholder:text-neutral-600"
-              />
-              <Input
-                type="email"
-                placeholder="Your Email"
-                className="bg-black border-neutral-800 text-white placeholder:text-neutral-600"
+            <div>
+              <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-orange-500/70 block mb-2.5 font-bold">
+                Project Details
+              </label>
+              <textarea
+                placeholder="Tell us about your project, timeline, and any references..."
+                rows={5} className="input-dark font-barlow resize-y"
               />
             </div>
-            <div className="grid md:grid-cols-2 gap-6">
-              <Input
-                type="tel"
-                placeholder="Phone Number"
-                className="bg-black border-neutral-800 text-white placeholder:text-neutral-600"
-              />
-              <Input
-                type="text"
-                placeholder="Project Type"
-                className="bg-black border-neutral-800 text-white placeholder:text-neutral-600"
-              />
-            </div>
-            <Textarea
-              placeholder="Tell us about your project..."
-              rows={6}
-              className="bg-black border-neutral-800 text-white placeholder:text-neutral-600"
-            />
-            <div className="text-center">
-              <Button size="lg" className="bg-white text-black hover:bg-neutral-200 w-full md:w-auto">
-                Send Message
-              </Button>
-            </div>
+
+            <button type="submit" className="btn-primary w-full" style={{ padding: '16px 32px', fontSize: '0.82rem' }}>
+              Send Message
+            </button>
           </form>
 
-          <div className="grid md:grid-cols-2 gap-4 mt-12">
-            <a
-              href="https://wa.me/971XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-6 rounded-lg text-center transition-colors"
-            >
+          {/* Quick contact buttons */}
+          <div className="grid grid-cols-2 gap-3 mt-5 contact-btns">
+            <a href="https://wa.me/971XXXXXXXXX" target="_blank" rel="noopener noreferrer"
+              className="no-underline block text-center py-4 font-barlow-condensed text-[0.68rem] tracking-[0.18em] uppercase font-bold transition-all duration-300
+                         text-green-400 border border-green-400/25 bg-green-400/10
+                         hover:bg-green-400/18 hover:border-green-400/50">
               WhatsApp Us
             </a>
-            <a
-              href="tel:+971XXXXXXXXX"
-              className="bg-white hover:bg-neutral-200 text-black font-semibold py-4 px-6 rounded-lg text-center transition-colors"
-            >
-              Call Now
+            <a href="tel:+971XXXXXXXXX"
+              className="no-underline block text-center py-4 font-barlow-condensed text-[0.68rem] tracking-[0.18em] uppercase font-bold transition-all duration-300
+                         text-orange-500 border border-orange-500/30 bg-orange-500/10
+                         hover:bg-orange-500/20">
+              Call Us Now
             </a>
           </div>
         </div>
       </section>
+
     </div>
   )
 }

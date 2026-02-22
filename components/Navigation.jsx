@@ -3,85 +3,146 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+
+const navLinks = [
+  { href: '/',             label: 'Home' },
+  { href: '/about',        label: 'About' },
+  { href: '/services',     label: 'Services' },
+  { href: '/testimonials', label: 'Testimonials' },
+  { href: '/contact',      label: 'Contact Us' },
+]
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled]         = useState(false)
+  const [mobileOpen, setMobileOpen]     = useState(false)
+  const [activeLink, setActiveLink]     = useState('/')
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    { href: '/testimonials', label: 'Testimonials' },
-    { href: '/contact', label: 'Contact Us' },
-  ]
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setMobileOpen(false) }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-lg border-b border-neutral-800' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-bold tracking-tight">
-            <span className="text-white">PrimeFrame</span>
-          </Link>
+    <>
+      <nav
+        className={[
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          scrolled
+            ? 'bg-[var(--navy)]/95 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/30'
+            : 'bg-[var(--navy)]',
+        ].join(' ')}
+      >
+        <div className="max-w-[1300px] mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-neutral-300 hover:text-white transition-colors"
+            {/* ── Logo ── */}
+            <Link href="/" className="no-underline flex items-center gap-0 group">
+              {/* Orange accent bar left of logo */}
+              <span className="w-1 h-7 bg-orange-500 mr-3 transition-all duration-300 group-hover:h-9" />
+              <span
+                className="font-bebas text-2xl tracking-[0.08em] text-white leading-none"
               >
-                {link.label}
-              </Link>
-            ))}
-            <Button className="bg-white text-black hover:bg-neutral-200">
-              Book Consultation
-            </Button>
-          </div>
+                PRIME<span className="text-orange-500">FRAME</span>
+              </span>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {/* ── Desktop Nav ── */}
+            <div className="hidden md:flex items-center gap-8">
+              {navLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setActiveLink(link.href)}
+                  className={[
+                    'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
+                    'relative transition-colors duration-200 pb-0.5',
+                    activeLink === link.href
+                      ? 'text-orange-500'
+                      : 'text-slate-300 hover:text-white',
+                  ].join(' ')}
+                >
+                  {link.label}
+                  {/* Underline on active */}
+                  {activeLink === link.href && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-px bg-orange-500" />
+                  )}
+                </Link>
+              ))}
+
+              {/* CTA Button */}
+              {/* <Link href="/contact" className="no-underline">
+                <button
+                  className="btn-primary text-xs"
+                  style={{ padding: '10px 24px' }}
+                >
+                  Book Consultation
+                </button>
+              </Link> */}
+            </div>
+
+            {/* ── Mobile hamburger ── */}
+            <button
+              className="md:hidden flex items-center justify-center w-10 h-10 text-white transition-colors hover:text-orange-500"
+              onClick={() => setMobileOpen(o => !o)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-neutral-800">
-            {navLinks.map((link) => (
+        {/* ── Mobile Menu ── */}
+        <div
+          className={[
+            'md:hidden overflow-hidden transition-all duration-350',
+            mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0',
+          ].join(' ')}
+        >
+          <div className="bg-[var(--navy-mid)] border-t border-white/5 px-6 py-6 flex flex-col gap-1">
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-neutral-300 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => { setMobileOpen(false); setActiveLink(link.href) }}
+                className={[
+                  'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
+                  'py-3 border-b border-white/5 transition-colors duration-200 flex items-center gap-3',
+                  activeLink === link.href
+                    ? 'text-orange-500'
+                    : 'text-slate-300 hover:text-white',
+                ].join(' ')}
               >
+                {/* Active indicator */}
+                <span
+                  className="w-1 h-4 flex-shrink-0 transition-all duration-200"
+                  style={{ background: activeLink === link.href ? 'var(--orange)' : 'transparent' }}
+                />
                 {link.label}
               </Link>
             ))}
-            <Button className="w-full mt-4 bg-white text-black hover:bg-neutral-200">
-              Book Consultation
-            </Button>
+
+            {/* <Link href="/contact" className="no-underline mt-4">
+              <button
+                className="btn-primary w-full text-xs"
+                onClick={() => setMobileOpen(false)}
+              >
+                Book Consultation
+              </button>
+            </Link> */}
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      </nav>
+
+      {/* Spacer so page content doesn't hide under fixed nav */}
+      <div className="h-20" />
+    </>
   )
 }

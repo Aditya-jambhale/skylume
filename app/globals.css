@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,39 +6,68 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 6.7%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 6.7%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 10.2%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 16.5%;
-    --muted-foreground: 0 0% 63.1%;
-    --accent: 39 33% 57%;
-    --accent-foreground: 0 0% 0%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 16.5%;
-    --input: 0 0% 16.5%;
-    --ring: 0 0% 100%;
-    --radius: 0.5rem;
-  }
+  /* ── NAVY SCALE (Deeper + More Cinematic) ── */
+  --navy: #070B16;          /* deeper base */
+  --navy-mid: #0C1122;      
+  --navy-light: #121832;    
+  --navy-card: #0E1428;     
+
+  /* ── ORANGE SCALE (More Refined, Less Neon) ── */
+  --orange: #F97316;        /* refined cinematic orange */
+  --orange-hot: #EA580C;    /* deeper hover tone */
+  --orange-dim: rgba(249, 115, 22, 0.12);
+
+  /* ── TEXT SCALE (Softer Whites) ── */
+  --white: #F8FAFC;         /* softer than pure white */
+  --off-white: #CBD5E1;     /* improved readability */
+  --muted: rgba(203, 213, 225, 0.45);
+
+  /* ── BORDERS (More Subtle) ── */
+  --border: rgba(255, 255, 255, 0.05);
+  --border-accent: rgba(249, 115, 22, 0.25);
+
+  /* ── Tailwind HSL Tokens (Adjusted to Match Above) ── */
+  --background: 222 45% 6%;
+  --foreground: 210 40% 96%;
+  --card: 222 45% 9%;
+  --card-foreground: 210 40% 96%;
+  --primary: 24 94% 52%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 222 45% 11%;
+  --secondary-foreground: 210 40% 96%;
+  --muted: 222 45% 13%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 24 94% 52%;
+  --accent-foreground: 0 0% 100%;
+  --border: 222 35% 15%;
+  --input: 222 35% 15%;
+  --ring: 24 94% 52%;
+  --radius: 0.25rem;
+}
 }
 
 @layer base {
   * {
+    box-sizing: border-box;
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
+    background-color: var(--navy);
+    color: var(--off-white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--white);
   }
 }
 
@@ -46,26 +75,159 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── HERO ─────────────────────────────────────── */
 .hero-gradient {
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9));
+  background: linear-gradient(180deg,
+      rgba(10, 13, 26, 0.2) 0%,
+      rgba(10, 13, 26, 0.5) 50%,
+      rgba(10, 13, 26, 0.98) 100%);
 }
 
-.text-gradient {
-  background: linear-gradient(to right, #ffffff, #a1a1aa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── EYEBROW ──────────────────────────────────── */
+.eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
 }
 
+/* ── BUTTONS ──────────────────────────────────── */
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.btn-primary:hover {
+  background: var(--orange-hot);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 13px 36px;
+  border: 1px solid rgba(249, 115, 22, 0.5);
+  cursor: pointer;
+  transition: all 0.25s;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.btn-outline:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  background: rgba(249, 115, 22, 0.07);
+}
+
+/* ── MARQUEE ──────────────────────────────────── */
 @keyframes marquee {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 35s linear infinite;
+}
+
+/* ── SERVICE CELL ─────────────────────────────── */
+.service-cell {
+  background: var(--navy-mid);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2.5rem;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-cell::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.service-cell:hover::before {
+  transform: scaleX(1);
+}
+
+.service-cell:hover {
+  background: var(--navy-light);
+}
+
+/* ── ICON WRAP ────────────────────────────────── */
+.icon-wrap {
+  width: 46px;
+  height: 46px;
+  background: var(--orange-dim);
+  border: 1px solid var(--border-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.service-cell:hover .icon-wrap {
+  background: rgba(249, 115, 22, 0.25);
+}
+
+/* ── INPUTS ───────────────────────────────────── */
+.input-dark {
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--off-white);
+  padding: 14px 18px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-dark::placeholder {
+  color: rgba(226, 232, 240, 0.3);
+}
+
+.input-dark:focus {
+  border-color: var(--orange);
+}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 768px) {
+
+  .why-grid,
+  .equip-grid,
+  .testimonial-grid,
+  .form-grid,
+  .contact-btns {
+    grid-template-columns: 1fr !important;
+  }
 }
