@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
+import Link from 'next/link'
 
 // ─── Reusable scroll reveal ───────────────────────────────────────────────────
 function Reveal({ children, delay = 0, y = 28, x = 0, className = '' }) {
@@ -143,17 +144,17 @@ function TimelineCard({ item, side }) {
       <div className="p-6 md:p-7">
         <span className="inline-block mb-3 px-2.5 py-0.5 rounded font-barlow-condensed
                          text-[0.68rem] font-bold tracking-[0.16em] uppercase
-                         text-[var(--orange)] border border-[var(--border-accent)] bg-[var(--orange-dim)]">
+                         text-yellow-500 border border-yellow/25 bg-yellow-500/10">
           {item.year}
         </span>
-        <h3 className="font-bebas text-[1.6rem] text-[var(--white)] tracking-[0.04em] leading-none mb-3">
+        <h3 className="font-bebas text-[1.6rem] text-white tracking-[0.04em] leading-none mb-3">
           {item.title}
         </h3>
         <div className="flex flex-col gap-2">
           {item.body.map((p, i) => (
             <p
               key={i}
-              className={`text-sm leading-relaxed ${i === 0 ? 'text-[var(--off-white)]' : 'text-[var(--muted)]'}`}
+              className={`text-sm leading-relaxed ${i === 0 ? 'text-slate-200' : 'text-textMuted'}`}
             >
               {p}
             </p>
@@ -161,8 +162,8 @@ function TimelineCard({ item, side }) {
         </div>
       </div>
 
-      {/* Hover bottom sweep — handled via CSS in global.css (.about-timeline-card) */}
-      <div className="about-card-sweep h-0.5 bg-[var(--orange)]" />
+      {/* Hover bottom sweep */}
+      <div className="about-card-sweep h-0.5 bg-yellow-500" />
     </motion.div>
   )
 }
@@ -171,11 +172,11 @@ function TimelineCard({ item, side }) {
 export default function About() {
   const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const bgY      = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '12%'])
 
   return (
-    <div className="bg-[var(--navy)] text-[var(--off-white)] font-barlow overflow-x-hidden">
+    <div className="bg-black text-slate-300 font-barlow overflow-x-hidden">
 
       {/* ════════════════════════════════════
           HERO — full-bleed founder bg
@@ -195,12 +196,12 @@ export default function About() {
 
         {/* Gradient overlays */}
         <div className="absolute inset-0 z-10 hero-gradient" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[var(--navy)]/85 via-[var(--navy)]/50 to-transparent" />
-        <div className="absolute inset-0 z-10 bg-[var(--navy)]/25" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+        <div className="absolute inset-0 z-10 bg-black/25" />
 
         {/* Faint watermark */}
         <div className="about-watermark absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none">
-          <span className="font-bebas tracking-[0.15em] text-[clamp(4rem,14vw,14rem)]">
+          <span className="font-bebas tracking-[0.15em] text-[clamp(4rem,14vw,14rem)] text-white/5">
             PRIMEFRAME
           </span>
         </div>
@@ -213,21 +214,20 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <span className="eyebrow">About PrimeFrame</span>
+              <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">About PrimeFrame</span>
 
-              <h1 className="font-bebas text-[clamp(2.6rem,5.5vw,5.5rem)] text-[var(--white)]
+              <h1 className="font-bebas text-[clamp(2.6rem,5.5vw,5.5rem)] text-white
                              leading-[0.93] tracking-[0.03em] mt-2 mb-5 max-w-2xl">
                 From Freelancing<br />
-                <span className="text-[var(--orange)]">to Building</span> a<br />
+                <span className="text-yellow-500">to Building</span> a<br />
                 Production House
               </h1>
 
               <div
-                className="w-12 h-0.5 mb-6"
-                style={{ background: 'linear-gradient(90deg, var(--orange), transparent)' }}
+                className="w-12 h-0.5 mb-6 bg-gradient-to-r from-yellow to-transparent"
               />
 
-              <p className="text-[var(--off-white)] text-base leading-[1.78] max-w-lg mb-8">
+              <p className="text-slate-200 text-base leading-[1.78] max-w-lg mb-8">
                 What began as curiosity during college turned into a structured journey of skill,
                 discipline, and storytelling. PrimeFrame is not the result of overnight success —
                 it is the result of years spent learning, adapting, and executing consistently.
@@ -242,10 +242,10 @@ export default function About() {
                 {[['50+', 'Global Clients'], ['200+', 'Projects Delivered'], ['4', 'Countries Served']].map(([val, lbl]) => (
                   <div
                     key={lbl}
-                    className="bg-[var(--navy-card)] border border-[var(--border-accent)] rounded-xl px-5 py-3.5"
+                    className="bg-pf-card border border-white/5 rounded-xl px-5 py-3.5"
                   >
-                    <div className="font-bebas text-3xl text-[var(--orange)] leading-none">{val}</div>
-                    <div className="font-barlow-condensed text-[0.65rem] font-bold tracking-[0.14em] uppercase text-[var(--muted)] mt-0.5">
+                    <div className="font-bebas text-3xl text-yellow-500 leading-none">{val}</div>
+                    <div className="font-barlow-condensed text-[0.65rem] font-bold tracking-[0.14em] uppercase text-textMuted mt-0.5">
                       {lbl}
                     </div>
                   </div>
@@ -255,13 +255,13 @@ export default function About() {
           </div>
         </motion.div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--navy)] to-transparent pointer-events-none z-20" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
       </section>
 
       {/* ════════════════════════════════════
           JOURNEY TIMELINE
       ════════════════════════════════════ */}
-      <section className="bg-[var(--navy)] py-28 relative overflow-hidden">
+      <section className="bg-black py-28 relative overflow-hidden">
         {/* Decorative camera SVG */}
         <svg
           className="absolute top-16 right-0 w-72 pointer-events-none"
@@ -277,16 +277,15 @@ export default function About() {
 
         <div className="container mx-auto px-6 max-w-6xl">
           <Reveal className="text-center mb-20">
-            <span className="eyebrow">The Journey</span>
-            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-[var(--white)]
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">The Journey</span>
+            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-white
                            tracking-[0.04em] leading-[0.95] mt-1">
               A Story of Consistent Growth
             </h2>
             <div
-              className="w-12 h-0.5 mx-auto my-5"
-              style={{ background: 'linear-gradient(90deg,transparent,var(--orange),transparent)' }}
+              className="w-12 h-0.5 mx-auto my-5 bg-gradient-to-r from-transparent via-yellow to-transparent"
             />
-            <p className="text-[var(--muted)] text-sm max-w-xs mx-auto leading-relaxed">
+            <p className="text-textMuted text-sm max-w-xs mx-auto leading-relaxed">
               Every milestone was earned. Every phase was deliberate.
             </p>
           </Reveal>
@@ -308,11 +307,7 @@ export default function About() {
                       whileInView={{ scale: 1, opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.45, delay: 0.1 }}
-                      className="w-3.5 h-3.5 rounded-full flex-shrink-0 z-10"
-                      style={{
-                        background: 'var(--orange)',
-                        boxShadow: '0 0 0 5px var(--orange-dim), 0 0 18px rgba(249,115,22,0.28)',
-                      }}
+                      className="w-3.5 h-3.5 rounded-full flex-shrink-0 z-10 bg-yellow-500 shadow-[0_0_0_5px_rgba(234,179,8,0.1),0_0_18px_rgba(234,179,8,0.28)]"
                     />
                     {i < timeline.length - 1 && (
                       <motion.div
@@ -320,10 +315,9 @@ export default function About() {
                         whileInView={{ scaleY: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.65, delay: 0.25 }}
-                        className="w-px flex-1 mt-1 origin-top"
+                        className="w-px flex-1 mt-1 origin-top bg-gradient-to-b from-yellow/20 to-transparent"
                         style={{
                           minHeight: 80,
-                          background: 'linear-gradient(var(--border-accent), transparent)',
                         }}
                       />
                     )}
@@ -340,10 +334,9 @@ export default function About() {
           {/* Mobile vertical */}
           <div className="md:hidden space-y-8">
             {timeline.map((item, i) => (
-              <div key={i} className="relative pl-8 border-l border-[var(--border-accent)]">
+              <div key={i} className="relative pl-8 border-l border-white/5">
                 <div
-                  className="absolute -left-[7px] top-6 w-3.5 h-3.5 rounded-full"
-                  style={{ background: 'var(--orange)', boxShadow: '0 0 0 4px var(--orange-dim)' }}
+                  className="absolute -left-[7px] top-6 w-3.5 h-3.5 rounded-full bg-yellow-500 shadow-[0_0_0_4px_rgba(234,179,8,0.1)]"
                 />
                 <TimelineCard item={item} side="left" />
               </div>
@@ -355,29 +348,27 @@ export default function About() {
       {/* ════════════════════════════════════
           VISION
       ════════════════════════════════════ */}
-      <section className="bg-[var(--navy-mid)] py-28 relative overflow-hidden">
+      <section className="bg-black py-28 relative overflow-hidden">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, var(--orange-dim) 0%, transparent 70%)' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)]"
         />
         <div
           className="about-vision-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                      font-bebas tracking-[0.15em] pointer-events-none select-none whitespace-nowrap
-                     text-[clamp(4rem,14vw,13rem)]"
+                     text-[clamp(4rem,14vw,13rem)] text-white/5"
         >
           VISION
         </div>
 
         <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
           <Reveal>
-            <span className="eyebrow">The Vision</span>
-            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-[var(--white)]
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">The Vision</span>
+            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-white
                            tracking-[0.04em] leading-[0.95] mt-1">
-              The Vision Behind <span className="text-[var(--orange)]">PrimeFrame</span>
+              The Vision Behind <span className="text-yellow-500">PrimeFrame</span>
             </h2>
             <div
-              className="w-12 h-0.5 mx-auto my-5"
-              style={{ background: 'linear-gradient(90deg,transparent,var(--orange),transparent)' }}
+              className="w-12 h-0.5 mx-auto my-5 bg-gradient-to-r from-transparent via-yellow to-transparent"
             />
           </Reveal>
 
@@ -391,14 +382,14 @@ export default function About() {
                 <motion.div
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.3 }}
-                  className="about-vision-card group relative rounded-xl p-7 text-left border border-[var(--border)]
-                             bg-[var(--navy-card)] overflow-hidden transition-colors duration-300
-                             hover:border-[var(--border-accent)]"
+                  className="about-vision-card group relative rounded-xl p-7 text-left border border-white/5
+                             bg-pf-card overflow-hidden transition-colors duration-300
+                             hover:border-yellow/30"
                 >
                   <div className="text-3xl mb-4">{v.icon}</div>
-                  <h3 className="font-bebas text-xl text-[var(--white)] tracking-[0.05em] mb-2">{v.title}</h3>
-                  <p className="text-[var(--muted)] text-sm leading-relaxed">{v.body}</p>
-                  <div className="about-card-sweep absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--orange)]" />
+                  <h3 className="font-bebas text-xl text-white tracking-[0.05em] mb-2">{v.title}</h3>
+                  <p className="text-textMuted text-sm leading-relaxed">{v.body}</p>
+                  <div className="about-card-sweep absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500" />
                 </motion.div>
               </Reveal>
             ))}
@@ -409,16 +400,16 @@ export default function About() {
       {/* ════════════════════════════════════
           TEAM
       ════════════════════════════════════ */}
-      <section className="bg-[var(--navy)] py-28">
+      <section className="bg-black py-28">
         <div className="container mx-auto px-6 max-w-6xl">
           <Reveal className="mb-12">
-            <span className="eyebrow">The People</span>
-            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-[var(--white)]
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">The People</span>
+            <h2 className="font-bebas text-[clamp(2rem,4vw,3.8rem)] text-white
                            tracking-[0.04em] leading-[0.95] mt-1 mb-3">
               Meet the Team
             </h2>
-            <div className="w-10 h-0.5 mb-4" style={{ background: 'linear-gradient(90deg,var(--orange),transparent)' }} />
-            <p className="text-[var(--muted)] text-sm max-w-md leading-relaxed">
+            <div className="w-10 h-0.5 mb-4 bg-gradient-to-r from-yellow to-transparent" />
+            <p className="text-textMuted text-sm max-w-md leading-relaxed">
               Every great production is a collective. PrimeFrame is built by individuals who care deeply about their craft.
             </p>
           </Reveal>
@@ -429,9 +420,9 @@ export default function About() {
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3 }}
-                  className="about-team-card group rounded-2xl overflow-hidden border border-[var(--border)]
-                             bg-[var(--navy-card)] transition-colors duration-300
-                             hover:border-[var(--border-accent)]"
+                  className="about-team-card group rounded-2xl overflow-hidden border border-white/5
+                             bg-black transition-colors duration-300
+                             hover:border-yellow/30"
                 >
                   <div className="relative aspect-square overflow-hidden">
                     <Image
@@ -440,16 +431,16 @@ export default function About() {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-card)] via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-yellow-500 via-transparent to-transparent" />
                   </div>
                   <div className="p-5">
-                    <h3 className="font-bebas text-xl text-[var(--white)] tracking-[0.05em] leading-none mb-1">
+                    <h3 className="font-bebas text-xl text-white tracking-[0.05em] leading-none mb-1">
                       {member.name}
                     </h3>
-                    <p className="font-barlow-condensed text-[0.7rem] font-bold tracking-[0.11em] uppercase text-[var(--orange)] mb-1.5">
+                    <p className="font-barlow-condensed text-[0.7rem] font-bold tracking-[0.11em] uppercase text-yellow-500 mb-1.5">
                       {member.role}
                     </p>
-                    <p className="text-[var(--muted)] text-xs leading-relaxed">{member.note}</p>
+                    <p className="text-textMuted text-xs leading-relaxed">{member.note}</p>
                   </div>
                 </motion.div>
               </Reveal>
@@ -461,21 +452,20 @@ export default function About() {
       {/* ════════════════════════════════════
           FOUNDER QUOTE
       ════════════════════════════════════ */}
-      <section className="bg-[var(--navy-mid)] py-28 relative overflow-hidden">
+      <section className="bg-black py-28 relative overflow-hidden">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, var(--orange-dim) 0%, transparent 70%)' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)]"
         />
         <Reveal>
           <div className="container mx-auto px-6 max-w-3xl text-center relative z-10">
-            <div className="font-serif text-[5rem] leading-none mb-[-1.25rem] text-[var(--orange)] opacity-20">"</div>
-            <blockquote className="font-bebas text-[clamp(1.5rem,2.8vw,2.4rem)] text-[var(--white)]
+            <div className="font-serif text-[5rem] leading-none mb-[-1.25rem] text-yellow-500 opacity-20">"</div>
+            <blockquote className="font-bebas text-[clamp(1.5rem,2.8vw,2.4rem)] text-white
                                    tracking-[0.03em] leading-[1.2] mb-8">
               Every camera I picked up, every project I delivered — it was never about the equipment.
               It was always about the story.
             </blockquote>
             <div className="flex items-center justify-center gap-4">
-              <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[var(--border-accent)] flex-shrink-0">
+              <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-yellow/30 flex-shrink-0">
                 <Image
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
                   alt="Yusuf"
@@ -484,8 +474,8 @@ export default function About() {
                 />
               </div>
               <div className="text-left">
-                <div className="text-[var(--white)] font-semibold text-sm">Yusuf</div>
-                <div className="font-barlow-condensed text-[0.66rem] font-bold tracking-[0.12em] uppercase text-[var(--muted)]">
+                <div className="text-white font-semibold text-sm">Yusuf</div>
+                <div className="font-barlow-condensed text-[0.66rem] font-bold tracking-[0.12em] uppercase text-textMuted">
                   Founder, PrimeFrame Productions
                 </div>
               </div>
@@ -497,20 +487,28 @@ export default function About() {
       {/* ════════════════════════════════════
           CTA
       ════════════════════════════════════ */}
-      <section className="bg-[var(--navy)] py-24 text-center">
+      <section className="bg-black py-24 text-center">
         <Reveal>
           <div className="container mx-auto px-6 max-w-lg">
-            <span className="eyebrow">Work With Us</span>
-            <h2 className="font-bebas text-[clamp(1.8rem,3.5vw,3.2rem)] text-[var(--white)]
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">Work With Us</span>
+            <h2 className="font-bebas text-[clamp(1.8rem,3.5vw,3.2rem)] text-white
                            tracking-[0.04em] leading-[0.93] mt-1 mb-4">
               Ready to Tell Your Story?
             </h2>
-            <p className="text-[var(--muted)] text-sm leading-relaxed mb-8">
+            <p className="text-textMuted text-sm leading-relaxed mb-8">
               If your brand deserves production that is deliberate and cinematic, let's build it together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn-primary">Get In Touch</button>
-              <button className="btn-outline">View Our Work</button>
+              <Link href="/contact">
+                <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                  Get In Touch
+                </button>
+              </Link>
+              <Link href="/services">
+                <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                  View Our Work
+                </button>
+              </Link>
             </div>
           </div>
         </Reveal>

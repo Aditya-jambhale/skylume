@@ -9,8 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/testimonials', label: 'Testimonials' },
-  { href: '/contact', label: 'Contact Us' },
+
 ]
 
 export default function Navigation() {
@@ -19,7 +18,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -36,20 +35,19 @@ export default function Navigation() {
     <>
       <nav
         className={[
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out',
           scrolled
-            ? 'bg-[var(--navy)]/95 backdrop-blur-md border-b border-white/5 shadow-lg shadow-black/30'
-            : 'bg-[var(--navy)]',
+            ? 'bg-black/90 backdrop-blur-md border-b border-white/5 py-4 shadow-lg shadow-black/40'
+            : 'bg-transparent py-6',
         ].join(' ')}
       >
         <div className="max-w-[1300px] mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group">
-              <span className="w-1 h-7 bg-orange-500 mr-3 transition-all duration-300 group-hover:h-9" />
+              <span className="w-1 h-7 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-9" />
               <span className="font-bebas text-2xl tracking-[0.08em] text-white leading-none">
-                PRIME<span className="text-orange-500">FRAME</span>
+                PRIME<span className="text-yellow-500">FRAME</span>
               </span>
             </Link>
 
@@ -69,13 +67,13 @@ export default function Navigation() {
                       'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
                       'relative transition-colors duration-200 pb-0.5',
                       isActive
-                        ? 'text-orange-500'
+                        ? 'text-yellow-500'
                         : 'text-slate-300 hover:text-white',
                     ].join(' ')}
                   >
                     {link.label}
                     {isActive && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-px bg-orange-500" />
+                      <span className="absolute -bottom-1 left-0 right-0 h-px bg-yellow-500" />
                     )}
                   </Link>
                 )
@@ -84,7 +82,7 @@ export default function Navigation() {
 
             {/* Mobile Hamburger */}
             <button
-              className="md:hidden flex items-center justify-center w-10 h-10 text-white transition-colors hover:text-orange-500"
+              className="md:hidden flex items-center justify-center w-10 h-10 text-white transition-colors hover:text-yellow-500"
               onClick={() => setMobileOpen(o => !o)}
               aria-label="Toggle menu"
             >
@@ -100,7 +98,7 @@ export default function Navigation() {
             mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0',
           ].join(' ')}
         >
-          <div className="bg-[var(--navy-mid)] border-t border-white/5 px-6 py-6 flex flex-col gap-1">
+          <div className="bg-black/95 backdrop-blur-lg border-t border-white/5 px-6 py-6 flex flex-col gap-1">
             {navLinks.map(link => {
               const isActive =
                 link.href === '/'
@@ -116,15 +114,12 @@ export default function Navigation() {
                     'no-underline font-barlow-condensed text-sm font-semibold tracking-[0.14em] uppercase',
                     'py-3 border-b border-white/5 transition-colors duration-200 flex items-center gap-3',
                     isActive
-                      ? 'text-orange-500'
+                      ? 'text-yellow-500'
                       : 'text-slate-300 hover:text-white',
                   ].join(' ')}
                 >
                   <span
-                    className="w-1 h-4 flex-shrink-0 transition-all duration-200"
-                    style={{
-                      background: isActive ? 'var(--orange)' : 'transparent',
-                    }}
+                    className={`w-1 h-4 flex-shrink-0 transition-all duration-200 ${isActive ? 'bg-yellow-500' : 'bg-transparent'}`}
                   />
                   {link.label}
                 </Link>
@@ -133,8 +128,6 @@ export default function Navigation() {
           </div>
         </div>
       </nav>
-
-      <div className="h-20" />
     </>
   )
 }

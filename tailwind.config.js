@@ -23,31 +23,35 @@ module.exports = {
       },
 
       colors: {
-        // PrimeFrame Neutral Scale
+        // PrimeFrame Standard Palette (Yellow/Black/White)
         pf: {
-          black: '#0A0D1A',
-          navy: '#0F1428',
-          navyLight: '#151C35',
-          card: '#111527',
+          black: '#000000',
+          dark: '#050505',
+          card: '#0a0a0a',
+          navy: '#000000',
+          navyMid: '#050505',
+          navyLight: '#0a0a0a',
           textMuted: '#94A3B8',
+          yellow: '#EAB308',
         },
 
-        // Accent (will be controlled via CSS variables)
+        // Accent
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+          DEFAULT: '#EAB308',
+          foreground: '#000000',
         },
 
-        // shadcn system
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+        secondary: {
+          DEFAULT: '#111111',
+          foreground: '#FFFFFF',
         },
+
+        // Theme compatibility
+        border: 'rgba(255, 255, 255, 0.08)',
+        input: 'rgba(255, 255, 255, 0.05)',
+        ring: '#EAB308',
+        background: '#000000',
+        foreground: '#F8FAFC',
       },
 
       borderRadius: {
@@ -65,11 +69,16 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
 
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        marquee: 'marquee 35s linear infinite',
       },
     },
   },

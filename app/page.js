@@ -8,6 +8,7 @@ import ServicesSection from '@/components/homeservice'
 import ProcessSection from '@/components/process'
 import TestimonialSection from '@/components/testimonials'
 import WhyVideography from '@/components/whyvideo'
+import AgencyPillars from '@/components/aboutagency/page'
 // ── Animation variants ──
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -26,7 +27,20 @@ const whyPoints = [
 
 
 
-const logos = ['/clients/client1.jpeg', '/clients/client2.png', '/clients/client3.jpeg', '/clients/client4.jpeg', '/clients/client5.jpeg']
+const logos = [
+  '/companies/Arise.png',
+  '/companies/Fulcrum.png',
+  '/companies/Hammad.png',
+  '/companies/microsoft.png',
+  '/companies/byjus.png',
+  '/companies/balance.png',
+
+  '/companies/edwise.png',
+  '/companies/flind.png',
+  '/companies/kundlas.png',
+  '/companies/sarvam.svg',
+  '/companies/jc.png',
+]
 
 const stats = [
   { val: '200+', label: 'Projects Delivered' },
@@ -64,7 +78,7 @@ const equipmentList = [
 
 export default function Home() {
   return (
-    <div className="bg-[var(--navy)] text-[var(--off-white)] overflow-x-hidden">
+    <div className="bg-black text-slate-300 overflow-x-hidden">
 
       {/* ══════════════════════════════════════════
           HERO
@@ -73,14 +87,17 @@ export default function Home() {
 
         {/* Background */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1597421568622-6ce6c2713887?w=1920"
-            alt="Cinematic production"
-            fill priority
-            className="object-cover"
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero/hero-bg.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0"
-            style={{ background: 'linear-gradient(to bottom, rgba(7,11,22,0.55), rgba(7,11,22,0.9))' }}
+            style={{ background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.9))' }}
           />
         </div>
 
@@ -89,167 +106,163 @@ export default function Home() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+          className="relative z-10 text-center px-6 max-w-7xl mx-auto"
         >
+
+          {/* Headline — tighter, more refined */}
+          <h1 className="font-bebas text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-[0.05em] text-white mb-2">
+            PRIME<span className="text-yellow-500">FRAME</span>
+          </h1>
+
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="flex items-center justify-center gap-3.5 mb-6"
           >
-            <span className="w-8 h-px bg-orange-500" />
-            <span className="eyebrow">Dubai · India · Global</span>
-            <span className="w-8 h-px bg-orange-500" />
+            <span className="font-inter text-[12px] font-bold tracking-[0.22em] uppercase text-white">Production Company available in Dubai · India · Global</span>
           </motion.div>
-
-          {/* Headline — tighter, more refined */}
-          <h1 className="font-bebas text-[clamp(3rem,8vw,6rem)] leading-[0.92] tracking-[0.05em] text-white mb-5"
-            style={{ textShadow: '0 4px 40px rgba(0,0,0,0.6)' }}>
-            PRIME<span className="text-orange-500">FRAME</span><br />PRODUCTIONS
-          </h1>
-
-          {/* Subheadline */}
-          <p className="font-barlow font-normal text-[clamp(0.95rem,1.8vw,1.15rem)] text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2.5">
-            Strategic visual production for brands that demand precision, clarity, and measurable impact.
-          </p>
-          <p className="font-barlow font-light text-sm text-slate-400 mb-10">
-            Working across India, UAE, and the United States.
-          </p>
-
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/work"><button className="btn-primary">Explore Our Work</button></Link>
-            <Link href="/contact"><button className="btn-outline">Book Consultation</button></Link>
+            <Link href="/services">
+              <button className="px-7 uppercase tracking-wider py-3 bg-white text-black font-semibold text-xs transition-transform hover:scale-105">
+                Explore Our Work
+              </button>
+            </Link>
+
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
-        {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-          <span className="font-barlow-condensed text-[0.6rem] tracking-[0.22em] uppercase text-orange-500/60">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 1.6, repeat: Infinity }}
-            className="w-px h-10"
-            style={{ background: 'linear-gradient(to bottom, #F97316, transparent)' }}
-          />
-        </div> */}
       </section>
 
-      {/* ══════════════════════════════════════════
-          STATS BAR
-      ══════════════════════════════════════════ */}
-      {/* <section className="bg-orange-500">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 stats-bar">
-          {stats.map((s, i) => (
-            <div key={i}
-              className={`py-6 px-8 text-center ${i < 3 ? 'border-r border-white/20' : ''}`}
-            >
-              <p className="font-bebas text-4xl leading-none text-white tracking-[0.04em]">{s.val}</p>
-              <p className="font-barlow-condensed text-[0.65rem] tracking-[0.18em] uppercase text-white/75 mt-1.5">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section> */}
 
       {/* ══════════════════════════════════════════
           CLIENT LOGOS
       ══════════════════════════════════════════ */}
-      <section className="py-16 bg-[var(--navy-mid)] border-b border-white/5 overflow-hidden">
-        <div className="text-center mb-10">
-          <span className="eyebrow block mb-2">Trusted By</span>
-          <h2 className="font-bebas text-[clamp(1.6rem,3.5vw,2.5rem)] tracking-[0.06em] text-white">
-            BRANDS UNDER OUR ROOF
-          </h2>
+      <section className="py-20 bg-black border-y border-white/5 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[100px] bg-yellow-500/5 blur-[100px] pointer-events-none" />
+
+        <div className="container mx-auto px-6 mb-12">
+          <div className="flex flex-col items-center">
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.25em] uppercase text-yellow-500 mb-4">Trusted By Builders</span>
+            <h2 className="font-bebas text-3xl md:text-4xl text-white tracking-[0.06em]">
+              BRANDS UNDER OUR ROOF
+            </h2>
+            <div className="w-12 h-0.5 bg-yellow-500 mt-4 opacity-50" />
+          </div>
         </div>
-        <div className="relative">
-          <div className="animate-marquee flex gap-20 items-center">
-            {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="min-w-[120px] flex items-center justify-center">
-                <Image src={logo} alt={`Client ${i}`} width={110} height={36}
-                  className="object-contain opacity-35 grayscale brightness-200 transition-all duration-400
-                             hover:opacity-90 hover:grayscale-0"
-                />
-              </div>
-            ))}
+
+        <div className="relative group">
+          {/* Edge Fades */}
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+          <div className="flex overflow-hidden">
+            <motion.div
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{ duration: 30, ease: 'linear', repeat: Infinity }}
+              className="flex items-center gap-16 md:gap-24 whitespace-nowrap px-12"
+            >
+              {[...logos, ...logos].map((logo, i) => (
+                <div
+                  key={i}
+                  className="relative flex items-center justify-center transition-all duration-500"
+                >
+                  <div className="h-12 md:h-12 w-auto relative">
+                    <img
+                      src={logo}
+                      alt={`Client ${i}`}
+                      className="h-full w-auto object-contain max-w-[140px]"
+                    />
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-        ABOUT
-*/}
-      <section className="py-32 bg-[var(--navy)]">
-        <div className="max-w-[850px] mx-auto px-6 text-center">
+      <section className="py-32 bg-black border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-2">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.26fr_0.74fr] gap-20 items-center">
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            viewport={{ once: true }}
-          >
+            {/* Left Column: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
+              className="text-left"
+            >
+              {/* Eyebrow */}
+              <span className="font-barlow-condensed text-sm  font-semibold tracking-[0.22em] uppercase text-yellow-500 block mb-6">
+                About the Studio
+              </span>
 
-            {/* Eyebrow */}
-            <span className="eyebrow block mb-6">
-              About the Studio
-            </span>
+              {/* Headline */}
+              <h2 className="font-bebas text-6xl leading-[0.95] tracking-[0.05em] text-white mb-2">
+                BUILT AROUND <span className="text-yellow-500">STORY,</span><br />
+                EXECUTION AND DETAIL.
+              </h2>
 
-            {/* Headline */}
-            <h2 className="font-bebas text-[clamp(2.4rem,4vw,3.6rem)] leading-[1] tracking-[0.05em] text-white mb-10">
-              BUILT AROUND <span className="text-orange-500">STORY,</span><br />
-              EXECUTION AND DETAIL.
-            </h2>
+              <div className="w-16 h-px bg-yellow-500 mb-10" />
 
-            {/* Accent Divider */}
-            <div className="w-12 h-px bg-orange-500 mx-auto mb-10" />
 
-            {/* Body Copy */}
-            <div className="space-y-6 max-w-[620px] mx-auto">
+              {/* Body Copy */}
+              <div className="space-y-6 max-w-[620px]">
+                <p className="font-barlow font-light text-[1.12rem] text-textMuted leading-[1.8] tracking-wide">
+                  PrimeFrame Productions was built on a simple belief —
+                  <span className="text-white font-medium"> every frame should serve a purpose.</span>
+                  We combine cinematic production with performance strategy,
+                  handling every step from planning to post-production with clarity and precision.
+                </p>
 
-              <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.9]">
-                PrimeFrame Productions was built on a simple belief —
-                <span className="text-white font-medium"> every frame should serve a purpose.</span>
-                We combine cinematic production with performance strategy,
-                handling every step from planning to post-production with clarity and precision.
-              </p>
+                <p className="font-barlow font-light text-[1.08rem] text-textMuted leading-[1.8] tracking-wide">
+                  As we expand from India to Dubai and beyond, our mission remains unchanged:
+                  deliver visuals that elevate brands above the noise.
+                </p>
+              </div>
 
-              <p className="font-barlow font-light text-[0.92rem] text-[var(--muted)] leading-[1.9]">
-                As we expand from India to Dubai and beyond, our mission remains unchanged:
-                deliver visuals that elevate brands above the noise.
-              </p>
+              {/* CTA */}
+              <div className="mt-12">
+                <Link href="/about">
+                  <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow-500 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                    Our Journey →
+                  </button>
+                </Link>
+              </div>
+            </motion.div>
 
+            {/* Right Column: Pillars Highlights */}
+            <div className="relative">
+              {/* Decorative elements */}
+              <div className="absolute -top-10 -right-10 w-50 h-50 bg-yellow-500/5 blur-[80px] pointer-events-none" />
+              <AgencyPillars />
             </div>
 
-            {/* CTA */}
-            <div className="mt-12">
-              <Link href="/about">
-                <button className="btn-outline">
-                  Our Journey →
-                </button>
-              </Link>
-            </div>
-
-          </motion.div>
-
+          </div>
         </div>
       </section>
-      {/* ══════════════════════════════════════════
-    WHY VIDEOGRAPHY
-══════════════════════════════════════════ */}
+
       <WhyVideography />
-      {/* ══════════════════════════════════════════
-          SERVICES
-      ══════════════════════════════════════════ */}
+
       <ServicesSection />
 
-      {/* ══════════════════════════════════════════
-          EQUIPMENT
-      ══════════════════════════════════════════ */}
 
-      <section className="py-32 bg-[var(--navy-mid)] relative overflow-hidden">
+      <section className="py-32 bg-black relative overflow-hidden">
+        {/* Section Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bg/equipment.jpg"
+            alt="Equipment Background"
+            fill
+            className="object-cover  saturate-0"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+          <div className="absolute inset-0 bg-black/40" />
 
-        {/* Subtle accent glow */}
-        <div className="absolute top-0 right-0 w-1/3 h-full pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.06))' }} />
+        </div>
 
-        <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
 
           {/* ── Left: Image Composition ── */}
           <motion.div
@@ -271,7 +284,7 @@ export default function Home() {
             </div>
 
             {/* Floating Secondary Frame */}
-            <div className="absolute -bottom-10 -right-10 w-40 aspect-square overflow-hidden rounded-md border border-orange-500/30 shadow-xl">
+            <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 w-28 md:w-40 aspect-square overflow-hidden rounded-md border border-yellow-500/30 shadow-2xl z-10">
               <Image
                 src="/equip/equipmentsmain.jpeg"
                 alt="Gear Detail"
@@ -281,8 +294,8 @@ export default function Home() {
             </div>
 
             {/* Corner accents */}
-            <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-orange-500" />
-            <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-orange-500" />
+            <div className="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-yellow" />
+            <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-yellow" />
           </motion.div>
 
           {/* ── Right: Content ── */}
@@ -293,7 +306,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="eyebrow block mb-6"
+              className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-6"
             >
               Our Equipment
             </motion.span>
@@ -306,7 +319,7 @@ export default function Home() {
               className="font-bebas text-[clamp(2.2rem,4.5vw,3.8rem)] leading-[0.95] tracking-[0.04em] text-white mb-8"
             >
               CINEMA-GRADE<br />
-              <span className="text-orange-500">TOOLS.</span><br />
+              <span className="text-yellow-500">TOOLS.</span><br />
               PROFESSIONAL OUTPUT.
             </motion.h2>
 
@@ -315,7 +328,7 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.2 }}
               viewport={{ once: true }}
-              className="font-barlow font-light text-[0.9rem] text-[var(--muted)] leading-[1.85] mb-12 max-w-[480px]"
+              className="font-barlow font-light text-[0.9rem] text-textMuted leading-[1.85] mb-12 max-w-[480px]"
             >
               We operate with full-frame cinema cameras and professional prime lenses,
               ensuring colour accuracy, dynamic range, and cinematic depth in every production.
@@ -336,10 +349,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="border-b border-white/5 pb-4 group"
                 >
-                  <h3 className="font-bebas text-lg tracking-[0.05em] text-white mb-2 group-hover:text-orange-400 transition-colors">
+                  <h3 className="font-bebas text-lg tracking-[0.05em] text-white mb-2 group-hover:text-yellow-500 transition-colors">
                     {item.title.toUpperCase()}
                   </h3>
-                  <p className="font-barlow font-light text-[0.8rem] text-[var(--muted)] leading-[1.8]">
+                  <p className="font-barlow font-light text-[0.8rem] text-textMuted leading-[1.8]">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -363,21 +376,29 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           FINAL CTA
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-[var(--navy)] relative overflow-hidden">
+      <section className="py-24 bg-black relative overflow-hidden">
         <div className="absolute top-0 right-0 w-2/5 h-full pointer-events-none"
-          style={{ background: 'linear-gradient(135deg, transparent, rgba(249,115,22,0.07))' }} />
+          style={{ background: 'linear-gradient(135deg, transparent, rgba(234,179,8,0.07))' }} />
         <motion.div {...fadeUp} viewport={{ once: true }} whileInView="animate" initial="initial"
           className="max-w-[720px] mx-auto px-6 text-center relative z-10">
-          <span className="eyebrow block mb-5">Start a Project</span>
-          <h2 className="font-bebas text-[clamp(3rem,8vw,6.5rem)] tracking-[0.04em] text-white leading-[0.9] mb-5">
-            READY TO<br />CREATE SOMETHING<br /><span className="text-orange-500">WORTH WATCHING?</span>
+          <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-5">Start a Project</span>
+          <h2 className="font-bebas text-[clamp(2rem,8vw,6.5rem)] tracking-[0.04em] text-white leading-[0.9] mb-5">
+            READY TO<br />CREATE SOMETHING<br /><span className="text-yellow-500">WORTH WATCHING?</span>
           </h2>
-          <p className="font-barlow font-light text-[0.95rem] text-[var(--muted)] leading-[1.85] max-w-[440px] mx-auto mb-10">
+          <p className="font-barlow font-light text-[0.95rem] text-textMuted leading-[1.85] max-w-[440px] mx-auto mb-10">
             Whether building a brand in Dubai or growing across India — let's produce visuals that represent your ambition.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Link href="/contact"><button className="btn-primary">Book a Consultation</button></Link>
-            <Link href="/contact"><button className="btn-outline">Contact Us</button></Link>
+            <Link href="/contact">
+              <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                Book a Consultation
+              </button>
+            </Link>
+            <Link href="/contact">
+              <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </motion.div>
       </section>
@@ -385,14 +406,14 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           CONTACT FORM
       ══════════════════════════════════════════ */}
-      <section className="py-24 bg-[var(--navy-mid)]">
+      <section className="py-24 bg-black">
         <div className="max-w-[780px] mx-auto px-6">
           <motion.div {...fadeUp} viewport={{ once: true }} whileInView="animate" initial="initial" className="mb-12">
-            <span className="eyebrow block mb-4">Get In Touch</span>
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">Get In Touch</span>
             <h2 className="font-bebas text-[clamp(2rem,5vw,3.8rem)] tracking-[0.04em] text-white leading-[0.95] mb-3">
-              LET'S START A<br /><span className="text-orange-500">CONVERSATION</span>
+              LET'S START A<br /><span className="text-yellow-500">CONVERSATION</span>
             </h2>
-            <p className="font-barlow font-light text-[0.875rem] text-[var(--muted)]">
+            <p className="font-barlow font-light text-[0.875rem] text-textMuted">
               Tell us about your project and we'll respond within 24 hours.
             </p>
           </motion.div>
@@ -406,25 +427,25 @@ export default function Home() {
                 { label: 'Project Type', type: 'text', placeholder: 'e.g. Corporate Film' },
               ].map(({ label, type, placeholder }) => (
                 <div key={label}>
-                  <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-orange-500/70 block mb-2.5 font-bold">
+                  <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-yellow-500/70 block mb-2.5 font-bold">
                     {label}
                   </label>
-                  <input type={type} placeholder={placeholder} className="input-dark" />
+                  <input type={type} placeholder={placeholder} className="bg-pf-card border border-white/10 text-slate-200 p-4 font-barlow text-sm w-full outline-none transition-all focus:border-yellow" />
                 </div>
               ))}
             </div>
 
             <div>
-              <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-orange-500/70 block mb-2.5 font-bold">
+              <label className="font-barlow-condensed text-[0.62rem] tracking-[0.18em] uppercase text-yellow-500/70 block mb-2.5 font-bold">
                 Project Details
               </label>
               <textarea
                 placeholder="Tell us about your project, timeline, and any references..."
-                rows={5} className="input-dark font-barlow resize-y"
+                rows={5} className="bg-pf-card border border-white/10 text-slate-200 p-4 font-barlow text-sm w-full outline-none transition-all focus:border-yellow resize-y"
               />
             </div>
 
-            <button type="submit" className="btn-primary w-full" style={{ padding: '16px 32px', fontSize: '0.82rem' }}>
+            <button type="submit" className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[16px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5 w-full">
               Send Message
             </button>
           </form>
@@ -439,8 +460,8 @@ export default function Home() {
             </a>
             <a href="tel:+971XXXXXXXXX"
               className="no-underline block text-center py-4 font-barlow-condensed text-[0.68rem] tracking-[0.18em] uppercase font-bold transition-all duration-300
-                         text-orange-500 border border-orange-500/30 bg-orange-500/10
-                         hover:bg-orange-500/20">
+                         text-yellow-500 border border-yellow/30 bg-yellow-500/10
+                         hover:bg-yellow-500/20">
               Call Us Now
             </a>
           </div>

@@ -60,138 +60,53 @@ export default function Contact() {
   ]
 
   return (
-    <div style={{ backgroundColor: 'var(--navy)', color: 'var(--off-white)', fontFamily: "'Barlow', sans-serif" }}>
+    <div className="bg-black text-slate-300 font-barlow">
 
       {/* ── HERO WITH FULL-BLEED BACKGROUND IMAGE ── */}
-      <section
-        style={{
-          position: 'relative',
-          minHeight: '90vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-
-          overflow: 'hidden',
-        }}
-      >
+      <section className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden">
         {/* Background image */}
         <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(${BG_IMAGE})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
-            filter: 'brightness(0.35) saturate(0.7)',
-            zIndex: 0,
-          }}
+          className="absolute inset-0 z-0 bg-fixed bg-cover bg-center brightness-[0.35] saturate-[0.7]"
+          style={{ backgroundImage: `url(${BG_IMAGE})` }}
         />
 
-        {/* Gradient overlay — navy fade at bottom */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: `
-              linear-gradient(
-                to bottom,
-                rgba(7, 11, 22, 0.1) 0%,
-                rgba(7, 11, 22, 0.4) 45%,
-                var(--navy) 100%
-              )
-            `,
-            zIndex: 1,
-          }}
-        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-        {/* Orange-tinted vignette from the left */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse 60% 80% at 10% 60%, rgba(249,115,22,0.08) 0%, transparent 65%)',
-            zIndex: 2,
-          }}
-        />
+        {/* yellow-500-tinted vignette */}
+        <div className="absolute inset-0 z-20 bg-[radial-gradient(ellipse_60%_80%_at_10%_60%,rgba(234,179,8,0.08)_0%,transparent_65%)]" />
 
         {/* Diagonal grid lines */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: 'linear-gradient(135deg, rgba(249,115,22,0.03) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-            zIndex: 2,
-          }}
-        />
+        <div className="absolute inset-0 z-20 bg-[linear-gradient(135deg,rgba(234,179,8,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
         {/* Hero text content */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 3,
-            padding: '6rem 2rem 5rem',
-            maxWidth: '700px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            textAlign: 'center',
-          }}
-        >
+        <div className="relative z-30 px-6 py-32 max-w-[800px] mx-auto text-center mb-12">
           <motion.div {...fadeIn}>
-            <p className="eyebrow" style={{ marginBottom: '1rem' }}>Start Your Project</p>
-            <h1
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(3.5rem, 9vw, 7rem)',
-                letterSpacing: '0.04em',
-                lineHeight: 0.92,
-                color: 'var(--white)',
-                marginBottom: '1.5rem',
-              }}
-            >
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4 block">Start Your Project</span>
+            <h1 className="font-bebas text-[clamp(3.5rem,9vw,7rem)] leading-[0.92] tracking-[0.04em] text-white mb-6">
               Let's Discuss<br />
-              <span style={{ color: 'var(--orange)' }}>Your Project</span>
+              <span className="text-yellow-500">Your Project</span>
             </h1>
-            <p style={{ color: 'var(--off-white)', opacity: 0.7, fontSize: '1.05rem', lineHeight: 1.7 }}>
+            <p className="text-slate-200 opacity-70 text-lg leading-relaxed max-w-xl mx-auto">
               We respond within 24 hours. Let's create something exceptional together.
             </p>
           </motion.div>
         </div>
 
         {/* Scroll indicator */}
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 3,
-            display: 'flex',
-            justifyContent: 'center',
-            paddingBottom: '2.5rem',
-          }}
-        >
+        <div className="relative z-30 flex justify-center pb-10">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.6 }}
-            style={{
-              width: '1px',
-              height: '48px',
-              background: 'linear-gradient(to bottom, var(--orange), transparent)',
-            }}
+            className="w-px h-12 bg-gradient-to-b from-yellow to-transparent"
           />
         </div>
       </section>
 
       {/* ── CONTACT FORM & INFO ── */}
-      <section style={{ padding: '5rem 1.5rem', backgroundColor: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '3.5rem',
-              alignItems: 'start',
-            }}
-          >
+      <section className="py-24 px-6 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-20 items-start">
 
             {/* LEFT — Contact Info */}
             <motion.div
@@ -199,117 +114,52 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <p className="eyebrow" style={{ marginBottom: '0.75rem' }}>Reach Out</p>
-              <h2
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: 'clamp(2rem, 4vw, 3rem)',
-                  letterSpacing: '0.04em',
-                  color: 'var(--white)',
-                  marginBottom: '1rem',
-                  lineHeight: 0.95,
-                }}
-              >
+              <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Reach Out</span>
+              <h2 className="font-bebas text-[clamp(2rem,4vw,3.5rem)] tracking-[0.04em] leading-[0.95] text-white mb-6">
                 Get in Touch
               </h2>
-              <p style={{ color: 'var(--muted)', lineHeight: 1.75, marginBottom: '2.5rem', fontSize: '0.95rem' }}>
+              <p className="text-textMuted text-base leading-relaxed mb-10 max-w-md">
                 Whether you're in India or Dubai, we're ready to bring your vision to life
                 with professional cinematic production.
               </p>
 
               {/* Contact items */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2.5rem' }}>
+              <div className="space-y-6 mb-10">
                 {contactItems.map(({ icon: Icon, label, value }) => (
-                  <div
-                    key={label}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '1rem',
-                    }}
-                  >
-                    <div
-                      className="icon-wrap"
-                      style={{ flexShrink: 0 }}
-                    >
-                      <Icon size={18} style={{ color: 'var(--orange)' }} />
+                  <div key={label} className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-yellow-500/10 border border-yellow/20 flex items-center justify-center flex-shrink-0">
+                      <Icon size={18} className="text-yellow-500" />
                     </div>
                     <div>
-                      <p
-                        style={{
-                          fontFamily: "'Barlow Condensed', sans-serif",
-                          fontWeight: 700,
-                          fontSize: '0.78rem',
-                          letterSpacing: '0.12em',
-                          textTransform: 'uppercase',
-                          color: 'var(--off-white)',
-                          marginBottom: '2px',
-                        }}
-                      >
+                      <p className="font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-0.5">
                         {label}
                       </p>
-                      <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>{value}</p>
+                      <p className="text-textMuted text-sm font-medium">{value}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Divider */}
-              <div style={{ height: '1px', backgroundColor: 'var(--border)', marginBottom: '2rem' }} />
+              <div className="h-px bg-white/5 mb-8" />
 
               {/* Direct contact buttons */}
-              <p
-                style={{
-                  fontFamily: "'Barlow Condensed', sans-serif",
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  fontSize: '0.78rem',
-                  color: 'var(--off-white)',
-                  marginBottom: '1rem',
-                }}
-              >
+              <p className="font-barlow-condensed text-[0.75rem] font-bold tracking-[0.12em] uppercase text-white mb-4">
                 Prefer Direct Contact?
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <div className="flex flex-col gap-3">
                 <a
                   href="https://wa.me/971XXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    padding: '13px 28px',
-                    backgroundColor: 'rgba(37, 211, 102, 0.1)',
-                    border: '1px solid rgba(37, 211, 102, 0.35)',
-                    color: '#25D366',
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontWeight: 700,
-                    fontSize: '0.8rem',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    textDecoration: 'none',
-                    clipPath: 'polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px))',
-                    transition: 'background 0.25s, border-color 0.25s',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.backgroundColor = 'rgba(37, 211, 102, 0.18)'
-                    e.currentTarget.style.borderColor = 'rgba(37, 211, 102, 0.6)'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.backgroundColor = 'rgba(37, 211, 102, 0.1)'
-                    e.currentTarget.style.borderColor = 'rgba(37, 211, 102, 0.35)'
-                  }}
+                  className="flex items-center justify-center gap-2.5 px-7 py-3.5 bg-green-500/10 border border-green-500/30 text-green-500 font-barlow-condensed font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-green-500/20 hover:border-green-500/50"
                 >
                   <MessageCircle size={16} />
                   WhatsApp Us
                 </a>
                 <a
                   href="tel:+971XXXXXXXXX"
-                  className="btn-outline"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', textDecoration: 'none' }}
+                  className="flex items-center justify-center gap-2.5 px-7 py-3 bg-transparent border border-yellow/40 text-white font-barlow-condensed font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5"
                 >
                   <Phone size={15} />
                   Call Now
@@ -323,84 +173,36 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div
-                style={{
-                  backgroundColor: 'var(--navy-mid)',
-                  border: '1px solid var(--border)',
-                  padding: '2.5rem',
-                  position: 'relative',
-                  clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%)',
-                }}
-              >
+              <div className="bg-pf-card border border-white/5 p-8 md:p-10 relative overflow-hidden [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,0_100%)]">
                 {/* Corner accent */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '50px',
-                    height: '50px',
-                    borderBottom: '1px solid var(--border-accent)',
-                    borderLeft: '1px solid var(--border-accent)',
-                    pointerEvents: 'none',
-                  }}
-                />
+                <div className="absolute top-0 right-0 w-12 h-12 border-b border-l border-yellow/30 pointer-events-none" />
 
-                <p className="eyebrow" style={{ marginBottom: '0.5rem' }}>Project Enquiry</p>
-                <h2
-                  style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
-                    fontSize: '2rem',
-                    letterSpacing: '0.04em',
-                    color: 'var(--white)',
-                    marginBottom: '2rem',
-                    lineHeight: 0.95,
-                  }}
-                >
+                <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-2 block">Project Enquiry</span>
+                <h2 className="font-bebas text-3xl tracking-[0.04em] text-white mb-8 leading-none">
                   Send Us a Message
                 </h2>
 
                 {/* Status messages */}
                 {submitStatus === 'success' && (
-                  <div
-                    style={{
-                      padding: '1rem 1.25rem',
-                      marginBottom: '1.5rem',
-                      border: '1px solid rgba(37,211,102,0.4)',
-                      backgroundColor: 'rgba(37,211,102,0.07)',
-                      color: '#4ade80',
-                      fontFamily: "'Barlow', sans-serif",
-                      fontSize: '0.9rem',
-                    }}
-                  >
+                  <div className="p-4 mb-6 border border-green-500/30 bg-green-500/5 text-green-400 font-barlow text-sm">
                     ✓ Thank you! We'll get back to you within 24 hours.
                   </div>
                 )}
                 {submitStatus === 'error' && (
-                  <div
-                    style={{
-                      padding: '1rem 1.25rem',
-                      marginBottom: '1.5rem',
-                      border: '1px solid rgba(239,68,68,0.4)',
-                      backgroundColor: 'rgba(239,68,68,0.07)',
-                      color: '#f87171',
-                      fontFamily: "'Barlow', sans-serif",
-                      fontSize: '0.9rem',
-                    }}
-                  >
+                  <div className="p-4 mb-6 border border-red-500/30 bg-red-500/5 text-red-400 font-barlow text-sm">
                     ✕ Something went wrong. Please try again or contact us directly.
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                   {/* Name */}
                   <div>
-                    <label style={labelStyle}>Your Name *</label>
+                    <label className="block font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2">Your Name *</label>
                     <input
-                      className="input-dark"
                       id="name"
                       name="name"
                       type="text"
+                      className="w-full bg-black border border-white/10 px-5 py-3.5 text-white font-barlow text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                       required
                       value={formData.name}
                       onChange={handleChange}
@@ -409,14 +211,14 @@ export default function Contact() {
                   </div>
 
                   {/* Email + Phone */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label style={labelStyle}>Email Address *</label>
+                      <label className="block font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2">Email Address *</label>
                       <input
-                        className="input-dark"
                         id="email"
                         name="email"
                         type="email"
+                        className="w-full bg-black border border-white/10 px-5 py-3.5 text-white font-barlow text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -424,12 +226,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label style={labelStyle}>Phone Number</label>
+                      <label className="block font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2">Phone Number</label>
                       <input
-                        className="input-dark"
                         id="phone"
                         name="phone"
                         type="tel"
+                        className="w-full bg-black border border-white/10 px-5 py-3.5 text-white font-barlow text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+971 XX XXX XXXX"
@@ -439,12 +241,12 @@ export default function Contact() {
 
                   {/* Project Type */}
                   <div>
-                    <label style={labelStyle}>Project Type *</label>
+                    <label className="block font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2">Project Type *</label>
                     <input
-                      className="input-dark"
                       id="projectType"
                       name="projectType"
                       type="text"
+                      className="w-full bg-black border border-white/10 px-5 py-3.5 text-white font-barlow text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                       required
                       value={formData.projectType}
                       onChange={handleChange}
@@ -454,17 +256,16 @@ export default function Contact() {
 
                   {/* Message */}
                   <div>
-                    <label style={labelStyle}>Project Details *</label>
+                    <label className="block font-barlow-condensed text-[0.7rem] font-bold tracking-[0.15em] uppercase text-slate-400 mb-2">Project Details *</label>
                     <textarea
-                      className="input-dark"
                       id="message"
                       name="message"
+                      className="w-full bg-black border border-white/10 px-5 py-3.5 text-white font-barlow text-sm focus:border-yellow/50 focus:outline-none transition-colors resize-none min-h-[140px]"
                       required
                       value={formData.message}
                       onChange={handleChange}
                       rows={5}
                       placeholder="Tell us about your project, timeline, and any specific requirements..."
-                      style={{ resize: 'vertical', minHeight: '120px' }}
                     />
                   </div>
 
@@ -472,13 +273,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary"
-                    style={{
-                      width: '100%',
-                      opacity: isSubmitting ? 0.6 : 1,
-                      cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                      marginTop: '0.5rem',
-                    }}
+                    className="w-full bg-yellow-500 text-white font-barlow-condensed text-[0.85rem] font-bold tracking-[0.2em] uppercase py-4 transition-all duration-300 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -491,64 +286,28 @@ export default function Contact() {
       </section>
 
       {/* ── FREE CONSULTATION CTA ── */}
-      <section
-        style={{
-          position: 'relative',
-          padding: '6rem 1.5rem',
-          overflow: 'hidden',
-          backgroundColor: 'var(--navy-mid)',
-        }}
-      >
-        {/* Faint image strip behind CTA */}
+      <section className="relative py-32 px-6 bg-black overflow-hidden">
+        {/* Background image strip */}
         <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url(${BG_IMAGE})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center 30%',
-            filter: 'brightness(0.12) saturate(0.5)',
-            zIndex: 0,
-          }}
+          className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.12] saturate-[0.5]"
+          style={{ backgroundImage: `url(${BG_IMAGE})` }}
         />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse 70% 100% at 50% 50%, rgba(249,115,22,0.06) 0%, transparent 80%)',
-            zIndex: 1,
-          }}
-        />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_70%_100%_at_50%_50%,rgba(234,179,8,0.06)_0%,transparent_80%)] pointer-events-none" />
 
-        <div
-          style={{
-            position: 'relative',
-            zIndex: 2,
-            maxWidth: '700px',
-            margin: '0 auto',
-            textAlign: 'center',
-          }}
-        >
+        <div className="relative z-20 max-w-3xl mx-auto text-center">
           <motion.div {...fadeIn}>
-            <p className="eyebrow" style={{ marginBottom: '0.75rem' }}>Free Consultation</p>
-            <h2
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                letterSpacing: '0.04em',
-                lineHeight: 0.95,
-                color: 'var(--white)',
-                marginBottom: '1.25rem',
-              }}
-            >
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Free Consultation</span>
+            <h2 className="font-bebas text-[clamp(2.5rem,6vw,4.5rem)] leading-[0.95] text-white mb-6">
               Not Sure Where<br />
-              <span style={{ color: 'var(--orange)' }}>To Start?</span>
+              <span className="text-yellow-500">To Start?</span>
             </h2>
-            <p style={{ color: 'var(--muted)', fontSize: '1rem', lineHeight: 1.75, marginBottom: '2.5rem' }}>
+            <p className="text-textMuted text-lg leading-relaxed mb-10 max-w-xl mx-auto">
               Book a free consultation call and we'll help you define your vision,
               understand your requirements, and provide a structured production plan.
             </p>
-            <button className="btn-primary">Book Free Consultation</button>
+            <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[42px] py-[16px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+              Book Free Consultation
+            </button>
           </motion.div>
         </div>
       </section>

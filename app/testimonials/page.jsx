@@ -71,7 +71,7 @@ export default function Testimonials() {
     : testimonials.filter(t => t.category === filter)
 
   return (
-    <div style={{ backgroundColor: 'var(--navy)', color: 'var(--off-white)' }}>
+    <div className="bg-black text-slate-300">
 
       {/* Hero Section */}
       <section className="py-28 px-4 text-center relative overflow-hidden">
@@ -79,27 +79,18 @@ export default function Testimonials() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: 'linear-gradient(135deg, rgba(249,115,22,0.04) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(135deg, rgba(234,179,8,0.04) 1px, transparent 1px)',
             backgroundSize: '60px 60px'
           }}
         />
-        <div className="container mx-auto max-w-4xl relative">
+        <div className="container mx-auto max-w-7xl relative">
           <motion.div {...fadeIn}>
-            <p className="eyebrow mb-4">Client Stories</p>
-            <h1
-              className="mb-6"
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(3rem, 8vw, 6rem)',
-                letterSpacing: '0.04em',
-                lineHeight: 0.95,
-                color: 'var(--white)'
-              }}
-            >
+            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4">Client Stories</p>
+            <h1 className="font-bebas text-[clamp(3rem,8vw,6rem)] tracking-[0.04em] leading-[0.95] text-white mb-6">
               Work That Speaks<br />
-              <span style={{ color: 'var(--orange)' }}>Before We Do</span>
+              <span className="text-yellow-500">Before We Do</span>
             </h1>
-            <p style={{ color: 'var(--muted)', fontFamily: "'Barlow', sans-serif", fontSize: '1.1rem' }}>
+            <p className="text-textMuted font-barlow text-lg">
               Hear from brands and creators we've worked with across India, Dubai, and beyond.
             </p>
           </motion.div>
@@ -114,8 +105,10 @@ export default function Testimonials() {
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={filter === category ? 'btn-primary' : 'btn-outline'}
-                style={{ fontSize: '0.75rem' }}
+                className={`font-barlow-condensed text-[0.75rem] font-bold tracking-[0.18em] uppercase px-[24px] py-[10px] border cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] ${filter === category
+                  ? 'bg-yellow-500 text-white border-yellow'
+                  : 'bg-transparent text-white border-yellow/50 hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5'
+                  }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
               </button>
@@ -158,160 +151,59 @@ export default function Testimonials() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.08, duration: 0.5 }}
-                  style={{
-                    backgroundColor: 'var(--navy-mid)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '2px',
-                    padding: '2rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'border-color 0.3s, background 0.3s',
-                    cursor: 'default',
-                    ...pos
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'var(--border-accent)'
-                    e.currentTarget.style.backgroundColor = 'var(--navy-light)'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'var(--border)'
-                    e.currentTarget.style.backgroundColor = 'var(--navy-mid)'
-                  }}
+                  className="bg-pf-card border border-white/5 p-8 flex flex-col justify-between relative overflow-hidden transition-all duration-300 cursor-default group hover:border-yellow/30 hover:bg-pf-dark"
+                  style={pos}
                 >
-                  {/* Orange sweep line at bottom */}
-                  <div
-                    className="about-card-sweep"
-                    style={{
-                      position: 'absolute',
-                      bottom: 0,
-                      left: 0,
-                      width: '100%',
-                      height: '2px',
-                      backgroundColor: 'var(--orange)'
-                    }}
-                  />
+                  {/* yellow-500 sweep line at bottom */}
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
 
                   {/* Corner accent */}
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      right: 0,
-                      width: '40px',
-                      height: '40px',
-                      borderBottom: '1px solid var(--border-accent)',
-                      borderLeft: '1px solid var(--border-accent)',
-                    }}
-                  />
+                  <div className="absolute top-0 right-0 w-10 h-10 border-b border-l border-yellow/30" />
 
                   {/* Video thumbnail for video testimonials */}
                   {testimonial.video && pos.gridRow === 'span 2' && (
-                    <div
-                      style={{
-                        aspectRatio: '16/9',
-                        backgroundColor: 'var(--navy-card)',
-                        border: '1px solid var(--border)',
-                        borderRadius: '1px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '1.5rem',
-                        cursor: 'pointer',
-                        flex: '0 0 auto',
-                        transition: 'background 0.3s'
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--navy-light)'}
-                      onMouseLeave={e => e.currentTarget.style.backgroundColor = 'var(--navy-card)'}
-                    >
-                      <PlayCircle size={52} style={{ color: 'var(--orange)', opacity: 0.85 }} />
+                    <div className="aspect-video bg-black border border-white/10 rounded overflow-hidden flex items-center justify-center mb-6 cursor-pointer group/vid transition-all">
+                      <PlayCircle size={52} className="text-yellow-500 opacity-85 group-hover/vid:scale-110 transition-transform" />
                     </div>
                   )}
 
                   {/* Small play icon badge for non-tall video cards */}
                   {testimonial.video && pos.gridRow !== 'span 2' && (
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        marginBottom: '0.75rem'
-                      }}
-                    >
-                      <PlayCircle size={14} style={{ color: 'var(--orange)' }} />
-                      <span className="eyebrow" style={{ fontSize: '0.6rem', letterSpacing: '0.18em' }}>
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <PlayCircle size={14} className="text-yellow-500" />
+                      <span className="font-barlow-condensed text-[0.6rem] font-bold tracking-[0.18em] uppercase text-yellow-500">
                         Watch Testimonial
                       </span>
                     </div>
                   )}
 
                   {/* Quote icon */}
-                  <Quote size={24} style={{ color: 'var(--orange)', opacity: 0.5, marginBottom: '0.75rem' }} />
+                  <Quote size={24} className="text-yellow-500/50 mb-3" />
 
                   {/* Testimonial text */}
                   <p
+                    className={`font-barlow italic text-slate-200 leading-relaxed flex-grow overflow-hidden ${pos.gridColumn === 'span 2' ? 'text-lg' : 'text-sm'
+                      }`}
                     style={{
-                      fontFamily: "'Barlow', sans-serif",
-                      fontStyle: 'italic',
-                      color: 'var(--off-white)',
-                      lineHeight: 1.6,
-                      fontSize: pos.gridColumn === 'span 2' ? '1.1rem' : '0.9rem',
-                      flexGrow: 1,
                       display: '-webkit-box',
                       WebkitLineClamp: pos.gridRow === 'span 2' ? 6 : 4,
                       WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden'
                     }}
                   >
                     "{testimonial.testimonial}"
                   </p>
 
                   {/* Client info */}
-                  <div
-                    style={{
-                      marginTop: '1.25rem',
-                      paddingTop: '1rem',
-                      borderTop: '1px solid var(--border)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between'
-                    }}
-                  >
+                  <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between">
                     <div>
-                      <p
-                        style={{
-                          fontFamily: "'Barlow Condensed', sans-serif",
-                          fontWeight: 700,
-                          color: 'var(--white)',
-                          letterSpacing: '0.05em',
-                          fontSize: '0.95rem'
-                        }}
-                      >
+                      <p className="font-barlow-condensed font-bold text-white tracking-[0.05em] text-[0.95rem]">
                         {testimonial.clientName}
                       </p>
-                      <p
-                        style={{
-                          fontFamily: "'Barlow', sans-serif",
-                          color: 'var(--muted)',
-                          fontSize: '0.75rem',
-                          marginTop: '2px'
-                        }}
-                      >
+                      <p className="font-barlow text-textMuted text-[0.75rem] mt-0.5">
                         {testimonial.company}
                       </p>
                     </div>
-                    <span
-                      className="eyebrow"
-                      style={{
-                        fontSize: '0.55rem',
-                        padding: '4px 8px',
-                        border: '1px solid var(--border-accent)',
-                        color: 'var(--orange)',
-                        letterSpacing: '0.15em'
-                      }}
-                    >
+                    <span className="font-barlow-condensed text-[0.55rem] font-bold tracking-[0.15em] uppercase text-yellow-500 px-2 py-1 border border-yellow/30 bg-yellow-500/5">
                       {testimonial.category}
                     </span>
                   </div>
@@ -336,51 +228,36 @@ export default function Testimonials() {
       </section>
 
       {/* Client Logos */}
-      <section className="py-24 px-4" style={{ backgroundColor: 'var(--navy-mid)' }}>
+      <section className="py-24 px-4 bg-black border-y border-white/5 overflow-hidden">
         <div className="container mx-auto">
-          <motion.div {...fadeIn} className="text-center mb-12">
-            <p className="eyebrow mb-3">Our Partners</p>
-            <h2
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                letterSpacing: '0.04em',
-                color: 'var(--white)'
-              }}
-            >
+          <motion.div {...fadeIn} className="text-center mb-16">
+            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3">Our Partners</p>
+            <h2 className="font-bebas text-[clamp(2rem,5vw,3.5rem)] tracking-[0.04em] text-white">
               Trusted by Leading Brands
             </h2>
+            <div className="w-12 h-0.5 mx-auto bg-yellow-500 mt-4 opacity-50" />
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {[...Array(12)].map((_, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {[
+              '/companies/microsoft.png',
+              '/companies/byjus.png',
+              '/companies/Arise.png',
+              '/companies/Fulcrum.png',
+              '/companies/Hammad.png',
+              '/companies/sarvam.svg',
+              '/companies/edwise.png',
+              '/companies/flind.png',
+              '/companies/ashis.png',
+              '/companies/kundlas.png',
+              '/companies/jc.png',
+              '/companies/balance.png'
+            ].map((logo, i) => (
               <div
                 key={i}
-                style={{
-                  aspectRatio: '1',
-                  backgroundColor: 'var(--navy-card)',
-                  border: '1px solid var(--border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'border-color 0.3s, background 0.3s',
-                  clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))'
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'var(--border-accent)'
-                  e.currentTarget.style.backgroundColor = 'var(--navy-light)'
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'var(--border)'
-                  e.currentTarget.style.backgroundColor = 'var(--navy-card)'
-                }}
+                className="aspect-square bg-pf-card border border-white/5 flex items-center justify-center grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500 p-8 [clip-path:polygon(0_0,calc(100%-8px)_0,100%_8px,100%_100%,8px_100%,0_calc(100%-8px))]"
               >
-                <span
-                  className="eyebrow"
-                  style={{ fontSize: '0.5rem', color: 'var(--muted)', letterSpacing: '0.1em' }}
-                >
-                  LOGO
-                </span>
+                <img src={logo} alt="Partner Logo" className="w-full h-full object-contain" />
               </div>
             ))}
           </div>
@@ -389,37 +266,28 @@ export default function Testimonials() {
 
       {/* CTA Section */}
       <section className="py-24 px-4 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(249,115,22,0.06) 0%, transparent 70%)'
-          }}
-        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_50%,rgba(234,179,8,0.06)_0%,transparent_70%)] pointer-events-none" />
         <div className="container mx-auto max-w-3xl text-center relative">
           <motion.div {...fadeIn}>
-            <p className="eyebrow mb-4">Let's Collaborate</p>
-            <h2
-              className="mb-6"
-              style={{
-                fontFamily: "'Bebas Neue', sans-serif",
-                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                letterSpacing: '0.04em',
-                lineHeight: 0.95,
-                color: 'var(--white)'
-              }}
-            >
+            <p className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4">Let's Collaborate</p>
+            <h2 className="font-bebas text-[clamp(2.5rem,6vw,5rem)] tracking-[0.04em] leading-[0.95] text-white mb-6">
               Ready to Join Our<br />
-              <span style={{ color: 'var(--orange)' }}>Success Stories?</span>
+              <span className="text-yellow-500">Success Stories?</span>
             </h2>
-            <p
-              className="mb-10"
-              style={{ color: 'var(--muted)', fontFamily: "'Barlow', sans-serif", fontSize: '1rem' }}
-            >
+            <p className="text-textMuted font-barlow text-lg mb-10">
               Let's create something exceptional together.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn-primary">Start Your Project</button>
-              <button className="btn-outline">View Our Work</button>
+              <Link href="/contact">
+                <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                  Start Your Project
+                </button>
+              </Link>
+              <Link href="/services">
+                <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                  View Our Work
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>

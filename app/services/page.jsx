@@ -202,7 +202,7 @@ export default function Services() {
   }, {})
 
   return (
-    <div className="bg-[var(--navy)] text-[var(--off-white)] font-barlow">
+    <div className="bg-black text-textMuted font-barlow">
 
       {/* ════════════════════════════════════
           HERO — video atmosphere
@@ -218,8 +218,8 @@ export default function Services() {
             priority
           />
           <div className="absolute inset-0 hero-gradient" />
-          {/* Extra navy tint for readability */}
-          <div className="absolute inset-0 bg-[var(--navy)]/60" />
+          {/* Extra black tint for readability */}
+          <div className="absolute inset-0 bg-black/60" />
         </div>
 
         {/* Faint watermark */}
@@ -239,38 +239,25 @@ export default function Services() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="eyebrow">What We Produce</span>
-            <h1 className="font-bebas text-[clamp(3rem,7vw,7rem)] text-[var(--white)] leading-[0.93] tracking-[0.03em] mt-3 mb-6">
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">What We Produce</span>
+            <h1 className="font-bebas text-[clamp(3rem,7vw,7rem)] text-white leading-[0.93] tracking-[0.03em] mt-3 mb-6">
               Cinematic Production Services<br />
-              <span className="text-[var(--orange)]">Built for Modern Brands</span>
+              <span className="text-yellow-500">Built for Modern Brands</span>
             </h1>
-            <div className="w-12 h-0.5 mx-auto mb-8" style={{ background: 'linear-gradient(90deg,transparent,var(--orange),transparent)' }} />
-            <p className="text-[var(--off-white)] text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            <div className="w-12 h-0.5 mx-auto mb-8 bg-gradient-to-r from-transparent via-yellow to-transparent" />
+            <p className="text-slate-200 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
               From corporate storytelling to large-scale event coverage and immersive digital media —
               we produce visuals designed to perform across every platform.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-             <Link href="/contact">
-              <button className="btn-primary">Book a Consultation</button>
-             </Link>
-              {/* <button className="btn-outline flex items-center gap-2">
-                <Play size={14} className="fill-current" />
-                View Showreel
-              </button> */}
+              <Link href="/contact">
+                <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                  Book a Consultation
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>
-
-        {/* Scroll cue */}
-        {/* <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2"
-        >
-          <span className="eyebrow" style={{ fontSize: '0.65rem' }}>Scroll to explore</span>
-          <div className="w-px h-10 bg-gradient-to-b from-[var(--orange)] to-transparent" />
-        </motion.div> */}
       </section>
 
       {/* ════════════════════════════════════
@@ -282,21 +269,21 @@ export default function Services() {
           <div key={category}>
 
             {/* ── Category header ── */}
-            <section className="py-16 px-4 bg-[var(--navy-mid)] relative overflow-hidden border-y border-[var(--border)]">
+            <section className="py-16 px-4 bg-black relative overflow-hidden border-y border-white/5">
               {/* Faint number */}
               <div
-                className="absolute right-8 top-1/2 -translate-y-1/2 font-bebas pointer-events-none select-none"
-                style={{ fontSize: '8rem', color: 'rgba(249,115,22,0.05)', letterSpacing: '0.1em' }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 font-bebas pointer-events-none select-none text-yellow-500/5"
+                style={{ fontSize: '8rem', letterSpacing: '0.1em' }}
               >
                 0{catIdx + 1}
               </div>
               <div className="container mx-auto relative z-10">
                 <Reveal>
-                  <span className="eyebrow">{meta.eyebrow}</span>
-                  <h2 className="font-bebas text-[clamp(2rem,4vw,4rem)] text-[var(--white)] tracking-[0.04em] leading-[0.95] mt-1 mb-3">
+                  <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">{meta.eyebrow}</span>
+                  <h2 className="font-bebas text-[clamp(2rem,4vw,4rem)] text-white tracking-[0.04em] leading-[0.95] mt-1 mb-3">
                     {category}
                   </h2>
-                  <p className="text-[var(--muted)] max-w-xl text-sm leading-relaxed">{meta.description}</p>
+                  <p className="text-textMuted max-w-xl text-sm leading-relaxed">{meta.description}</p>
                 </Reveal>
               </div>
             </section>
@@ -308,7 +295,7 @@ export default function Services() {
                 <section
                   key={service.id}
                   id={service.id}
-                  className="scroll-mt-20 py-24 px-4 bg-[var(--navy)] border-b border-[var(--border)]"
+                  className="scroll-mt-20 py-24 px-4 bg-black border-b border-white/5"
                 >
                   <div className="container mx-auto">
                     <div className={`grid md:grid-cols-2 gap-12 lg:gap-20 items-center`}>
@@ -317,11 +304,10 @@ export default function Services() {
                       <Reveal x={flip ? 30 : -30} className={flip ? 'md:order-2' : ''}>
                         <div className="relative group">
                           {/* Glow behind image */}
-                          <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                            style={{ background: 'radial-gradient(ellipse at center, var(--orange-dim) 0%, transparent 70%)' }}
+                          <div className="absolute -inset-1 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(ellipse_at_center,rgba(234,179,8,0.15)_0%,transparent_70%)]"
                           />
 
-                          <div className="relative aspect-video rounded-2xl overflow-hidden border border-[var(--border-accent)]">
+                          <div className="relative aspect-video rounded-2xl overflow-hidden border border-yellow/20">
                             <Image
                               src={service.image}
                               alt={service.title}
@@ -329,47 +315,47 @@ export default function Services() {
                               className="object-cover group-hover:scale-105 transition-transform duration-700"
                             />
                             {/* Overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/70 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
                             {/* Play icon overlay */}
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              <div className="icon-wrap w-14 h-14">
-                                <Play size={18} className="fill-[var(--orange)] text-[var(--orange)] ml-0.5" />
+                              <div className="w-14 h-14 bg-yellow-500/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-2xl">
+                                <Play size={18} className="fill-white text-white ml-0.5" />
                               </div>
                             </div>
 
                             {/* Corner accents */}
-                            <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[var(--orange)] rounded-tl-2xl" />
-                            <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[var(--orange)] rounded-br-2xl" />
+                            <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-yellow rounded-tl-2xl" />
+                            <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-yellow rounded-br-2xl" />
                           </div>
                         </div>
                       </Reveal>
 
                       {/* Content */}
                       <Reveal x={flip ? -30 : 30} delay={0.1} className={flip ? 'md:order-1' : ''}>
-                        <span className="eyebrow">{category}</span>
+                        <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">{category}</span>
 
-                        <h3 className="font-bebas text-[clamp(2rem,3.5vw,3.5rem)] text-[var(--white)] tracking-[0.03em] leading-[0.95] mt-2 mb-4">
+                        <h3 className="font-bebas text-[clamp(2rem,3.5vw,3.5rem)] text-white tracking-[0.03em] leading-[0.95] mt-2 mb-4">
                           {service.title}
                         </h3>
 
-                        {/* Orange underline */}
-                        <div className="w-10 h-0.5 mb-5" style={{ background: 'linear-gradient(90deg,var(--orange),transparent)' }} />
+                        {/* pf-yellow underline */}
+                        <div className="w-10 h-0.5 mb-5 bg-gradient-to-r from-yellow to-transparent" />
 
-                        <p className="text-[var(--off-white)] leading-[1.78] mb-6 text-base">
+                        <p className="text-slate-200 leading-[1.78] mb-6 text-base">
                           {service.overview}
                         </p>
 
                         {/* whyItMatters callout */}
                         {service.whyItMatters && (
-                          <div className="mb-6 pl-4 py-3 border-l-2 border-[var(--orange)] bg-[var(--navy-mid)] rounded-r-lg">
-                            <p className="text-[var(--off-white)] italic text-sm leading-relaxed">{service.whyItMatters}</p>
+                          <div className="mb-6 pl-4 py-3 border-l-2 border-yellow-500 bg-black/40 rounded-r-lg">
+                            <p className="text-slate-200 italic text-sm leading-relaxed">{service.whyItMatters}</p>
                           </div>
                         )}
 
                         {/* Deliverables */}
                         <div className="mb-8">
-                          <h4 className="font-barlow-condensed text-xs font-bold tracking-[0.18em] uppercase text-[var(--orange)] mb-4">
+                          <h4 className="font-barlow-condensed text-xs font-bold tracking-[0.18em] uppercase text-yellow-500 mb-4">
                             What We Deliver
                           </h4>
                           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -377,10 +363,9 @@ export default function Services() {
                               <li key={i} className="flex items-start gap-2.5">
                                 <CheckCircle
                                   size={15}
-                                  className="mt-0.5 flex-shrink-0"
-                                  style={{ color: 'var(--orange)' }}
+                                  className="mt-0.5 flex-shrink-0 text-yellow-500"
                                 />
-                                <span className="text-[var(--off-white)] text-sm leading-relaxed">{item}</span>
+                                <span className="text-slate-300 text-sm leading-relaxed">{item}</span>
                               </li>
                             ))}
                           </ul>
@@ -388,18 +373,18 @@ export default function Services() {
 
                         {/* Process pill */}
                         {service.process && (
-                          <div className="mb-8 px-4 py-3 rounded-lg border border-[var(--border-accent)] bg-[var(--navy-card)]">
-                            <span className="eyebrow block mb-1" style={{ fontSize: '0.6rem' }}>Our Process</span>
-                            <p className="text-[var(--muted)] text-xs leading-relaxed">{service.process}</p>
+                          <div className="mb-8 px-4 py-3 rounded-lg border border-yellow-500/20 bg-black/40">
+                            <span className="font-barlow-condensed text-[0.6rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-1">Our Process</span>
+                            <p className="text-textMuted text-xs leading-relaxed">{service.process}</p>
                           </div>
                         )}
 
-                     <Link href="/contact">
-                        <button className="btn-primary flex items-center gap-2 group">
-                          Discuss This Project
-                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                     </Link>
+                        <Link href="/contact">
+                          <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[12px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 flex items-center gap-2 group">
+                            Discuss This Project
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                          </button>
+                        </Link>
                       </Reveal>
                     </div>
                   </div>
@@ -413,28 +398,33 @@ export default function Services() {
       {/* ════════════════════════════════════
           FINAL CTA
       ════════════════════════════════════ */}
-      <section className="py-28 px-4 bg-[var(--navy-mid)] relative overflow-hidden">
+      <section className="py-28 px-4 bg-black relative overflow-hidden border-t border-white/5">
         {/* Radial glow */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, var(--orange-dim) 0%, transparent 70%)' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(234,179,8,0.1)_0%,transparent_70%)]"
         />
         <Reveal>
           <div className="container mx-auto max-w-3xl text-center relative z-10">
-            <span className="eyebrow">Work With Us</span>
-            <h2 className="font-bebas text-[clamp(2.5rem,5vw,5rem)] text-[var(--white)] tracking-[0.04em] leading-[0.93] mt-2 mb-3">
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">Work With Us</span>
+            <h2 className="font-bebas text-[clamp(2.5rem,5vw,5rem)] text-white tracking-[0.04em] leading-[0.93] mt-2 mb-3">
               Ready to Produce<br />
-              <span className="text-[var(--orange)]">Something Exceptional?</span>
+              <span className="text-yellow-500">Something Exceptional?</span>
             </h2>
-            <div className="w-12 h-0.5 mx-auto mb-6" style={{ background: 'linear-gradient(90deg,transparent,var(--orange),transparent)' }} />
-            <p className="text-[var(--muted)] max-w-xl mx-auto leading-relaxed mb-10">
+            <div className="w-12 h-0.5 mx-auto mb-6 bg-gradient-to-r from-transparent via-yellow to-transparent" />
+            <p className="text-textMuted max-w-xl mx-auto leading-relaxed mb-10">
               Whether you need corporate storytelling, event coverage, or immersive digital media —
               let's create visuals that represent your brand at its highest standard.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="btn-primary">Book Consultation</button>
               <Link href="/contact">
-                <button className="btn-outline">Contact Us</button>
+                <button className="bg-yellow-500 text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                  Book Consultation
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                  Contact Us
+                </button>
               </Link>
             </div>
           </div>

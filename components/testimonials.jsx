@@ -18,21 +18,21 @@ const videos = [
 
 export default function TestimonialSection() {
   return (
-    <section className="py-32 bg-[var(--navy-mid)]">
+    <section className="py-32 bg-black">
       <div className="max-w-[1100px] mx-auto px-6">
 
         {/* Header */}
         <div className="flex justify-between items-end flex-wrap gap-8 mb-16">
           <div>
-            <span className="eyebrow block mb-4">Client Feedback</span>
+            <span className="font-barlow-condensed text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">Client Feedback</span>
             <h2 className="font-bebas text-[clamp(2.2rem,4.5vw,4rem)] leading-[0.95] tracking-[0.04em] text-white">
               REAL CLIENT<br />
-              <span className="text-orange-500">EXPERIENCE</span>
+              <span className="text-yellow-500">EXPERIENCE</span>
             </h2>
           </div>
 
           <Link href="/testimonials">
-            <button className="btn-outline">
+            <button className="bg-transparent text-white font-barlow-condensed text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[30px] py-[11px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
               View All
             </button>
           </Link>
@@ -68,7 +68,7 @@ export default function TestimonialSection() {
                 <p className="font-bebas text-lg tracking-[0.05em] text-white">
                   {video.name}
                 </p>
-                <p className="font-barlow-condensed text-[0.65rem] tracking-[0.18em] uppercase text-orange-500/60 mt-1">
+                <p className="font-barlow-condensed text-[0.65rem] tracking-[0.18em] uppercase text-yellow-500/60 mt-1">
                   {video.company}
                 </p>
               </div>
