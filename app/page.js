@@ -167,11 +167,11 @@ export default function Home() {
                   key={i}
                   className="relative flex items-center justify-center transition-all duration-500"
                 >
-                  <div className="h-12 md:h-12 w-auto relative">
+                  <div className="h-20 md:h-28 w-auto relative">
                     <img
                       src={logo}
                       alt={`Client ${i}`}
-                      className="h-full w-auto object-contain max-w-[140px]"
+                      className="h-full w-auto object-contain font-bebas text-white   transition-all duration-500 max-w-[220px]"
                     />
                   </div>
                 </div>
