@@ -14,7 +14,7 @@ export const metadata = {
   description: 'Expert cinematic video production house in Dubai & India. Specialized in brand films, high-end real estate videography, wedding films, and podcast production. Scale your brand with precision.',
   keywords: 'video production dubai, cinematic videography india, real estate videography dubai, brand films, podcast production, commercial film house',
   alternates: {
-    canonical: 'https://skylumeproduction.com/', // Update with actual domain
+    canonical: 'https://skylumeproduction.com/',
   },
   openGraph: {
     title: 'Skylume Productions | World-Class Cinematic Visuals',
