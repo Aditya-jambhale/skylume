@@ -1,7 +1,7 @@
-# PrimeFrame Productions - Digital Brand Experience
+# Skylume Productions - Digital Brand Experience
 ### Cinematic. Strategic. High-Performance.
 
-A state-of-the-art, multi-page digital platform engineered for **PrimeFrame Productions**, a premier video production studio operating in Dubai and India. This project is built to reflect the agency's "Every frame serves a purpose" philosophy through high-end motion design and cinematic UI.
+A state-of-the-art, multi-page digital platform engineered for **Skylume Productions**, a premier video production studio operating in Dubai and India. This project is built to reflect the agency's "Every frame serves a purpose" philosophy through high-end motion design and cinematic UI.
 
 ---
 
@@ -36,7 +36,7 @@ This project uses a modern, high-performance stack selected for speed, SEO, and 
 
 ### 3. "The Arsenal" - Equipment Showcase
 - **Motion-Linked Grid**: High-fidelity equipment cards that fade, scale, and stagger as the user scrolls.
-- **3D Depth Effects**: Individual gear images (FX3, A7 IV, Prime Lenses) with custom shadow-casting and hover rotation.
+- **3D Depth Effects**: Individual gear images (FX3, A7 IV, Skylume Lenses) with custom shadow-casting and hover rotation.
 - **Rounded UI Design**: Modern floating-card aesthetics with ultra-rounded corners (`rounded-[4.5rem]`).
 
 ### 4. Conversion Engine
@@ -102,4 +102,4 @@ pnpm start
 ---
 **Build Status**: Active Development 
 **Version**: 2.1.0 (Cinematic Overhaul)
-**Agency**: PrimeFrame Productions
+**Agency**: Skylume Productions

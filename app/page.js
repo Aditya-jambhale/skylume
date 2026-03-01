@@ -34,6 +34,12 @@ const logos = [
   '/companies/kundlas.png',
   '/companies/sarvam.svg',
   '/companies/jc.png',
+  '/companies/ew.png',
+  '/companies/fondocom.png',
+  '/companies/11.png',
+  '/companies/dr.png',
+  '/companies/k.png',
+  '/companies/t.png',
 ]
 
 const equipmentList = [
@@ -58,17 +64,17 @@ const equipmentList = [
     image: '/equip/sonya73.png'
   },
   {
-    title: '20mm Prime Lens',
+    title: '20mm Skylume Lens',
     desc: 'Ultra-wide perspective ideal for immersive cinematic compositions.',
     image: '/equip/20mmrb.png'
   },
   {
-    title: '24mm Prime Lens',
+    title: '24mm Skylume Lens',
     desc: 'Versatile focal length for dynamic storytelling and interior coverage.',
     image: '/equip/24mmrb.png'
   },
   {
-    title: '50mm Prime Lens',
+    title: '50mm Skylume Lens',
     desc: 'Natural perspective with beautiful depth and subject separation.',
     image: '/equip/50mmrb.png'
   },
@@ -116,16 +122,16 @@ export default function Home() {
         {/* Background */}
         <div className="absolute inset-0 z-0">
           {/* Mobile Background Image - Shown only on small screens */}
-          <div className="block md:hidden absolute inset-0">
+          {/* <div className="block md:hidden absolute inset-0">
             <Image
               src="/hero/hero-mobile.jpg"
-              alt="PrimeFrame Hero"
+              alt="Skylume Hero"
               fill
               priority
               className="object-cover"
               sizes="100vw"
             />
-          </div>
+          </div> */}
 
           {/* Video Background - Hidden on mobile, shown on md+ */}
           <video
@@ -133,7 +139,6 @@ export default function Home() {
             muted
             loop
             playsInline
-            poster="/hero/hero-poster.jpg"
             className="hidden md:block absolute inset-0 w-full h-full object-cover"
           >
             <source src="/hero/hero-bg.mp4" type="video/mp4" />
@@ -150,7 +155,7 @@ export default function Home() {
         >
           {/* Headline — tighter, more refined */}
           <h1 className="text-hero  text-white mb-2 uppercase">
-            PRIME<span className="text-yellow-500">FRAME</span>
+            Skylume
           </h1>
 
           {/* Eyebrow */}
@@ -220,7 +225,7 @@ export default function Home() {
                   key={i}
                   className="relative flex items-center justify-center group"
                 >
-                  <div className="relative h-24 md:h-32 w-48 md:w-64 transition-all duration-500 scale-90 group-hover:scale-110 opacity-90 group-hover:opacity-100">
+                  <div className="relative h-24 md:h-32 w-48 md:w-64 transition-all duration-500 scale-90 group-hover:scale-110 opacity-100 brightness-150 group-hover:opacity-100">
                     <Image
                       src={logo}
                       alt={`Client Logo ${i}`}
@@ -258,7 +263,7 @@ export default function Home() {
               </h2>
               <div className="w-6 h-px bg-yellow-500 mb-10" />
               <p className="font-outfit font-light text-[1.05rem] text-textMuted leading-[1.8] tracking-wide mb-10">
-                PrimeFrame Productions was built on a simple belief — <span className=" font-semibold">Every frame must serve a purpose.</span>
+                Skylume Productions was built on a simple belief — <span className=" font-semibold">Every frame must serve a purpose.</span>
                 We don’t create content for attention. We create visuals that drive meaning, memory, and measurable impact.
                 From concept to post-production, every detail is engineered with clarity, discipline, and cinematic precision.
                 As we expand from India to Dubai, our philosophy remains unchanged

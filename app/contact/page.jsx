@@ -55,7 +55,7 @@ export default function Contact() {
     { icon: MapPin, label: 'Operating Regions', value: 'India  |  Dubai, UAE' },
     { icon: Phone, label: 'Phone', value: '+971 XX XXX XXXX' },
     { icon: MessageCircle, label: 'WhatsApp', value: '+971 XX XXX XXXX' },
-    { icon: Mail, label: 'Email', value: 'info@primeframe.com' },
+    { icon: Mail, label: 'Email', value: 'info@Skylume.com' },
     { icon: Clock, label: 'Response Time', value: 'Within 24 hours' },
   ]
 

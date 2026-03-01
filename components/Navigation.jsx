@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
@@ -45,9 +46,15 @@ export default function Navigation() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group">
-              <span className="w-1 h-10 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-10" />
-              <span className={`font-montserrat font-semibold text-xl tracking-[0.08em] leading-none transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
-                PRIME<span className="text-yellow-500">FRAME</span>
+              <Image
+                src={scrolled ? "/about/logo.png" : "/about/logow.png"}
+                alt="Skylume Logo"
+                width={40}
+                height={40}
+                className="transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className={`font-montserrat font-bold uppercase text-xl tracking-[0.08em] leading-none transition-colors duration-300 ml-1 ${scrolled ? 'text-black' : 'text-white'}`}>
+                Skylume
               </span>
             </Link>
 

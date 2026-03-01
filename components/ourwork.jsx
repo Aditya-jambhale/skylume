@@ -42,47 +42,184 @@ function extractYouTubeId(input) {
 
 // ─── Data — swap youtubeUrl with any format ───────────────────────────────────
 const works = [
+
+    // ───────── TOP 6 (Homepage Priority) ─────────
     {
         id: 1,
-        title: 'Mera Safar',
-        category: 'Official Music Video',
-        youtubeUrl: 'WecJOuguoRA',
+        title: 'Assam Shoot',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/kUBlif8qHfs',
     },
     {
         id: 2,
-        title: 'Aagaaz',
-        category: 'Stand-up Special',
-        youtubeUrl: '0oQ2103A6H8',
+        title: 'Wedding Cinematic (Fiverr)',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/A8CiBHvhvI4',
     },
     {
         id: 3,
-        title: 'Khwab',
-        category: 'Short Narrative',
-        youtubeUrl: 'vOHPMhu_r9c',
+        title: 'Podcast Video Editing (Fiverr)',
+        category: 'Talking Head',
+        youtubeUrl: 'https://youtu.be/iY63uEVqZv4',
     },
     {
         id: 4,
-        title: 'Brand Anthem',
-        category: 'Commercial Film',
-        youtubeUrl: 'WecJOuguoRA',
+        title: 'Podcast Highlight 01',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/u4KWT8DkHRk',
     },
     {
         id: 5,
-        title: 'Dubai Unseen',
-        category: 'Travel Documentary',
-        youtubeUrl: '0oQ2103A6H8',
+        title: 'Teaser 01',
+        category: 'Teaser',
+        youtubeUrl: 'https://youtu.be/9ssG-MtEE6A',
+    },
+  
+    // ───────── Cinematic Events ─────────
+    {
+        id: 7,
+        title: 'Banaras Shoot',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/q26hmHa1CmM',
     },
     {
-        id: 6,
-        title: 'Prime Podcast',
-        category: 'Podcast Series',
-        youtubeUrl: 'vOHPMhu_r9c',
+        id: 8,
+        title: 'Cinematic Event Film 01',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/7M_OefKamys',
     },
-]
+    {
+        id: 9,
+        title: 'Cinematic Event Film 02',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/LuMMDt9q-yY',
+    },
+    {
+        id: 10,
+        title: 'Cinematic Film 03',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/4OhRJYVYR4g',
+    },
+    {
+        id: 11,
+        title: 'Cinematic Film 04',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtu.be/Gh41UDTDZjU',
+    },
+    {
+        id: 12,
+        title: 'Cinematic Short 01',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtube.com/shorts/5RB1Y0V6bx0',
+    },
+    {
+        id: 13,
+        title: 'Cinematic Short 02',
+        category: 'Cinematic Event',
+        youtubeUrl: 'https://youtube.com/shorts/G8IbSWVY63A',
+    },
+
+    // ───────── Teasers ─────────
+    {
+        id: 14,
+        title: 'Teaser 02',
+        category: 'Teaser',
+        youtubeUrl: 'https://youtu.be/LuMMDt9q-yY?si=hTKudK2TDeX4ES0R',
+    },
+    {
+        id: 15,
+        title: 'Podcast Teaser',
+        category: 'Teaser',
+        youtubeUrl: 'https://youtu.be/ioGZz97KM3g',
+    },
+    {
+        id: 16,
+        title: 'Teaser 03',
+        category: 'Teaser',
+        youtubeUrl: 'https://youtu.be/z_nv6uan9aw',
+    },
+
+    // ───────── Talking Head ─────────
+    {
+        id: 17,
+        title: 'Talking Head 01',
+        category: 'Talking Head',
+        youtubeUrl: 'https://youtu.be/_HCVxpLZ04A',
+    },
+    {
+        id: 18,
+        title: 'Talking Head 02',
+        category: 'Talking Head',
+        youtubeUrl: 'https://youtu.be/XQoDR4XROaM',
+    },
+
+    // ───────── Podcast Highlights ─────────
+    {
+        id: 19,
+        title: 'Podcast Highlight 02',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/Y53-xv-XsiU',
+    },
+    {
+        id: 20,
+        title: 'Podcast Highlight 03',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/0bVpcr1YYRE',
+    },
+    {
+        id: 21,
+        title: 'Podcast Highlight 04',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/wsyOcy5p04k',
+    },
+    {
+        id: 22,
+        title: 'Podcast Highlight 05',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/0tpZrqOvLrk',
+    },
+    {
+        id: 23,
+        title: 'Podcast Highlight 06',
+        category: 'Podcast Highlight',
+        youtubeUrl: 'https://youtu.be/dAV4T9p8qSM',
+    },
+
+    // ───────── Wedding Production ─────────
+    {
+        id: 24,
+        title: 'Wedding Production',
+        category: 'Wedding',
+        youtubeUrl: 'https://youtu.be/_withIfYaxc',
+    },
+
+    // ───────── Real Estate ─────────
+    {
+        id: 25,
+        title: 'Real Estate Film 02',
+        category: 'Real Estate',
+        youtubeUrl: 'https://youtu.be/W3lnzB-ES_4',
+    },
+
+    // ───────── Short Form ─────────
+    {
+        id: 26,
+        title: 'Banaras Short',
+        category: 'Short Form',
+        youtubeUrl: 'https://youtube.com/shorts/2a9e4BsQBw0',
+    },
+    {
+        id: 27,
+        title: 'Short Form 02',
+        category: 'Short Form',
+        youtubeUrl: 'https://youtube.com/shorts/K1boQewZU7g',
+    },
+];
 
 // ─── Work Card ────────────────────────────────────────────────────────────────
 function WorkCard({ item, onPlay }) {
     const videoId = extractYouTubeId(item.youtubeUrl)
+    const [imgSrc, setImgSrc] = useState(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`)
 
     return (
         <motion.div
@@ -91,17 +228,18 @@ function WorkCard({ item, onPlay }) {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => onPlay(item)}
-            className="group relative aspect-square cursor-pointer overflow-hidden bg-[#0a0a0a]"
+            className="group relative aspect-video cursor-pointer overflow-hidden grayscale hover:grayscale-0 bg-[#0a0a0a]"
             style={{ borderRadius: '2px' }}
         >
             {/* Thumbnail */}
             <Image
-                src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                src={imgSrc}
                 alt={item.title}
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 loading="lazy"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                onError={() => setImgSrc(`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`)}
             />
 
             {/* Base dark scrim — always visible at bottom */}
@@ -113,11 +251,10 @@ function WorkCard({ item, onPlay }) {
             {/* Play button — center */}
             <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
                     whileHover={{ scale: 1 }}
-                    className="w-14 h-14 rounded-full bg-yellow-400 flex items-center justify-center
-                     opacity-0 group-hover:opacity-100 transition-all duration-300
-                     shadow-[0_0_40px_rgba(250,204,21,0.35)]"
+                    className="w-14 h-14 rounded-full flex items-center justify-center
+                     opacity-100 group-hover:scale-110 transition-all duration-300
+                     shadow-[0_0_40px_rgba(250,204,21,0.35)] bg-yellow-400"
                 >
                     <Play fill="black" size={20} className="ml-0.5" />
                 </motion.div>
@@ -149,6 +286,9 @@ function WorkCard({ item, onPlay }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function OurWork({ hideHeading = false, hideButton = false }) {
     const [active, setActive] = useState(null)
+
+    // On the homepage (when hideButton is false), we only show the first 6 projects
+    const visibleWorks = hideButton ? works : works.slice(0, 6)
 
     const open = useCallback((item) => {
         setActive(item)
@@ -197,9 +337,9 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
             </div>
 
             {/* ── Grid ── */}
-            <div className="container mx-auto px-6 max-w-[1300px]">
+            <div className="container mx-auto px-4 max-w-9xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {works.map((item) => (
+                    {visibleWorks.map((item) => (
                         <WorkCard key={item.id} item={item} onPlay={open} />
                     ))}
                 </div>

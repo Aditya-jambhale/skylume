@@ -77,13 +77,13 @@ const timeline = [
   },
   {
     year: '2025',
-    title: 'Building PrimeFrame Productions',
+    title: 'Building Skylume Productions',
     img: ['/build/build3.png', '/build/build1.jpg', '/build/build8.png'],
     body: [
       "At some point, freelancing isn’t enough.",
       "Client work expanded. So did responsibility.",
       "Instead of remaining a solo editor, I built a structured team — developers, designers, editors, and management support.",
-      "PrimeFrame Productions was no longer an experiment.",
+      "Skylume Productions was no longer an experiment.",
       "It became a production house — combining podcast mastery with cinematic execution."
     ],
   },
@@ -593,7 +593,7 @@ export default function CinematicTimeline() {
             <Reveal>
               <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The Vision</span>
               <h2 className="text-section-title text-white mt-4 uppercase">
-                The Vision Behind <span className="text-yellow-500">PrimeFrame</span>
+                The Vision Behind <span className="text-yellow-500">Skylume</span>
               </h2>
               <div
                 className="w-12 h-0.5 mx-auto my-5 bg-yellow-500"
@@ -604,7 +604,7 @@ export default function CinematicTimeline() {
               {[
                 { icon: '🎬', title: 'Global Standard', body: 'Build a production agency that competes globally while staying grounded in storytelling and execution.' },
                 { icon: '⚙️', title: 'Precision First', body: 'Combine editing precision with cinematic production. Every frame serves purpose — not just aesthetics.' },
-                { icon: '🏗️', title: 'Built on Structure', body: 'PrimeFrame is built on structure, consistency, and creative clarity — not hype, not shortcuts.' },
+                { icon: '🏗️', title: 'Built on Structure', body: 'Skylume is built on structure, consistency, and creative clarity — not hype, not shortcuts.' },
               ].map((v, i) => (
                 <Reveal key={i} delay={0.1 * i}>
                   <motion.div
@@ -637,7 +637,7 @@ export default function CinematicTimeline() {
               </h2>
               <div className="w-10 h-0.5 mb-4 bg-yellow-500" />
               <p className="text-textMuted text-sm max-w-md leading-relaxed font-outfit">
-                Every great production is a collective. PrimeFrame is built by individuals who care deeply about their craft.
+                Every great production is a collective. Skylume is built by individuals who care deeply about their craft.
               </p>
             </Reveal>
 
@@ -689,11 +689,11 @@ export default function CinematicTimeline() {
               src="/team/yusuf4.jpg"
               alt="Founder Background"
               fill
-              className="object-cover brightness-85 contrast-110"
+              className="object-cover brightness-25 contrast-110"
               style={{ objectPosition: 'center 20%' }}
               priority
             />
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black/90" /> */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black/90" />
           </motion.div>
 
           <div
@@ -722,7 +722,7 @@ export default function CinematicTimeline() {
                 <div className="text-left font-outfit">
                   <div className="text-white font-black text-sm uppercase tracking-wider font-montserrat">Yusuf</div>
                   <div className="font-outfit text-[0.66rem] font-bold tracking-[0.12em] uppercase text-textMuted">
-                    Founder, PrimeFrame Productions
+                    Founder, Skylume Productions
                   </div>
                 </div>
               </div>

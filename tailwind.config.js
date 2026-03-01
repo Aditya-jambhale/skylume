@@ -61,7 +61,7 @@ module.exports = {
           foreground: 'hsl(var(--card-foreground))'
         },
 
-        // PrimeFrame Specific Keepers
+        // Skylume Specific Keepers
         pf: {
           black: '#000000',
           dark: '#050505',

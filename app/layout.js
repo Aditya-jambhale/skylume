@@ -10,7 +10,7 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
 
 export const metadata = {
-  title: 'PrimeFrame Productions | Premium Video Production in Dubai & India',
+  title: 'Skylume Productions | Premium Video Production in Dubai & India',
   description: 'Premium cinematic video production services for brands scaling across India, Dubai, and UAE. From corporate films to event coverage, we deliver visuals that elevate brands.',
   keywords: 'video production dubai, cinematic videography, corporate films, event filming, dubai production house, premium video services',
 }

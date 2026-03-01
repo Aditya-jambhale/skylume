@@ -58,7 +58,7 @@ const allServices = [
     title: "Podcast Production",
     valueProp: "Elevating the podcast experience with multi-camera cinematic production.",
     outcome: "A professional video-first podcast that signals structure and authority.",
-    overview: "We handle the technical complexity of modern podcasting. From multi-cam video setups to professional audio mixing, we make your podcast look like a prime-time broadcast.",
+    overview: "We handle the technical complexity of modern podcasting. From multi-cam video setups to professional audio mixing, we make your podcast look like a Skylume-time broadcast.",
     deliverables: ["Multi-cam Video Podcast", "Social Media Cutdowns", "Audio-optimized Distribution Files", "Intro/Outro Branding"],
     process: "Room Setup & Accoustics → Multi-cam Live Direction → Multi-track Audio Mix → Visual Overlay & Branding → Weekly Delivery"
   },

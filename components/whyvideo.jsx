@@ -170,7 +170,6 @@ export default function WhyVideography() {
                   loop
                   muted
                   playsInline
-                  poster="/hero/hero-poster.jpg"
                   className="w-full h-full object-cover grayscale-[0.3] brightness-[0.8]"
                 >
                   <source src="/hero/hero-bg.mp4" type="video/mp4" />

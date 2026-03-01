@@ -26,7 +26,7 @@ export async function POST(req) {
     // Email content
     const mailOptions = {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: process.env.CONTACT_EMAIL || 'production@primeframe.com', // Success recipient
+      to: process.env.CONTACT_EMAIL || 'production@Skylume.com', // Success recipient
       subject: `New Project Inquiry: ${projectType} from ${name}`,
       text: `
         Name: ${name}

@@ -24,7 +24,7 @@
     --muted-foreground: 220 15% 45%;
 
     --accent: 45 93% 47%;
-    /* PrimeFrame Yellow Kept */
+    /* Skylume Yellow Kept */
     --accent-foreground: 30 20% 98%;
 
     --destructive: 0 84.2% 60.2%;
@@ -58,7 +58,7 @@
     --muted-foreground: 220 10% 65%;
 
     --accent: 45 93% 47%;
-    /* PrimeFrame Yellow */
+    /* Skylume Yellow */
     --accent-foreground: 0 0% 0%;
 
     --border: 220 15% 20%;
@@ -359,4 +359,14 @@ body::after {
 .about-timeline-card:hover .about-card-sweep,
 .about-vision-card:hover .about-card-sweep {
   transform: scaleX(1);
+}
+
+/* ── UTILITIES ────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

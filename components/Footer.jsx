@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Phone, Mail, MapPin, ArrowUpRight, Instagram, Youtube, Linkedin } from 'lucide-react'
 
 const quickLinks = [
@@ -31,7 +32,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-800 border-t border-white/5">
+    <footer className="border-t border-white/5">
 
       {/* ── Top CTA band ── */}
       {/* <div className="border-b border-white/5">
@@ -60,9 +61,15 @@ export default function Footer() {
           <div>
             {/* Logo */}
             <Link href="/" className="no-underline flex items-center gap-0 group mb-5 w-fit">
-              <span className="w-1 h-7 bg-yellow-500 mr-3 transition-all duration-300 group-hover:h-9" />
-              <span className="font-montserrat font-black text-2xl tracking-[0.08em] text-white leading-none">
-                PRIME<span className="text-yellow-500">FRAME</span>
+              <Image
+                src="/about/logow.png"
+                alt="Skylume Logo"
+                width={36}
+                height={36}
+                className="transition-transform duration-300 group-hover:scale-110"
+              />
+              <span className="font-montserrat font-black text-2xl tracking-[0.08em] text-white leading-none ml-2">
+                Skylume
               </span>
             </Link>
 
@@ -152,10 +159,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail size={15} className="text-yellow-500 flex-shrink-0" />
                 <a
-                  href="mailto:info@primeframe.com"
+                  href="mailto:info@Skylume.com"
                   className="no-underline font-outfit font-light text-sm text-textMuted hover:text-white transition-colors duration-200"
                 >
-                  info@primeframe.com
+                  info@Skylume.com
                 </a>
               </li>
             </ul>
@@ -181,7 +188,7 @@ export default function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-[1300px] mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
           <p className="font-outfit font-light text-xs text-textMuted">
-            © {year} PrimeFrame Productions. All rights reserved.
+            © {year} Skylume Production. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service'].map(item => (

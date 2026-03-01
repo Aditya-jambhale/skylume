@@ -50,43 +50,49 @@ const testimonials = [
     category: 'commercial',
     clientName: 'Sarah Johnson',
     company: 'TechVision Inc.',
-    testimonial: 'Working with PrimeFrame Productions transformed our brand presence. The attention to detail and cinematic quality exceeded our expectations.',
-    size: 'large'
+    testimonial: 'Working with Skylume Productions transformed our brand presence. The attention to detail and cinematic quality exceeded our expectations.',
+    size: 'large',
+    videoUrl: 'https://youtu.be/kUBlif8qHfs'
   },
   {
     category: 'events',
-    clientName: 'Mohammed Al-Rashid',
-    company: 'Dubai Events Co.',
+    clientName: 'Betsy',
+    company: '',
     testimonial: 'Their event coverage was exceptional. They captured every important moment with professional precision and delivered ahead of schedule.',
-    size: 'normal'
+    size: 'normal',
+    videoUrl: 'https://www.youtube.com/watch?v=rXeCVB18UZM'
   },
   {
     category: 'podcast',
     clientName: 'Priya Sharma',
     company: 'The Growth Podcast',
     testimonial: 'The editing quality and turnaround time are unmatched. Our podcast production has never been better.',
-    size: 'accent'
+    size: 'accent',
+    videoUrl: 'https://youtu.be/9ssG-MtEE6A'
   },
   {
     category: 'commercial',
     clientName: 'David Chen',
     company: 'Luxury Real Estate',
     testimonial: 'The property walkthroughs they created helped us sell premium listings faster. Absolutely world-class work.',
-    size: 'normal'
+    size: 'normal',
+    videoUrl: 'https://youtu.be/iY63uEVqZv4'
   },
   {
     category: 'social media',
     clientName: 'Aisha Khan',
     company: 'Fashion Brand',
-    testimonial: 'Our Instagram engagement tripled after working with PrimeFrame. Their understanding of social media content is exceptional.',
-    size: 'normal'
+    testimonial: 'Our Instagram engagement tripled after working with Skylume. Their understanding of social media content is exceptional.',
+    size: 'normal',
+    videoUrl: 'https://youtu.be/u4KWT8DkHRk'
   },
   {
     category: 'events',
     clientName: 'Robert Martinez',
     company: 'Corporate Solutions',
     testimonial: 'They covered our annual conference with multiple camera setups and delivered a highlight reel that captured the energy perfectly.',
-    size: 'large'
+    size: 'large',
+    videoUrl: 'https://youtu.be/kUBlif8qHfs'
   }
 ]
 
@@ -215,6 +221,16 @@ export default function Testimonials() {
                     <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/[0.02] -mr-12 -mt-12 rounded-full blur-2xl group-hover:bg-yellow-500/10 transition-all duration-700" />
 
                     <div>
+                      {testimonial.videoUrl && (
+                        <div className="relative aspect-video rounded-xl overflow-hidden mb-8 border border-white/10 bg-black">
+                          <iframe
+                            src={getYoutubeEmbedUrl(testimonial.videoUrl)}
+                            className="absolute inset-0 w-full h-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                      )}
                       <Quote size={40} className="text-yellow-500/20 mb-8 group-hover:text-yellow-500/40 transition-colors duration-500" />
                       <p className={`font-outfit font-light italic text-white/80 leading-relaxed mb-8 ${isWide ? 'text-2xl' : 'text-lg'}`}>
                         "{testimonial.testimonial}"
