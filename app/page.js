@@ -163,7 +163,7 @@ export default function Home() {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
             className="flex items-center justify-center gap-3.5 mb-8"
           >
-            <span className="font-outfit text-[13px] font-semibold tracking-[0.25em] uppercase text-white/90">Production Company · Dubai · India · Global</span>
+            <span className="font-outfit text-[13px] font-semibold tracking-[0.25em] uppercase text-white/90">Global Production Company</span>
           </motion.div>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/services">
