@@ -5,6 +5,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle, ArrowRight, Play } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 
 // ─── Services Data ────────────────────────────────────────────────────────────
 const allServices = [
@@ -119,27 +120,26 @@ function ServiceSection({ service }) {
 
           {/* Content Column */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 block mb-4">
-                Specialized Service
-              </span>
+            <ScrollReveal animation="fade-up">
+              <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
+                <Play size={12} className="text-white fill-white" />
+                <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
+                  Specialized Service
+                </span>
+              </div>
               <h2 className="text-section-title text-white text-2xl mb-4 uppercase">
                 {service.title}
               </h2>
-              <p className="font-outfit text-lg text-yellow-500/80 tracking-wide mb-2 italic">
+              <p className="font-inter text-lg text-yellow-500/80 tracking-wide mb-2 italic">
                 "{service.valueProp}"
               </p>
-              <p className="font-outfit font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
+              <p className="font-inter font-medium text-white mb-8 border-l-2 border-yellow-500 pl-4 py-1">
                 {service.outcome}
               </p>
 
               <div className="flex gap-4 mb-12">
                 <Link href="/contact">
-                  <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-semibold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
+                  <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-semibold tracking-[0.18em] uppercase px-[30px] py-[13px] [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 transition-all">
                     Request Proposal
                   </button>
                 </Link>
@@ -147,17 +147,17 @@ function ServiceSection({ service }) {
 
               <div className="space-y-8">
                 <div>
-                  <h4 className="font-montserrat font-black text-lg text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
-                  <p className="font-outfit font-light text-textMuted leading-relaxed">
+                  <h4 className="font-inter font-black text-lg text-white tracking-tight mb-3 uppercase">SERVICE OVERVIEW</h4>
+                  <p className="font-inter font-light text-white/90 leading-relaxed">
                     {service.overview}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-montserrat font-black text-xl text-white tracking-tight mb-4 uppercase">WHAT WE DELIVER</h4>
+                  <h4 className="font-inter font-black text-xl text-white tracking-tight mb-4 uppercase">WHAT WE DELIVER</h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                     {service.deliverables.map((item, i) => (
-                      <li key={i} className="flex items-center gap-3 text-sm text-foreground font-outfit">
+                      <li key={i} className="flex items-center gap-3 text-sm text-foreground font-inter">
                         <CheckCircle size={16} className="text-yellow-500 flex-shrink-0" />
                         {item}
                       </li>
@@ -166,41 +166,43 @@ function ServiceSection({ service }) {
                 </div>
 
                 <div className="p-6 bg-card rounded-xl border border-white/5">
-                  <h4 className="font-outfit text-[0.7rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mb-2">Our Process</h4>
-                  <p className="font-outfit font-light text-xs text-textMuted leading-relaxed">
+                  <h4 className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-yellow-500 mb-2">Our Process</h4>
+                  <p className="font-inter font-light text-xs text-white/90 leading-relaxed">
                     {service.process}
                   </p>
                 </div>
 
                 <Link href="/contact">
-                  <button className="flex items-center mt-6 gap-2 group text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
+                  <button className="flex items-center mt-6 gap-2 group text-white font-inter text-sm font-bold tracking-[0.2em] uppercase opacity-60 hover:opacity-100 transition-opacity">
                     Start Your Project
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
                 </Link>
               </div>
-            </motion.div>
+            </ScrollReveal>
           </div>
 
           {/* Visual Column - Actual Image Display */}
           <div className="relative pt-10">
-            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift shadow-2xl">
-              <Image
-                src={service.src}
-                alt={service.title}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
-              <div className="absolute bottom-10 left-10">
-                <div className="w-12 h-1 bg-yellow-500 mb-4" />
-                <h3 className="font-montserrat font-black text-3xl text-white tracking-tight leading-none uppercase">
-                  {service.title}
-                </h3>
+            <ScrollReveal animation="fade-in" delay={0.2}>
+              <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift shadow-2xl">
+                <Image
+                  src={service.src}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
+                <div className="absolute bottom-10 left-10">
+                  <div className="w-12 h-1 bg-yellow-500 mb-4" />
+                  <h3 className="font-inter font-black text-3xl text-white tracking-tight leading-none uppercase">
+                    {service.title}
+                  </h3>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </div>
@@ -226,29 +228,21 @@ export default function ServicesPage() {
         </div>
 
         <div className="relative z-20 text-center px-6">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="font-outfit text-sm font-bold tracking-[0.25em] uppercase text-yellow-500 block mb-6"
-          >
-            Our Production Suite
-          </motion.span>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-hero text-white mb-8 uppercase"
-          >
-            THE <span className="text-yellow-500">SERVICES</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="font-outfit font-light text-xl text-textMuted max-w-2xl mx-auto leading-relaxed"
-          >
-            Exploring the bounds of cinema and story. From rapid-fire social content to global event milestones — every frame engineered for purpose.
-          </motion.p>
+          <ScrollReveal animation="fade-up" delay={0.1}>
+            <span className="font-inter text-sm font-bold tracking-[0.25em] uppercase text-yellow-500 block mb-6">
+              Our Production Suite
+            </span>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.3}>
+            <h1 className="text-hero text-white mb-8 uppercase">
+              THE <span className="text-yellow-500">SERVICES</span>
+            </h1>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-up" delay={0.5}>
+            <p className="font-inter font-light text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+              Exploring the bounds of cinema and story. From rapid-fire social content to global event milestones — every frame engineered for purpose.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -280,7 +274,7 @@ export default function ServicesPage() {
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
                 }}
-                className="font-outfit text-[0.7rem] md:text-[0.75rem] font-bold tracking-[0.25em] uppercase text-white/40 hover:text-yellow-500 transition-all duration-300"
+                className="font-inter text-[0.6rem] md:text-[0.75rem] font-bold tracking-[0.25em] uppercase text-white/40 hover:text-yellow-500 transition-all duration-300"
               >
                 {service.title}
               </button>
@@ -304,7 +298,7 @@ export default function ServicesPage() {
             YOUR NEXT <span className="text-yellow-500">MASTERPIECE?</span>
           </h2>
           <Link href="/contact">
-            <button className="bg-yellow-500 text-white font-outfit text-sm font-bold tracking-[0.2em] uppercase px-[50px] py-[15px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
+            <button className="bg-yellow-500 text-white font-inter text-sm font-bold tracking-[0.2em] uppercase px-[50px] py-[15px] [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95">
               Book a Consultation Now
             </button>
           </Link>

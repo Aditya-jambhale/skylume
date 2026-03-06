@@ -38,18 +38,11 @@ const colors = [
 
 const typography = [
     {
-        font: 'Montserrat',
-        usage: 'Headings & Lead Text',
-        description: 'Strong, geometric, and modern. Montserrat conveys authority and creative precision.',
+        font: 'inter',
+        usage: 'Lead Text & Content',
+        description: 'Strong, geometric, and modern. inter conveys authority and creative precision.',
         example: 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz',
         styles: ['Black (900)', 'Bold (700)', 'SemiBold (600)']
-    },
-    {
-        font: 'Outfit',
-        usage: 'Body Copy & Micro-copy',
-        description: 'Human-centric, clean, and highly readable. Outfit balances the strength of Montserrat.',
-        example: 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz',
-        styles: ['Medium (500)', 'Regular (400)', 'Light (300)']
     },
     {
         font: 'Bebas Neue',
@@ -232,10 +225,10 @@ export default function Branding() {
                                 </div>
                                 <div className="bg-white/5 p-6 rounded-b-2xl border-x border-b border-white/5 flex-grow">
                                     <h3 className="font-bold uppercase tracking-wider mb-2 text-white">{color.name}</h3>
-                                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed font-outfit">{color.description}</p>
+                                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed font-inter">{color.description}</p>
                                     <div className="pt-4 border-t border-white/5">
                                         <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-yellow-500/70 block mb-1">Common usage</span>
-                                        <p className="text-xs text-muted-foreground font-outfit">{color.usage}</p>
+                                        <p className="text-xs text-muted-foreground font-inter">{color.usage}</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -252,7 +245,7 @@ export default function Branding() {
                             <span className="eyebrow mb-2 block">Typography</span>
                             <h2 className="text-4xl font-black uppercase tracking-tight">The <span className="text-yellow-500">Voice</span></h2>
                         </div>
-                        <p className="text-muted-foreground max-w-md font-outfit">
+                        <p className="text-muted-foreground max-w-md font-inter">
                             We communicate with clarity and impact. Our typefaces are chosen to reflect our cinematic roots and modern execution.
                         </p>
                     </div>
@@ -271,7 +264,7 @@ export default function Branding() {
                                     <div className="lg:col-span-4">
                                         <h3 className="text-3xl font-black uppercase mb-4 text-white" style={{ fontFamily: type.font }}>{type.font}</h3>
                                         <p className="font-bold text-yellow-500 uppercase tracking-widest text-xs mb-6">{type.usage}</p>
-                                        <p className="text-muted-foreground text-sm leading-relaxed mb-8 font-outfit">
+                                        <p className="text-muted-foreground text-sm leading-relaxed mb-8 font-inter">
                                             {type.description}
                                         </p>
                                         <div className="flex flex-wrap gap-2">
@@ -299,7 +292,7 @@ export default function Branding() {
                                                 </div>
                                                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5">
                                                     <span className="block text-[0.6rem] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">Sample Paragraph</span>
-                                                    <p className="text-sm leading-relaxed text-muted-foreground font-outfit" style={{ fontFamily: type.font }}>
+                                                    <p className="text-sm leading-relaxed text-muted-foreground font-inter" style={{ fontFamily: type.font }}>
                                                         Building a production agency that competes globally while staying grounded in storytelling and execution. Precision first.
                                                     </p>
                                                 </div>
@@ -318,7 +311,7 @@ export default function Branding() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(234,179,8,0.05)_0%,transparent_100%)] pointer-events-none" />
                 <div className="container mx-auto px-6 max-w-2xl relative z-10">
                     <h2 className="text-3xl font-black uppercase mb-6">Need Project Assets?</h2>
-                    <p className="text-muted-foreground mb-10 font-outfit">
+                    <p className="text-muted-foreground mb-10 font-inter">
                         If you're a partner or team member requiring high-resolution source files, please contact the creative department.
                     </p>
                     <div className="flex justify-center gap-4">

@@ -60,7 +60,7 @@ export default function Contact() {
   ]
 
   return (
-    <div className="bg-background text-foreground font-outfit font-light">
+    <div className="bg-background text-foreground font-inter font-light">
 
       {/* ── HERO WITH FULL-BLEED BACKGROUND IMAGE ── */}
       <section className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden">
@@ -76,12 +76,12 @@ export default function Contact() {
         {/* Hero text content */}
         <div className="relative z-30 px-6 py-32 max-w-[800px] mx-auto text-center mb-12">
           <motion.div {...fadeIn}>
-            <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4 block">Start Your Project</span>
+            <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-4 block">Start Your Project</span>
             <h1 className="text-hero text-white mb-6 uppercase">
               Let's Discuss<br />
               <span className="text-yellow-500">Your Project</span>
             </h1>
-            <p className="text-slate-200 opacity-70 text-lg leading-relaxed max-w-xl mx-auto font-outfit font-light">
+            <p className="text-slate-200 opacity-70 text-lg leading-relaxed max-w-xl mx-auto font-inter font-light">
               We respond within 24 hours. Let's create something exceptional together.
             </p>
           </motion.div>
@@ -108,11 +108,11 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Reach Out</span>
+              <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Reach Out</span>
               <h2 className="text-section-title text-white mb-6 uppercase">
                 Get in Touch
               </h2>
-              <p className="font-outfit font-light text-textMuted text-base leading-relaxed mb-10 max-w-md">
+              <p className="font-inter font-light text-white/90 text-base leading-relaxed mb-10 max-w-md">
                 Whether you're in India or Dubai, we're ready to bring your vision to life
                 with professional cinematic production.
               </p>
@@ -125,10 +125,10 @@ export default function Contact() {
                       <Icon size={18} className="text-yellow-500" />
                     </div>
                     <div>
-                      <p className="font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-0.5">
+                      <p className="font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-0.5">
                         {label}
                       </p>
-                      <p className="font-outfit font-light text-textMuted text-sm">{value}</p>
+                      <p className="font-inter font-light text-white/90 text-sm">{value}</p>
                     </div>
                   </div>
                 ))}
@@ -138,7 +138,7 @@ export default function Contact() {
               <div className="h-px bg-white/5 mb-8" />
 
               {/* Direct contact buttons */}
-              <p className="font-outfit text-[0.75rem] font-bold tracking-[0.12em] uppercase text-white mb-4">
+              <p className="font-inter text-[0.75rem] font-bold tracking-[0.12em] uppercase text-white mb-4">
                 Prefer Direct Contact?
               </p>
               <div className="flex flex-col gap-3">
@@ -146,14 +146,14 @@ export default function Contact() {
                   href="https://wa.me/971XXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2.5 px-7 py-3.5 bg-green-500/10 border border-green-500/30 text-green-500 font-outfit font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-green-500/20 hover:border-green-500/50"
+                  className="flex items-center justify-center gap-2.5 px-7 py-3.5 bg-green-500/10 border border-green-500/30 text-green-500 font-inter font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-green-500/20 hover:border-green-500/50"
                 >
                   <MessageCircle size={16} />
                   WhatsApp Us
                 </a>
                 <a
                   href="tel:+971XXXXXXXXX"
-                  className="flex items-center justify-center gap-2.5 px-7 py-3 bg-transparent border border-yellow/40 text-white font-outfit font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5"
+                  className="flex items-center justify-center gap-2.5 px-7 py-3 bg-transparent border border-yellow/40 text-white font-inter font-bold text-[0.8rem] tracking-[0.18em] uppercase transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5"
                 >
                   <Phone size={15} />
                   Call Now
@@ -171,19 +171,19 @@ export default function Contact() {
                 {/* Corner accent */}
                 <div className="absolute top-0 right-0 w-12 h-12 border-b border-l border-yellow/30 pointer-events-none" />
 
-                <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-2 block">Project Enquiry</span>
-                <h2 className="font-montserrat font-black text-3xl tracking-tight text-white mb-8 leading-none uppercase">
+                <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-2 block">Project Enquiry</span>
+                <h2 className="font-inter font-black text-3xl tracking-tight text-white mb-8 leading-none uppercase">
                   Send Us a Message
                 </h2>
 
                 {/* Status messages */}
                 {submitStatus === 'success' && (
-                  <div className="p-4 mb-6 border border-green-500/30 bg-green-500/5 text-green-400 font-outfit text-sm">
+                  <div className="p-4 mb-6 border border-green-500/30 bg-green-500/5 text-green-400 font-inter text-sm">
                     ✓ Thank you! We'll get back to you within 24 hours.
                   </div>
                 )}
                 {submitStatus === 'error' && (
-                  <div className="p-4 mb-6 border border-red-500/30 bg-red-500/5 text-red-400 font-outfit text-sm">
+                  <div className="p-4 mb-6 border border-red-500/30 bg-red-500/5 text-red-400 font-inter text-sm">
                     ✕ Something went wrong. Please try again or contact us directly.
                   </div>
                 )}
@@ -191,12 +191,12 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                   {/* Name */}
                   <div>
-                    <label className="block font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Your Name *</label>
+                    <label className="block font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Your Name *</label>
                     <input
                       id="name"
                       name="name"
                       type="text"
-                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-outfit font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
+                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-inter font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                       required
                       value={formData.name}
                       onChange={handleChange}
@@ -207,12 +207,12 @@ export default function Contact() {
                   {/* Email + Phone */}
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
-                      <label className="block font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Email Address *</label>
+                      <label className="block font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Email Address *</label>
                       <input
                         id="email"
                         name="email"
                         type="email"
-                        className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-outfit font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
+                        className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-inter font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                         required
                         value={formData.email}
                         onChange={handleChange}
@@ -220,12 +220,12 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <label className="block font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Phone Number</label>
+                      <label className="block font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Phone Number</label>
                       <input
                         id="phone"
                         name="phone"
                         type="tel"
-                        className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-outfit font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
+                        className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-inter font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+971 XX XXX XXXX"
@@ -235,12 +235,12 @@ export default function Contact() {
 
                   {/* Project Type */}
                   <div>
-                    <label className="block font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Project Type *</label>
+                    <label className="block font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Project Type *</label>
                     <input
                       id="projectType"
                       name="projectType"
                       type="text"
-                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-outfit font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
+                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-inter font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors"
                       required
                       value={formData.projectType}
                       onChange={handleChange}
@@ -250,11 +250,11 @@ export default function Contact() {
 
                   {/* Message */}
                   <div>
-                    <label className="block font-outfit text-[0.7rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Project Details *</label>
+                    <label className="block font-inter text-[0.6rem] font-bold tracking-[0.15em] uppercase text-muted-foreground mb-2">Project Details *</label>
                     <textarea
                       id="message"
                       name="message"
-                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-outfit font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors resize-none min-h-[140px]"
+                      className="w-full bg-background border border-white/10 px-5 py-3.5 text-white font-inter font-light text-sm focus:border-yellow/50 focus:outline-none transition-colors resize-none min-h-[140px]"
                       required
                       value={formData.message}
                       onChange={handleChange}
@@ -267,7 +267,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-yellow-500 text-white font-outfit text-[0.85rem] font-bold tracking-[0.2em] uppercase py-4 transition-all duration-300 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-yellow-500 text-white font-inter text-[0.85rem] font-bold tracking-[0.2em] uppercase py-4 transition-all duration-300 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -290,16 +290,16 @@ export default function Contact() {
 
         <div className="relative z-20 max-w-3xl mx-auto text-center">
           <motion.div {...fadeIn}>
-            <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Free Consultation</span>
+            <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500 mb-3 block">Free Consultation</span>
             <h2 className="text-section-title text-white mb-6 uppercase">
               Not Sure Where<br />
               <span className="text-yellow-500">To Start?</span>
             </h2>
-            <p className="font-outfit font-light text-textMuted text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+            <p className="font-inter font-light text-white/90 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
               Book a free consultation call and we'll help you define your vision,
               understand your requirements, and provide a structured production plan.
             </p>
-            <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[42px] py-[16px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+            <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[42px] py-[16px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
               Book Free Consultation
             </button>
           </motion.div>
@@ -313,7 +313,7 @@ export default function Contact() {
 /* ── Shared label style ── */
 const labelStyle = {
   display: 'block',
-  fontFamily: "'Outfit', sans-serif",
+  fontFamily: "var(--font-inter), sans-serif",
   fontWeight: 700,
   fontSize: '0.72rem',
   letterSpacing: '0.18em',

@@ -45,7 +45,7 @@ export default function Navigation() {
         <div className="max-w-[1300px] mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="no-underline flex items-center gap-0 group">
+            <Link href="/" className="no-underline flex items-center gap-2 group">
               <Image
                 src={scrolled ? "/about/logo.png" : "/about/logow.png"}
                 alt="Skylume Logo"
@@ -53,9 +53,14 @@ export default function Navigation() {
                 height={40}
                 className="transition-transform duration-300 group-hover:scale-110"
               />
-              <span className={`font-montserrat font-bold uppercase text-xl tracking-[0.08em] leading-none transition-colors duration-300 ml-1 ${scrolled ? 'text-black' : 'text-white'}`}>
-                Skylume
-              </span>
+              <div className={`flex flex-col transition-colors duration-300 ${scrolled ? 'text-black' : 'text-white'}`}>
+                <span className="font-inter font-bold uppercase text-xl lg:text-2xl tracking-[0.06em] leading-[0.9]">
+                  Skylume
+                </span>
+                <span className="font-inter font-semibold uppercase text-[9px] lg:text-[10px] tracking-[0.3em] leading-none mt-1 opacity-90">
+                  Production
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Nav */}
@@ -71,7 +76,7 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     className={[
-                      'no-underline font-outfit text-sm font-semibold tracking-[0.14em] uppercase transition-colors duration-300',
+                      'no-underline font-inter text-sm font-semibold tracking-[0.14em] uppercase transition-colors duration-300',
                       'relative pb-0.5',
                       isActive
                         ? 'text-yellow-500'
@@ -120,7 +125,7 @@ export default function Navigation() {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className={[
-                    'no-underline font-outfit text-sm font-bold tracking-[0.14em] uppercase',
+                    'no-underline font-inter text-sm font-bold tracking-[0.14em] uppercase',
                     'py-3 border-b border-white/5 transition-colors duration-200 flex items-center gap-3',
                     isActive
                       ? 'text-yellow-500'

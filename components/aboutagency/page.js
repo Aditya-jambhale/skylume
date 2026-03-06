@@ -19,7 +19,7 @@ const pillars = [
     {
         title: 'Detail',
         description:
-            'Editing, grading, sound design — precision in every final frame.',
+            'Editing, grading, sound design -precision in every final frame.',
         gif: '/gif/videoeditor.gif'
     }
 ]
@@ -50,10 +50,10 @@ export default function AgencyPillars() {
 
                         {/* Text Content */}
                         <div className="flex flex-col flex-1 mt-0 sm:mt-2">
-                            <h3 className="font-montserrat font-bold text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
+                            <h3 className="font-inter font-bold text-lg sm:text-xl text-white tracking-widest mb-1 sm:mb-2 transition-colors duration-300 group-hover:text-yellow-500 uppercase">
                                 {pillar.title}
                             </h3>
-                            <p className="font-outfit font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-textMuted leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
+                            <p className="font-inter  font-light text-[0.85rem] sm:text-[0.95rem] xl:text-[1rem] text-white/90 leading-relaxed transition-colors duration-300 group-hover:text-slate-200 line-clamp-2 sm:line-clamp-none">
                                 {pillar.description}
                             </p>
                         </div>

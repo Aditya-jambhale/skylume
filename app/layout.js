@@ -1,4 +1,4 @@
-import { Inter, Syne, Outfit, Montserrat } from 'next/font/google'
+import { Inter, Syne } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
@@ -6,8 +6,6 @@ import FloatingActions from '@/components/FloatingActions'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
-const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
 
 export const metadata = {
   title: 'Skylume Productions | Cinematic Video Production Dubai & India',
@@ -69,6 +67,7 @@ const jsonLd = {
     },
     {
       "@type": "VideoProductionCompany",
+      "@id": "https://skylumeproduction.com//#production",
       "name": "Skylume Productions",
       "description": "High-end cinematic video production for brands, real estate, and events in Dubai and India.",
       "hasOfferCatalog": {
@@ -96,20 +95,24 @@ const jsonLd = {
   ]
 }
 
+import SmoothScroll from '@/components/SmoothScroll'
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} ${syne.variable} ${outfit.variable} ${montserrat.variable} font-sans`}>
+      <body className={`${inter.variable} ${syne.variable} font-sans`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <FloatingActions />
+        <SmoothScroll>
+          <Navigation />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+          <FloatingActions />
+        </SmoothScroll>
       </body>
     </html>
   )

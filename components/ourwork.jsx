@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Play, X, ArrowUpRight } from 'lucide-react'
+import ScrollReveal from './ScrollReveal'
 
 // ─── YouTube ID Extractor ─────────────────────────────────────────────────────
 // Handles all YouTube URL formats:
@@ -228,11 +229,7 @@ function WorkCard({ item, onPlay }) {
     const [imgSrc, setImgSrc] = useState(`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`)
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        <div
             onClick={() => onPlay(item)}
             className="group relative aspect-video cursor-pointer overflow-hidden grayscale hover:grayscale-0 bg-[#0a0a0a]"
             style={{ borderRadius: '2px' }}
@@ -268,7 +265,7 @@ function WorkCard({ item, onPlay }) {
 
             {/* Category chip — top left, only on hover */}
             <div className="absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
-                <span className="font-outfit text-[0.6rem] tracking-[0.25em] uppercase text-yellow-400 bg-black/60 backdrop-blur-sm px-2.5 py-1 border border-yellow-400/20">
+                <span className="font-inter text-[0.6rem] tracking-[0.25em] uppercase text-yellow-400 bg-black/60 backdrop-blur-sm px-2.5 py-1 border border-yellow-400/20">
                     {item.category}
                 </span>
             </div>
@@ -276,7 +273,7 @@ function WorkCard({ item, onPlay }) {
             {/* Title — bottom, slides up on hover */}
             <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-400 ease-out">
                 <h3
-                    className="text-white font-black leading-tight uppercase font-montserrat"
+                    className="text-white font-black leading-tight uppercase font-inter"
                     style={{
                         fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
                         letterSpacing: '-0.01em',
@@ -285,7 +282,7 @@ function WorkCard({ item, onPlay }) {
                     {item.title}
                 </h3>
             </div>
-        </motion.div>
+        </div>
     )
 }
 
@@ -317,26 +314,23 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
 
             {/* ── Header ── */}
             <div className="container mx-auto px-6 max-w-[1300px] mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                    className="flex flex-col items-center text-center"
-                >
-                    <div className="w-full">
-                        <p className="font-outfit text-[0.7rem] text-center tracking-[0.5em] uppercase text-yellow-500 font-semibold mb-2">
-                            Selected Works
-                        </p>
-                        {!hideHeading && (
-                            <h2 className="text-white font-montserrat text-4xl md:text-5xl lg:text-6xl font-black uppercase font-semibold leading-none mt-4">
-                                Stories We <span className="text-yellow-500 ">Have Told</span>
-                            </h2>
-                        )}
+                <ScrollReveal animation="fade-up">
+                    <div className="flex flex-col items-center text-center">
+                        <div className="w-full">
+                            <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
+                                <Play size={12} className="text-white fill-white" />
+                                <span className="font-inter text-[0.6rem] font-bold tracking-[0.3em] uppercase text-white">
+                                    Selected Works
+                                </span>
+                            </div>
+                            {!hideHeading && (
+                                <h2 className="text-white font-inter text-[clamp(1.5rem,6vw,2.5rem)] font-black leading-[1.1] uppercase tracking-[0.1em] md:tracking-[0.2em] mt-4">
+                                    Stories We <span className="text-yellow-500 ">Have Told</span>
+                                </h2>
+                            )}
+                        </div>
                     </div>
-
-
-                </motion.div>
+                </ScrollReveal>
 
                 {/* Thin divider */}
                 <div className="mt-8 h-px bg-white/8" />
@@ -344,28 +338,31 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
 
             {/* ── Grid ── */}
             <div className="container mx-auto px-4 max-w-9xl">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    {visibleWorks.map((item) => (
-                        <WorkCard key={item.id} item={item} onPlay={open} />
-                    ))}
-                </div>
+                <ScrollReveal animation="stagger-list" stagger={0.08}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        {visibleWorks.map((item) => (
+                            <WorkCard key={item.id} item={item} onPlay={open} />
+                        ))}
+                    </div>
+                </ScrollReveal>
             </div>
 
             {!hideButton && (
                 <div className="container mx-auto px-6 max-w-[1300px] mt-16 flex justify-center">
-                    <Link href="/ourwork">
-                        <motion.button
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2 }}
-                            className="flex items-center gap-2 font-outfit text-[0.75rem] tracking-[0.25em] uppercase
+                    <ScrollReveal animation="fade-up" delay={0.3}>
+                        <Link href="/ourwork">
+                            <button
+                                className="flex items-center gap-2 font-inter text-[0.75rem] tracking-[0.25em] uppercase
                              text-white/50 hover:text-yellow-400 transition-colors duration-300 whitespace-nowrap font-bold"
-                        >
-                            View All Projects
-                            <ArrowUpRight size={14} />
-                        </motion.button>
-                    </Link>
+                            >
+                                View All Projects
+                                <ArrowUpRight size={14} />
+                            </button>
+                        </Link>
+                    </ScrollReveal>
                 </div>
             )}
+
             {/* ── Modal ── */}
             <AnimatePresence>
                 {active && (
@@ -411,7 +408,7 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
                             <div className="mt-5 flex items-center justify-between">
                                 <div>
                                     <h4
-                                        className="text-white font-black uppercase font-montserrat"
+                                        className="text-white font-black uppercase font-inter"
                                         style={{
                                             fontSize: '1.25rem',
                                             letterSpacing: '-0.01em',
@@ -419,7 +416,7 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
                                     >
                                         {active.title}
                                     </h4>
-                                    <p className="font-outfit text-[0.7rem] tracking-[0.2em] uppercase text-yellow-500 font-bold mt-2">
+                                    <p className="font-inter text-[0.6rem] tracking-[0.2em] uppercase text-yellow-500 font-bold mt-2">
                                         {active.category}
                                     </p>
                                 </div>
@@ -427,7 +424,7 @@ export default function OurWork({ hideHeading = false, hideButton = false }) {
                                     href={`https://www.youtube.com/watch?v=${extractYouTubeId(active.youtubeUrl)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 font-outfit text-[0.65rem] tracking-[0.2em] uppercase
+                                    className="flex items-center gap-1.5 font-inter text-[0.65rem] tracking-[0.2em] uppercase
                              text-white/40 hover:text-yellow-400 transition-colors duration-200 font-bold"
                                 >
                                     Watch on YouTube

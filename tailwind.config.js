@@ -17,9 +17,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        'montserrat': ['var(--font-montserrat)', 'sans-serif'],
-        'outfit': ['var(--font-outfit)', 'Inter', 'sans-serif'],
-        'sans': ['var(--font-montserrat)', 'system-ui', 'sans-serif'],
+        'inter': ['var(--font-inter)', 'sans-serif'],
+        'sans': ['var(--font-inter)', 'system-ui', 'sans-serif'],
         'bebas': ['Bebas Neue', 'sans-serif'],
         'barlow': ['Barlow', 'sans-serif'],
         'barlow-condensed': ['Barlow Condensed', 'sans-serif'],

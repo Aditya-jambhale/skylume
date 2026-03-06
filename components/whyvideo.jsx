@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import { Zap } from 'lucide-react'
 
 const whyPoints = [
   {
@@ -68,7 +69,7 @@ export default function WhyVideography() {
               {['80% higher conversion', '3× organic reach', 'Trust built in 8 seconds', 'Highest ROI asset', 'Cinematic Precision', 'Brand Storytelling'].map((t, ti) => (
                 <span key={ti} className="inline-flex items-center gap-4 px-12">
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 shrink-0" />
-                  <span className="font-outfit text-[0.75rem] font-bold tracking-[0.2em] uppercase text-white/40">{t}</span>
+                  <span className="font-inter text-[0.75rem] font-bold tracking-[0.2em] uppercase text-white/40">{t}</span>
                 </span>
               ))}
             </span>
@@ -79,27 +80,33 @@ export default function WhyVideography() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-12">
 
         {/* ───────────── HEADER ───────────── */}
-        <div className="mb-20">
+        <div className="mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
           >
-            <span className="font-outfit text-sm font-bold tracking-[0.3em] uppercase text-yellow-500 block mb-4">The Impact of Video</span>
-            <h2 className="font-section-title font-semibold text-[clamp(2.2rem,5vw,4.2rem)] leading-[0.9] tracking-tight text-white uppercase">
+            <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
+              <Zap size={14} className="text-white fill-white" />
+              <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
+                The Impact of Video
+              </span>
+            </div>
+            <h2 className="font-inter font-black text-[clamp(1.8rem,5vw,3.5rem)] leading-[1] tracking-tight text-white uppercase">
               WHY BRANDS INVEST<br />
               IN <span className="text-yellow-500">DIGITAL VIDEO</span>
             </h2>
-            <div className="w-24 h-1 bg-yellow-500 mt-8" />
+            <div className="w-16 h-px bg-yellow-500 mt-8" />
           </motion.div>
         </div>
 
         {/* ───────────── MAIN GRID ───────────── */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
 
           {/* LEFT CONTENT */}
-          <div className="space-y-12">
+          <div className="space-y-10 md:space-y-16">
             {whyPoints.map((item, i) => (
               <motion.div
                 key={i}
@@ -109,31 +116,32 @@ export default function WhyVideography() {
                 viewport={{ once: true }}
                 className="group relative"
               >
-                <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 text-center sm:text-left items-center sm:items-start">
+                <div className="flex flex-col sm:flex-row gap-10 md:gap-16 lg:gap-24 text-center sm:text-left items-center sm:items-start">
                   {/* Stat Card */}
-                  <div className="shrink-0">
-                    <div className="w-20 h-20 rounded-xl bg-pf-card border border-white/10 flex items-center justify-center transition-all duration-300 group-hover:border-yellow group-hover:bg-yellow-500/5 shadow-2xl">
-                      <span className="font-montserrat font-black text-2xl text-yellow-500 uppercase">
+                  <div className="shrink-0 flex flex-col items-center">
+                    <div className="w-20 h-20 md:w-28 md:h-28 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-500 group-hover:border-yellow-500 group-hover:bg-yellow-500/10 shadow-2xl relative overflow-hidden">
+                      <div className="absolute inset-x-0 bottom-0 h-1 bg-yellow-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                      <span className="font-inter font-black text-2xl md:text-4xl text-yellow-500 uppercase">
                         {item.stat}
                       </span>
                     </div>
-                    <span className="block mt-3 font-outfit text-[0.65rem] font-bold tracking-[0.15em] uppercase text-white/40 text-center">
+                    <span className="block mt-4 font-inter text-[0.6rem] md:text-[0.6rem] font-bold tracking-[0.25em] uppercase text-white/30">
                       {item.label}
                     </span>
                   </div>
 
                   {/* Info */}
-                  <div className="pt-2 flex flex-col items-center sm:items-start">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="font-montserrat font-black text-sm tracking-widest text-yellow-500/40 uppercase">{item.n}</span>
-                      <div className="h-px w-8 bg-yellow-500/20" />
+                  <div className="flex-1 flex flex-col items-center sm:items-start">
+                    <div className="flex items-center justify-center sm:justify-start gap-4 mb-6 w-full">
+                      <span className="font-inter font-black text-sm tracking-widest text-yellow-500/20 uppercase">{item.n}</span>
+                      <div className="h-px w-12 bg-yellow-500/10" />
                     </div>
 
-                    <h3 className="font-montserrat font-bold text-xl lg:text-2xl tracking-wide text-white mb-4 group-hover:text-yellow-500 transition-colors duration-300 uppercase">
+                    <h3 className="font-inter font-black text-xl md:text-2xl lg:text-3xl tracking-tight text-white mb-4 group-hover:text-yellow-500 transition-colors duration-300 uppercase leading-[1.1]">
                       {item.title}
                     </h3>
 
-                    <p className="font-outfit font-light text-[0.85rem] md:text-[0.95rem] text-textMuted leading-[1.7] max-w-[520px] transition-colors duration-300 group-hover:text-slate-200">
+                    <p className="font-inter font-light text-[0.9rem] md:text-[1.05rem] text-white/70 leading-relaxed max-w-xl transition-colors duration-300 group-hover:text-white/90 sm:text-justify lg:text-left">
                       {item.body}
                     </p>
                   </div>
@@ -146,11 +154,11 @@ export default function WhyVideography() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               viewport={{ once: true }}
-              className="pt-10 flex justify-center lg:justify-start"
+              className="pt-6 flex justify-center lg:justify-start"
             >
               <Link
                 href="/services"
-                className="inline-block bg-yellow-500 text-white font-outfit text-[0.75rem] sm:text-[0.85rem] md:text-[0.9rem] font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-8 sm:px-10 md:px-[48px] py-4 md:py-[18px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-12px)_0,100%_12px,100%_100%,12px_100%,0_calc(100%-12px))] hover:bg-yellow-600 hover:-translate-y-1 shadow-xl text-center"
+                className="btn-primary inline-block text-center w-full sm:w-auto"
               >
                 Scale Your Brand With Video
               </Link>
@@ -158,13 +166,13 @@ export default function WhyVideography() {
           </div>
 
           {/* RIGHT COLUMN: Video Mute Loop */}
-          <div className="relative lg:sticky lg:top-32">
+          <div className="relative lg:sticky lg:top-32 hidden md:block">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.8)]"
+              className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/5 shadow-[0_40px_100px_rgba(0,0,0,0.9)]"
             >
               {/* Loop Video */}
               <motion.div style={{ y: videoY }} className="absolute inset-[-5%]">
@@ -173,18 +181,17 @@ export default function WhyVideography() {
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover grayscale-[0.3] brightness-[0.8]"
+                  className="w-full h-full object-cover grayscale-[0.2] brightness-[0.7] contrast-[1.1]"
                 >
                   <source src="/hero/hero-bg.mp4" type="video/mp4" />
                 </video>
               </motion.div>
 
-              {/* Overlays */}
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" /> */}
-              {/* <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" /> */}
+              {/* Shade */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
               {/* Content on Video */}
-              <div className="absolute bottom-6 sm:bottom-10 left-6 sm:left-10 right-6 sm:right-10 z-10">
+              <div className="absolute bottom-10 left-10 right-10 z-10">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -192,19 +199,19 @@ export default function WhyVideography() {
                   viewport={{ once: true }}
                   className="flex flex-col gap-4"
                 >
-                  <div className="w-12 h-1 bg-yellow-500" />
-                  <p className="font-montserrat font-black text-2xl lg:text-3xl tracking-wider text-white leading-[1.1] uppercase">
-                    VIDEO IS A <span className="text-yellow-500">COMPOUNDING</span><br />
+                  <div className="w-12 h-0.5 bg-yellow-500" />
+                  <p className="font-inter font-black text-2xl lg:text-3xl tracking-tight text-white leading-[1.1] uppercase">
+                    VIDEO IS A <span className="text-yellow-500 italic">COMPOUNDING</span><br />
                     BRAND ASSET.
                   </p>
-                  <p className="font-outfit text-xs font-bold tracking-[0.2em] uppercase text-white/50">
+                  <p className="font-inter text-[0.65rem] font-bold tracking-[0.25em] uppercase text-white/40">
                     Cinema-grade production for modern brands
                   </p>
                 </motion.div>
               </div>
 
               {/* Subtle Ambient Light */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 blur-[100px] -z-10" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/5 blur-[100px] -z-10" />
             </motion.div>
           </div>
 

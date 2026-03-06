@@ -11,83 +11,47 @@ import {
 } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import ScrollReveal from '@/components/ScrollReveal'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const timeline = [
   {
-    year: '2019',
-    title: 'The Beginning',
-    img: ['/begg/beg1.jpeg', '/begg/beg3.jpeg'],
-    body: [
-      "This didn’t start in a studio. It started in a college room.",
-      "During lockdown, while everything felt uncertain, I wasn’t waiting for clarity — I was searching for direction.",
-      "Placements were unclear. Traditional paths didn’t feel aligned. So instead of waiting, I started learning.",
-      "Freelancing platforms. Editing tools. Digital skills. Most early attempts failed.",
-      "But failure didn’t stop the curiosity. It sharpened it."
-    ],
+    year: "2019",
+    title: "The Beginning",
+    img: ["/begg/beg1.jpeg", "/begg/beg3.jpeg"],
+    body: "This didn’t start in a studio. It started in a college room. During lockdown, while everything felt uncertain, I wasn’t waiting for clarity — I was searching for direction. Placements were unclear and traditional paths didn’t feel aligned, so instead of waiting I started learning. Freelancing platforms, editing tools, and digital skills became my focus. Most early attempts failed, but failure didn’t stop the curiosity — it sharpened it."
   },
   {
-    year: '2020',
-    title: 'Discovering Podcast Editing',
-    img: ['/podcast/pod1.png', '/podcast/pod2.png', '/podcast/pod3.png'],
-    body: [
-      "I didn’t chase trends. I studied them.",
-      "Long-form conversations were quietly rising. Podcasts weren’t mainstream yet — but they were powerful.",
-      "Instead of outsourcing the skill, I mastered it.",
-      "YouTube tutorials at 2AM. Re-editing the same clip five times. Learning pacing. Silence. Emotional rhythm.",
-      "For nearly two years, I focused on one thing: structured, high-retention podcast editing."
-    ],
+    year: "2020",
+    title: "Discovering Podcast Editing",
+    img: ["/podcast/pod1.png", "/podcast/pod2.png", "/podcast/pod3.png"],
+    body: "I didn’t chase trends, I studied them. Long-form conversations were quietly rising and podcasts weren’t mainstream yet, but they were powerful. Instead of outsourcing the skill, I decided to master it myself. YouTube tutorials at 2AM, re-editing the same clip five times, learning pacing, silence and emotional rhythm. For nearly two years, I focused on one thing — structured, high-retention podcast editing."
   },
   {
-    year: '2021',
-    title: 'The First Clients',
-    img: ['/client/fclient1.jpg', '/client/fclient2.jpeg'],
-    body: [
-      "The first order changes everything.",
-      "A small opportunity from an online community became weekly collaboration.",
-      "Weekly collaboration became long-term relationships.",
-      "Deadlines met. Quality delivered. Trust earned.",
-      "Uncertainty slowly turned into consistency."
-    ],
+    year: "2021",
+    title: "The First Clients",
+    img: ["/client/fclient1.jpg", "/client/fclient2.jpeg"],
+    body: "The first order changes everything. A small opportunity from an online community turned into weekly collaboration, and those collaborations became long-term client relationships. Deadlines were met, quality was delivered, and trust was earned. Slowly, uncertainty started turning into consistency."
   },
   {
-    year: '2022',
-    title: 'Expanding Through Platforms',
-    img: ['/expand/exp1.jpeg', '/expand/exp4.png', '/expand/exp5.jpeg'],
-    body: [
-      "This is where things scaled.",
-      "From my first order on Fiverr, momentum kept building.",
-      "Today, I have completed 437 podcast editing orders — all with 5-star feedback.",
-      "I earned the Top Rated badge on Fiverr for consistent quality and reliability.",
-      "One podcast I edited and structured moved from Top 10 to Top 1 in the world in its category.",
-      "Podcast editing was no longer freelance work. It became production-level execution."
-    ],
+    year: "2022",
+    title: "Expanding Through Platforms",
+    img: ["/expand/exp1.jpeg", "/expand/exp4.png", "/expand/exp5.jpeg"],
+    body: "This is where things started scaling. From my first order on Fiverr, momentum kept building. Today I have completed 437 podcast editing orders with consistent 5-star feedback, eventually earning the Top Rated badge on Fiverr. One podcast I edited and structured moved from Top 10 to Top 1 globally in its category. Podcast editing was no longer freelance work — it became production-level execution."
   },
   {
-    year: '2024',
-    title: 'Transition into Videography',
-    img: ['/trans/trans1.jpeg', '/trans/trans6.jpeg', '/trans/trans7.jpg'],
-    body: [
-      "Editing taught me control. Videography taught me vision.",
-      "The first documentary shoot changed everything.",
-      "Handling camera, framing emotion, designing light — storytelling began before post-production.",
-      "It wasn’t just cutting footage anymore.",
-      "It became full-scale production."
-    ],
+    year: "2024",
+    title: "Transition into Videography",
+    img: ["/trans/trans1.jpeg", "/trans/trans6.jpeg", "/trans/trans7.jpg"],
+    body: "Editing taught me control, but videography taught me vision. The first documentary shoot changed everything. Handling the camera, framing emotion, and designing light meant storytelling began before post-production. It wasn’t just about cutting footage anymore — it became about creating the story from the moment the camera started recording."
   },
   {
-    year: '2025',
-    title: 'Building Skylume Productions',
-    img: ['/build/build3.png', '/build/build1.jpg', '/build/build8.png'],
-    body: [
-      "At some point, freelancing isn’t enough.",
-      "Client work expanded. So did responsibility.",
-      "Instead of remaining a solo editor, I built a structured team — developers, designers, editors, and management support.",
-      "Skylume Productions was no longer an experiment.",
-      "It became a production house — combining podcast mastery with cinematic execution."
-    ],
-  },
-]
+    year: "2025",
+    title: "Building Skylume Productions",
+    img: ["/build/build3.png", "/build/build1.jpg", "/build/build8.png"],
+    body: "At some point freelancing stops being enough. As client work expanded, responsibility grew as well. Instead of remaining a solo editor, I started building a structured team including developers, designers, editors and management support. Skylume Productions stopped being an experiment and evolved into a full production house combining podcast mastery with cinematic execution."
+  }
+];
 
 const team = [
   {
@@ -131,23 +95,14 @@ const team = [
 
 // ─── Animation Helper ────────────────────────────────────────────────────────
 function Reveal({ children, className = "", delay = 0 }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-10% 0px" })
-
   return (
-    <div ref={ref} className={`relative ${className}`}>
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 30 },
-          visible: { opacity: 1, y: 0 },
-        }}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <ScrollReveal
+      animation="fade-up"
+      delay={delay}
+      className={className}
+    >
+      {children}
+    </ScrollReveal>
   )
 }
 
@@ -197,7 +152,7 @@ function TimelineDot({ isActive, onClick, year }) {
 
       {/* Label Tooltip */}
       <span
-        className={`absolute left-10 font-montserrat font-bold text-[0.65rem] tracking-[0.2em] transition-all duration-300 whitespace-nowrap
+        className={`absolute left-10 font-inter font-bold text-[0.65rem] tracking-[0.2em] transition-all duration-300 whitespace-nowrap
           ${isActive ? 'text-yellow-400 opacity-100 translate-x-0' : 'text-white/20 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}
         `}
       >
@@ -275,8 +230,8 @@ function CinematicImageLoop({ images = [], alt, inView }) {
       )}
 
       {/* Vignette & Overlays */}
-      <div className="absolute inset-0 z-20 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(0,0,0,0.6)_100%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-1/3 z-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+      {/* <div className="absolute inset-0 z-20 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,transparent_40%,rgba(0,0,0,0.6)_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-1/3 z-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" /> */}
 
       {/* Film scratch line */}
       {scratchPos > 0 && inView && (
@@ -330,7 +285,7 @@ function TimelineSection({
     <div
       ref={ref}
       id={`section-${item.year}`}
-      className="relative min-h-[120vh] flex items-center py-24 overflow-hidden"
+      className="relative min-h-[60vh] lg:min-h-[75vh] flex items-center py-10 lg:py-16 overflow-hidden"
     >
       {/* Watermark year */}
       <motion.div
@@ -340,7 +295,7 @@ function TimelineSection({
         <span
           className="font-black text-white leading-none whitespace-nowrap"
           style={{
-            fontSize: 'clamp(10rem, 30vw, 32rem)',
+            fontSize: 'clamp(8rem, 24vw, 24rem)',
             letterSpacing: '-0.04em',
           }}
         >
@@ -366,7 +321,7 @@ function TimelineSection({
             {/* Year chip */}
             <div className="mb-8">
               <span
-                className="inline-flex items-center gap-2 font-outfit text-[0.65rem] tracking-[0.4em] uppercase text-yellow-400 border border-yellow-400/20 bg-yellow-400/5 px-4 py-2"
+                className="inline-flex items-center gap-2 font-inter text-[0.65rem] tracking-[0.4em] uppercase text-yellow-400 border border-yellow-400/20 bg-yellow-400/5 px-4 py-2"
                 style={{ clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))' }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
@@ -376,9 +331,9 @@ function TimelineSection({
 
             {/* Title */}
             <h2
-              className="text-white leading-[0.9] mb-10 font-black font-montserrat font-semibold"
+              className="text-white leading-[0.9] mb-6 font-black font-inter font-semibold"
               style={{
-                fontSize: 'clamp(2.5rem, 5vw, 4.2rem)',
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
                 letterSpacing: '-0.02em',
               }}
             >
@@ -386,47 +341,44 @@ function TimelineSection({
             </h2>
 
             {/* Divider */}
-            <div className="flex items-center gap-6 mb-10">
+            <div className="flex items-center gap-6 mb-5">
               <div className="h-px w-16 bg-yellow-400" />
-              <div className="h-px flex-1 bg-white/10" />
+
             </div>
 
             {/* Body paragraphs */}
-            <div className="space-y-6">
-              {item.body.map((para, i) => (
-                <p
-                  key={i}
-                  className="leading-relaxed tracking-wide font-outfit font-semibold"
-                  style={{
-                    color: i === 0 ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.45)',
-                    fontSize: i === 0 ? '1.125rem' : '1rem',
-                    fontWeight: i === 0 ? '500' : '400',
-                  }}
-                >
-                  {para}
-                </p>
-              ))}
+            <div>
+              <p
+                className="leading-relaxed tracking-wide font-inter text-justify"
+                style={{
+                  color: "rgba(228, 223, 223, 0.95)",
+                  fontSize: "1.05rem",
+                  fontWeight: "500",
+                }}
+              >
+                {item.body}
+              </p>
             </div>
 
             {/* Index counter */}
             <div className="mt-14 flex items-center gap-4">
               <div className="flex items-baseline gap-1">
-                <span className="font-outfit text-yellow-400 text-4xl font-black leading-none italic">
+                <span className="font-inter text-yellow-400 text-4xl font-black leading-none italic">
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="font-outfit text-white/5 text-xl">/</span>
-                <span className="font-outfit text-white/10 text-xl">
+                <span className="font-inter text-white/20 text-xl">/</span>
+                <span className="font-inter text-white/20 text-xl">
                   {String(timeline.length).padStart(2, '0')}
                 </span>
               </div>
-              <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+
             </div>
           </div>
         </div>
       </motion.div>
 
       {/* Section bottom separator - Simplified */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5" />
+      {/* <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5" /> */}
     </div>
   )
 }
@@ -463,8 +415,8 @@ export default function About() {
         ref={wrapperRef}
         className="relative bg-background"
       >
-        {/* Left timeline rail - Fixed to follow the user */}
-        <div className="fixed left-6 lg:left-12 top-0 bottom-0 z-40 flex flex-col items-center py-32 pointer-events-none">
+        {/* Left timeline rail - Hidden on mobile, shown on lg+ for a clean experience */}
+        <div className="hidden lg:flex fixed left-12 top-0 bottom-0 z-40 flex flex-col items-center py-32 pointer-events-none">
           <div className="relative flex flex-col items-center h-[60vh] my-auto w-px bg-white/5">
             <TimelineProgressLine progress={smoothJourneyProgress} />
 
@@ -501,16 +453,12 @@ export default function About() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
-
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 max-w-5xl"
-          >
-            <p className="font-montserrat font-semibold text-[0.68rem] tracking-[0.5em] uppercase text-yellow-400 mb-8 font-black">
+          <ScrollReveal animation="fade-up" duration={1.5} className="relative z-10 max-w-5xl">
+            <p className="font-inter font-semibold text-[0.68rem] tracking-[0.5em] uppercase text-yellow-400 mb-8 font-black">
               The Evolution
             </p>
             <h1
@@ -520,25 +468,15 @@ export default function About() {
               <br />
               <span className="text-yellow-400 italic">Consistent Growth.</span>
             </h1>
-            <p className="text-white/60 text-lg font-light tracking-wide max-w-2xl mx-auto leading-relaxed font-outfit">
+            <p className="text-white/60 text-lg font-light tracking-wide max-w-2xl mx-auto leading-relaxed font-inter">
               Every milestone was earned. Every phase was a deliberate step toward building a legacy in motion.
             </p>
-          </motion.div>
+          </ScrollReveal>
 
-          {/* Scroll cue (centered) */}
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute bottom-12 flex flex-col items-center gap-4"
-          >
-            <span className="font-mono text-[0.6rem] tracking-[0.3em] uppercase text-white/30 [writing-mode:vertical-lr]">Scroll</span>
-            <div className="w-px h-16 bg-gradient-to-b from-yellow-400 to-transparent" />
-          </motion.div> */}
         </div>
 
-        {/* Timeline entries container */}
-        <div ref={timelineEntriesRef} className="pl-16 lg:pl-32">
+        {/* Timeline entries container - Remove excessive left padding on mobile */}
+        <div ref={timelineEntriesRef} className="pl-0 lg:pl-32">
           {timeline.map((item, i) => (
             <TimelineSection
               key={i}
@@ -550,18 +488,18 @@ export default function About() {
         </div>
 
         {/* End cap */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="relative z-10 py-24 pl-20 lg:pl-28 flex flex-col gap-2"
+          className="relative z-10 py-24 px-6 lg:pl-28 flex flex-col gap-2"
         >
           <div className="flex items-center gap-4 mb-4">
             <div className="w-4 h-4 rounded-full bg-yellow-400 shadow-[0_0_24px_rgba(250,204,21,0.8)]" />
             <div className="h-px w-24 bg-yellow-400/40" />
           </div>
-          <p className="font-outfit text-xs tracking-[0.3em] uppercase text-yellow-400/60">
+          <p className="font-inter text-xs tracking-[0.3em] uppercase text-yellow-400/60">
             Chapter Continues
           </p>
           <p
@@ -574,12 +512,10 @@ export default function About() {
           >
             The Frame is Still Rolling.
           </p>
-        </motion.div>
+        </motion.div> */}
 
         <section className="bg-background py-28 relative overflow-hidden">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(234,179,8,0.05)_0%,transparent_70%)]"
-          />
+
           <div
             className="about-vision-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
                      font-bebas tracking-[0.15em] pointer-events-none select-none whitespace-nowrap
@@ -590,7 +526,7 @@ export default function About() {
 
           <div className="container mx-auto px-6 max-w-5xl text-center relative z-10">
             <Reveal>
-              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The Vision</span>
+              <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The Vision</span>
               <h2 className="text-section-title text-white mt-4 uppercase">
                 The Vision Behind <span className="text-yellow-500">Skylume</span>
               </h2>
@@ -614,8 +550,8 @@ export default function About() {
                              hover:border-yellow/30"
                   >
                     <div className="text-3xl mb-4">{v.icon}</div>
-                    <h3 className="font-montserrat font-bold text-xl text-white tracking-[0.05em] mb-3 uppercase">{v.title}</h3>
-                    <p className="text-textMuted text-sm leading-relaxed font-outfit">{v.body}</p>
+                    <h3 className="font-inter font-bold text-xl text-white tracking-[0.05em] mb-3 uppercase">{v.title}</h3>
+                    <p className="text-white/90 text-sm leading-relaxed font-inter">{v.body}</p>
                     <div className="about-card-sweep absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500" />
                   </motion.div>
                 </Reveal>
@@ -630,12 +566,12 @@ export default function About() {
         <section className="bg-background py-28">
           <div className="container mx-auto px-6 max-w-6xl">
             <Reveal className="mb-12">
-              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The People</span>
+              <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The People</span>
               <h2 className="text-section-title text-white mt-4 mb-3 uppercase">
                 Meet the Team
               </h2>
               <div className="w-10 h-0.5 mb-4 bg-yellow-500" />
-              <p className="text-textMuted text-sm max-w-md leading-relaxed font-outfit">
+              <p className="text-white/90 text-sm max-w-md leading-relaxed font-inter">
                 Every great production is a collective. Skylume is built by individuals who care deeply about their craft.
               </p>
             </Reveal>
@@ -660,13 +596,13 @@ export default function About() {
                       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
                     </div>
                     <div className="p-5">
-                      <h3 className="font-montserrat font-black text-xl text-white tracking-[0.05em] leading-none mb-1 uppercase">
+                      <h3 className="font-inter font-black text-xl text-white tracking-[0.05em] leading-none mb-1 uppercase">
                         {member.name}
                       </h3>
-                      <p className="font-outfit text-[0.7rem] font-bold tracking-[0.11em] uppercase text-yellow-400 mb-1.5">
+                      <p className="font-inter text-[0.6rem] font-bold tracking-[0.11em] uppercase text-yellow-400 mb-1.5">
                         {member.role}
                       </p>
-                      <p className="text-textMuted text-xs leading-relaxed font-outfit">{member.note}</p>
+                      <p className="text-white/90 text-xs leading-relaxed font-inter">{member.note}</p>
                     </div>
                   </motion.div>
                 </Reveal>
@@ -703,14 +639,14 @@ export default function About() {
               style={{ y: quoteTextY }}
               className="container mx-auto px-6 max-w-3xl text-center relative z-20"
             >
-              <div className="font-outfit text-[5rem] leading-none mb-[-1.25rem] text-yellow-500 opacity-20">"</div>
-              <blockquote className="font-montserrat font-black italic text-[clamp(1.5rem,2.8vw,2.4rem)] text-white
+              <div className="font-inter text-[5rem] leading-none mb-[-1.25rem] text-yellow-500 opacity-20">"</div>
+              <blockquote className="font-inter font-black italic text-[clamp(1.5rem,2.8vw,2.4rem)] text-white
                                    tracking-[0.03em] leading-[1.2] mb-10">
                 Every camera I picked up, every project I delivered - it was never about the equipment.
                 It was always about the story.
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-yellow/30 flex-shrink-0 font-outfit">
+                <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-yellow/30 flex-shrink-0 font-inter">
                   <Image
                     src="/team/yusuf.png"
                     alt="Yusuf"
@@ -718,9 +654,9 @@ export default function About() {
                     className="object-cover"
                   />
                 </div>
-                <div className="text-left font-outfit">
-                  <div className="text-white font-black text-sm uppercase tracking-wider font-montserrat">Yusuf</div>
-                  <div className="font-outfit text-[0.66rem] font-bold tracking-[0.12em] uppercase text-textMuted">
+                <div className="text-left font-inter">
+                  <div className="text-white font-black text-sm uppercase tracking-wider font-inter">Yusuf</div>
+                  <div className="font-inter text-[0.66rem] font-bold tracking-[0.12em] uppercase text-white/90">
                     Founder, Skylume Productions
                   </div>
                 </div>
@@ -735,21 +671,21 @@ export default function About() {
         <section className="bg-background py-24 text-center">
           <Reveal>
             <div className="container mx-auto px-6 max-w-lg">
-              <span className="font-outfit text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">Work With Us</span>
+              <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-500">Work With Us</span>
               <h2 className="text-section-title text-white mt-4 mb-4 uppercase">
                 Ready to Tell Your Story?
               </h2>
-              <p className="text-textMuted text-sm leading-relaxed mb-8 font-outfit">
+              <p className="text-white/90 text-sm leading-relaxed mb-8 font-inter">
                 If your brand deserves production that is deliberate and cinematic, let's build it together.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link href="/contact">
-                  <button className="bg-yellow-500 text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+                  <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[14px] border-none cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
                     Get In Touch
                   </button>
                 </Link>
                 <Link href="/services">
-                  <button className="bg-transparent text-white font-outfit text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
+                  <button className="bg-transparent text-white font-inter text-[0.82rem] font-bold tracking-[0.18em] uppercase px-[36px] py-[13px] border border-yellow/50 cursor-pointer transition-all duration-250 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:border-yellow hover:text-yellow-500 hover:bg-yellow-500/5">
                     View Our Work
                   </button>
                 </Link>
@@ -757,7 +693,7 @@ export default function About() {
             </div>
           </Reveal>
         </section>
-      </section>
+      </section >
     </>
   )
 }
