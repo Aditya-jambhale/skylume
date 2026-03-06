@@ -23,9 +23,9 @@ const serviceLinks = [
 ]
 
 const socials = [
-  { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Instagram, href: 'https://www.instagram.com/skylumeproduction/', label: 'Instagram' },
+  { icon: Youtube, href: 'https://www.youtube.com/@skylumeproduction', label: 'YouTube' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/digitallyusuf/', label: 'LinkedIn' },
 ]
 
 export default function Footer() {
@@ -162,13 +162,13 @@ export default function Footer() {
                 <li className="flex items-start gap-3">
                   <MapPin size={15} className="text-yellow-500 flex-shrink-0 mt-0.5" />
                   <span className="font-inter font-light text-sm text-white/90 leading-relaxed">
-                    India | Dubai, UAE
+                    India &bull; Dubai &bull; UAE &bull;
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={15} className="text-yellow-500 flex-shrink-0" />
                   <a
-                    href="tel:+971XXXXXXXXX"
+                    href="tel:+91XXXXXXXXXX"
                     className="no-underline font-inter font-light text-sm text-white/90 hover:text-white transition-colors duration-200"
                   >
                     +91
