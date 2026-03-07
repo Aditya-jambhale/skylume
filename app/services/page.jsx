@@ -8,119 +8,174 @@ import { CheckCircle, ArrowRight, Play } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 
 // ─── Services Data ────────────────────────────────────────────────────────────
-const allServices = [
+const categorizedServices = [
   {
-    id: "viral-shorts",
-    title: "Viral social media Shorts",
-    src: "/services/reel.png",
-    valueProp: "Rapid-fire cinematic content built for high-speed engagement.",
-    outcome: "Increased reach, engagement, and follower growth across social platforms.",
-    overview: "We specialize in condensing complex messages into short, high-production videos that hit hard and stick in the viewer's memory. Optimized for Instagram Reels, YouTube Shorts, and TikTok.",
-    deliverables: ["Vertical Cinematic Shorts", "High-Energy Hype Clips", "Trend-Aligned Content", "Engagement-Driven Snippets"],
-    process: "Hook Analysis → High-Energy Production → Fast-cut Edit → Sound Design → Final Delivery"
+    category: "Production",
+    services: [
+      {
+        id: "commercial-films",
+        title: "Commercial & Brand Films",
+        src: "/services/promotional brand.png",
+        valueProp: "High-end cinematic films built to elevate brand authority.",
+        outcome: "A professional brand asset that solves business problems and builds trust.",
+        overview: "We create visuals that drive meaning. From high-end TVCs to brand manifestos, our production is geared towards creative clarity and cinematic precision.",
+        deliverables: ["Brand Identity Film", "Commercial Advertisements", "Product Showcases", "Corporate Vision Films"],
+        process: "Brand Discovery → Script development → Cinematic Production → Precision Edit → Color Grading"
+      },
+      {
+        id: "documentary-shoot",
+        title: "Documentary Production",
+        src: "/services/bts.png",
+        valueProp: "Humanizing complex narratives through authentic documentation.",
+        outcome: "An emotional, resonant story that builds deep brand connection.",
+        overview: "Our documentary services focus on authentic storytelling. We dive deep into subjects to capture the raw, real, and resonant moments that define human experience.",
+        deliverables: ["Full-length Documentary Film", "Social Highlight Clips", "Raw Archive Footage", "Behind-the-scenes Coverage"],
+        process: "Subject Research → Long-term Documentation → Story Mining → Narrative Edit → Cinematic Soundscape"
+      },
+      {
+        id: "event-production",
+        title: "Event Photography & Videography",
+        src: "/services/eventfilm.png",
+        valueProp: "Capturing the scale and energy of your most significant milestones.",
+        outcome: "A comprehensive archive and high-impact event highlight film.",
+        overview: "From global conferences to exhibitions, we capture the atmosphere and key moments without disrupting the flow. Full-scale coverage with professional stills and video.",
+        deliverables: ["Event Highlight Aftermovie", "Professional Photography Suite", "Speaker Keynotes", "Attendee Interview Compilations"],
+        process: "Site Survey → Multi-cam Live Capture → On-site Same-day Edits → Post-event Full Cut"
+      },
+      {
+        id: "wedding-coverage",
+        title: "Wedding Films & Photography",
+        src: "/services/wedding.png",
+        valueProp: "Preserving your legacy through cinematic emotion.",
+        outcome: "A timeless wedding film that captures the soul of your celebration.",
+        overview: "We approach weddings like cinema. Our focus is on the emotional nuances, the family legacy, and the grandeur of the celebration.",
+        deliverables: ["Cinematic Wedding Film", "High-Energy Wedding Trailer", "Family Legacy Interviews", "Full Documentation of Rituals"],
+        process: "Couple Pre-consultation → Multi-location Shoot → Emotional Story Mining → Narrative Edit"
+      },
+      {
+        id: "real-estate-visuals",
+        title: "Real Estate Visuals",
+        src: "/services/realestate.png",
+        valueProp: "Showcasing properties with cinematic drone and interior shots.",
+        outcome: "High-impact visual assets that drive faster sales and interest.",
+        overview: "We capture real estate with technical precision. Wide-angle cinematic walkthroughs combined with drone perspectives provide a comprehensive look at premium properties.",
+        deliverables: ["Premium Property Walkthrough", "Drone Aerial Tours", "Interior Architectural Shoots", "Social Media Real Estate Clips"],
+        process: "Property Prep → Low-light Interior Shoot → Drone Exterior Capture → Stabilized Motion Edit"
+      },
+      {
+        id: "tour-videography",
+        title: "Travel & Tourism Productions",
+        src: "/services/corporate.png",
+        valueProp: "Dynamic documentation for travel and tourism leadership.",
+        overview: "We follow the journey. Whether it's a luxury tour or a destination-based campaign, we capture the spirit of exploration with high-end visuals.",
+        deliverables: ["Destination Highlight Film", "Journey Documentary", "Travel Brand Promos", "POV Travel Snippets"],
+        process: "Travel Itinerary Sync → Dynamic Multi-loc Shoot → Visual Storytelling edit → Color Matching"
+      },
+      {
+        id: "drone-shoot",
+        title: "Aerial & Drone Cinematography",
+        src: "/services/drone.png",
+        valueProp: "Scale from a higher perspective.",
+        outcome: "Breath-taking aerial visuals that signal premium production value.",
+        overview: "Professional drone cinematography adds grandeur. FPV and cinematic drone shots provide a dynamic look that standard cameras cannot reach.",
+        deliverables: ["4K High-DR Aerial Footage", "FPV Flythroughs", "Landscape Dynamic Shots", "Event Scale Coverage"],
+        process: "Permission & Flight Planning → On-site Aerial Shoot → Shot Selection → Post-production Stabilization"
+      }
+    ]
   },
   {
-    id: "event-production",
-    title: "Event photography & videography",
-    src: "/services/eventfilm.png",
-    valueProp: "Capturing the scale and energy of your most significant live milestones.",
-    outcome: "A comprehensive video archive and a high-impact event highlight film.",
-    overview: "From global conferences to intimate industry gatherings, we capture the atmosphere and key moments without disrupting the flow of your event. Full-scale coverage with professional stills and video.",
-    deliverables: ["Event Highlight Aftermovie", "Professional Photography Suite", "Speaker Keynotes", "Attendee Interview Compliations"],
-    process: "Site Survey → Multi-cam Live Capture → On-site Same-day Edits → Post-event Full Cut → Archival Delivery"
+    category: "Content Production",
+    services: [
+      {
+        id: "podcast-production",
+        title: "Podcast Production",
+        src: "/services/interview.png",
+        valueProp: "Elevating podcasts with multi-camera cinematic production.",
+        outcome: "A professional video-first podcast that signals authority.",
+        overview: "We handle the technical complexity. From multi-cam video setups to professional audio mixing, we make your podcast look like a high-end broadcast.",
+        deliverables: ["Multi-cam Video Podcast", "Social Media Cutdowns", "Audio-optimized Distribution Files", "Intro/Outro Branding"],
+        process: "Room Setup & Accoustics → Multi-cam Live Direction → Multi-track Audio Mix → Visual Overlay"
+      },
+      {
+        id: "long-form-youtube",
+        title: "YouTube Video Production",
+        src: "/services/promotional brand.png",
+        valueProp: "In-depth content strategy for high-retention education and entertainment.",
+        outcome: "A detailed authority-building asset for your channel.",
+        overview: "We produce extended content that maintains engagement. Ideal for educational courses, industry breakdowns, or entertainment series.",
+        deliverables: ["Educational Video Series", "In-depth Industry Analysis", "Retention-focused Edits", "Custom Thumbnails & Assets"],
+        process: "Structure Development → Scripting Support → Batch Production Shoot → Retention Edit"
+      },
+      {
+        id: "viral-shorts",
+        title: "Social Media Content Creation",
+        src: "/services/reel.png",
+        valueProp: "Rapid-fire cinematic content built for high-speed engagement.",
+        outcome: "Increased reach and follower growth across social platforms.",
+        overview: "We specialize in condensing complex messages into short, high-production videos. Optimized for Instagram Reels, YouTube Shorts, and TikTok.",
+        deliverables: ["Vertical Cinematic Shorts", "High-Energy Hype Clips", "Trend-Aligned Content", "Engagement-Driven Snippets"],
+        process: "Hook Analysis → High-Energy Production → Fast-cut Edit → Sound Design"
+      }
+    ]
   },
   {
-    id: "wedding-coverage",
-    title: "Wedding Coverage",
-    src: "/services/wedding.png",
-    valueProp: "Preserving your legacy through cinematic emotion.",
-    outcome: "A timeless wedding film that captures the soul of your celebration.",
-    overview: "We approach weddings like cinema. Our focus is on the emotional nuances, the family legacy, and the grandeur of the celebration, delivered in a film you'll watch for decades.",
-    deliverables: ["Cinematic Wedding Film", "High-Energy Wedding Trailer", "Family Legacy Interviews", "Full Documentation of Rituals"],
-    process: "Couple Pre-consultation → Multi-location Shoot → Emotional Story Mining → Narrative Edit → Custom Soundtrack Mix"
-  },
-  {
-    id: "documentary-shoot",
-    title: "Documentary Shoot",
-    src: "/services/bts.png",
-    valueProp: "Humanizing complex narratives through authentic documentation.",
-    outcome: "An emotional, resonant story that builds deep brand connection.",
-    overview: "Our documentary services focus on authentic storytelling. We dive deep into subjects to capture the raw, real, and resonant moments that define human experience and brand history.",
-    deliverables: ["Full-length Documentary Film", "Social Highlight Clips", "Raw Archive Footage", "Behind-the-scenes Coverage"],
-    process: "Subject Research → Long-term Documentation → Story Mining → Narrative Edit → Cinematic Soundscape"
-  },
-  {
-    id: "long-form-youtube",
-    title: "Long form YouTube Videos",
-    src: "/services/promotional brand.png",
-    valueProp: "In-depth content strategy for high-retention education and entertainment.",
-    outcome: "A detailed authority-building asset for your channel or platform.",
-    overview: "We produce extended content that maintains engagement. Ideal for educational courses, detailed industry breakdowns, or entertainment series that require high production value.",
-    deliverables: ["Educational Video Series", "In-depth Industry Analysis", "Long-form Entertainment Content", "Masterclass Production"],
-    process: "Structure Development → Scripting Support → Batch Production Shoot → Retention-focused Editing → Final Delivery"
-  },
-  {
-    id: "podcast-production",
-    title: "Podcast Production",
-    src: "/services/interview.png",
-    valueProp: "Elevating the podcast experience with multi-camera cinematic production.",
-    outcome: "A professional video-first podcast that signals structure and authority.",
-    overview: "We handle the technical complexity of modern podcasting. From multi-cam video setups to professional audio mixing, we make your podcast look like a Skylume-time broadcast.",
-    deliverables: ["Multi-cam Video Podcast", "Social Media Cutdowns", "Audio-optimized Distribution Files", "Intro/Outro Branding"],
-    process: "Room Setup & Accoustics → Multi-cam Live Direction → Multi-track Audio Mix → Visual Overlay & Branding → Weekly Delivery"
-  },
-  {
-    id: "drone-shoot",
-    title: "Drone Shoot",
-    src: "/services/drone.png",
-    valueProp: "Scale from a higher perspective.",
-    outcome: "Breath-taking aerial visuals that signal premium production value.",
-    overview: "Professional drone cinematography adds a layer of grandeur to any production. FPV and cinematic drone shots provide a dynamic look that standard cameras cannot reach.",
-    deliverables: ["4K High-DR Aerial Footage", "FPV Flythroughs", "Landscape Dynamic Shots", "Event Scale Coverage"],
-    process: "Permission & Flight Planning → On-site Aerial Shoot → Shot Selection → Post-production Stabilization → Final Color Match"
-  },
-  {
-    id: "tour-videography",
-    title: "Tour Videography",
-    src: "/services/corporate.png",
-    valueProp: "Dynamic documentation for travel and tourism leadership.",
-    outcome: "Enchanting travel content that inspires and moves global audiences.",
-    overview: "We follow the journey. Whether it's a luxury tour, a destination-based campaign, or a personal travel story, we capture the spirit of exploration with high-end visuals.",
-    deliverables: ["Destination Highlight Film", "Journey Documentary", "Travel Brand Promos", "Point-of-view Travel Snippets"],
-    process: "Travel Itinerary Sync → Dynamic Multi-loc Shoot → Visual Storytelling edit → Color Matching to Destination → Delivery"
-  },
-  {
-    id: "dubai-sightseeing",
-    title: "Dubai Sightseeing Shoot",
-    src: "/services/realestate.png",
-    valueProp: "Exclusive cinematic production capturing the grandeur of Dubai.",
-    outcome: "World-class visual assets that dominate global social media and travel platforms.",
-    overview: "Capturing Dubai's iconic landmarks requires technical precision and creative vision. We produce high-end sightseeing content specifically tailored for global digital audiences.",
-    deliverables: ["Landmark Feature Films", "Sightseeing Highlight Reels", "Press Release Video Assets", "Global Social Cutdowns"],
-    process: "Permit Acquisition → Landmark Selection → Cinematic Production → Viral Cut Editing → Final Global Release"
-  },
-  {
-    id: "real-estate-videography",
-    title: "Real Estate Videography",
-    src: "/services/realestate.png",
-    valueProp: "Cinematic production capturing the grandeur of real estate.",
-    outcome: "World-class visual assets that dominate global social media and travel platforms.",
-    overview: "Capturing real estate requires technical precision and creative vision. We produce high-end real estate content specifically tailored for global digital audiences.",
-    deliverables: ["Landmark Feature Films", "Sightseeing Highlight Reels", "Press Release Video Assets", "Global Social Cutdowns"],
-    process: "Property Walkthrough → Cinematic Production → Viral Cut Editing → Final Global Release"
+    category: "Post-Production",
+    services: [
+      {
+        id: "long-edit",
+        title: "Long-Form Editing",
+        src: "/services/bts.png",
+        valueProp: "Polished narrative editing for depth and pacing.",
+        outcome: "A professional final cut that holds viewer attention for extended durations.",
+        overview: "Editing is where the story truly lives. We specialize in long-form narrative structure, ensuring pacing and emotion are perfectly balanced.",
+        deliverables: ["Documentary Final Cuts", "Feature Film Editing", "Digital Series Assembly", "Educational Course Curation"],
+        process: "Footage Organization → Rough Cut Assembly → Narrative Flow Review → Final Polish"
+      },
+      {
+        id: "short-edit",
+        title: "Short-Form Editing",
+        src: "/services/reel.png",
+        valueProp: "Fast-paced editing for maximum impact.",
+        outcome: "High-retention clips that drive rapid social engagement.",
+        overview: "We turn raw footage into high-speed narratives. Our editing focus is on the 'hook' and maintaining pace throughout the short-form experience.",
+        deliverables: ["Social Media Reel Edits", "Ad Campaign Snippets", "Hype Trailers", "Rapid Content Iterations"],
+        process: "Hook Selection → Rhythm-based Cut → Sound Design Sync → Dynamic Subtitles"
+      },
+      {
+        id: "motion-graphics",
+        title: "Motion Graphics & Visual Effects",
+        src: "/services/promotional brand.png",
+        valueProp: "Advanced dynamic visuals for modern productions.",
+        outcome: "Visually stunning additions that clarify complex information and add polish.",
+        overview: "From title design to complex 2D/3D explainers, we add the visual layer that makes a production feel premium and professional.",
+        deliverables: ["Title & Lower Thirds", "Explainer Animations", "VFX Clean-up", "Dynamic Logo Stings"],
+        process: "Storyboard Design → Asset Creation → Motion Animation → Integration & Rendering"
+      },
+      {
+        id: "color-grading",
+        title: "Professional Color Grading",
+        src: "/services/drone.png",
+        valueProp: "Industry-standard cinematic look development.",
+        outcome: "A cohesive, cinematic visual style that defines your brand's look.",
+        overview: "Color grading is the final cinematic touch. We develop custom look profiles (LUTs) and perform detailed color correction to ensure consistency and mood.",
+        deliverables: ["Custom Cinematic LUTs", "Color Correction Passes", "Shot Matching & Balancing", "Stylized Look Development"],
+        process: "Color Balancing → Skin Tone Correction → Creative Grading → Final Master Rendering"
+      }
+    ]
   }
 ]
+const allServicesFlat = categorizedServices.flatMap(c => c.services)
 
 // ─── Individual Service Section ──────────────────────────────────────────────
 function ServiceSection({ service }) {
   return (
-    <section id={service.id} className="py-24 border-b border-white/5 scroll-mt-20">
-      <div className="container mx-auto px-6 max-w-8xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+    <ScrollReveal animation="fade-up">
+      <section id={service.id} className="py-24 border-b border-white/5 scroll-mt-20">
+        <div className="container mx-auto px-6 max-w-8xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-          {/* Content Column */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <ScrollReveal animation="fade-up">
+            {/* Content Column */}
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)] mx-auto lg:mx-0">
                 <Play size={12} className="text-white fill-white" />
                 <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
@@ -179,12 +234,10 @@ function ServiceSection({ service }) {
                   </button>
                 </Link>
               </div>
-            </ScrollReveal>
-          </div>
+            </div>
 
-          {/* Visual Column - Actual Image Display */}
-          <div className="relative pt-10">
-            <ScrollReveal animation="fade-in" delay={0.2}>
+            {/* Visual Column - Actual Image Display */}
+            <div className="relative pt-10">
               <div className="aspect-[4/5] relative rounded-2xl overflow-hidden border border-yellow-500/20 group hover-lift shadow-2xl">
                 <Image
                   src={service.src}
@@ -202,11 +255,11 @@ function ServiceSection({ service }) {
                   </h3>
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </ScrollReveal>
   )
 }
 
@@ -257,19 +310,19 @@ export default function ServicesPage() {
             initial={{ x: 0 }}
             animate={{ x: ['0%', '-50%'] }}
             transition={{
-              duration: 35,
+              duration: 45,
               ease: 'linear',
               repeat: Infinity,
             }}
             className="flex items-center gap-12 md:gap-24 whitespace-nowrap px-10 hover:[animation-play-state:paused]"
           >
-            {[...allServices, ...allServices].map((service, i) => (
+            {[...allServicesFlat, ...allServicesFlat].map((service, i) => (
               <button
                 key={`${service.id}-${i}`}
                 onClick={() => {
                   const el = document.getElementById(service.id);
                   if (el) {
-                    const yOffset = -140;
+                    const yOffset = -200;
                     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
                     window.scrollTo({ top: y, behavior: 'smooth' });
                   }
@@ -283,10 +336,28 @@ export default function ServicesPage() {
         </div>
       </div>
 
-      {/* CONTENT REEL */}
+      {/* CONTENT REEL BY CATEGORY */}
       <div className="bg-background">
-        {allServices.map((service, j) => (
-          <ServiceSection key={j} service={service} />
+        {categorizedServices.map((cat, i) => (
+          <div key={i} className="relative">
+            {/* Category Header Section */}
+            <div className="bg-black/40 py-20 border-y border-white/5 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="container mx-auto px-6 relative z-10">
+                <ScrollReveal animation="fade-right">
+                  <span className="font-inter text-[0.7rem] font-bold tracking-[0.4em] uppercase text-yellow-500/60 block mb-2">Category {i + 1}</span>
+                  <h2 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">
+                    {cat.category}
+                  </h2>
+                </ScrollReveal>
+              </div>
+            </div>
+
+            {/* Services in this category */}
+            {cat.services.map((service, j) => (
+              <ServiceSection key={service.id} service={service} />
+            ))}
+          </div>
         ))}
       </div>
 

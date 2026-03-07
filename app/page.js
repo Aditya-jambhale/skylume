@@ -177,50 +177,64 @@ export default function Home() {
             </video>
           </div>
           {/* Cinematic Shade - Multi-layer overlay for depth */}
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+          {/* <div className="absolute inset-0 bg-black/40" /> */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
         </div>
 
         {/* Content */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-10 text-center px-6 max-w-7xl mx-auto"
         >
           {/* Headline — Grouped for better alignment and responsive scaling */}
           <div className="flex flex-col items-center mb-8">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="mb-6"
+              initial={{ opacity: 0, y: 180, scale: 0.5, rotate: -15 }}
+              animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+              transition={{
+                delay: 0.8,
+                duration: 1.6,
+                ease: [0.22, 1, 0.36, 1]
+              }}
+              className="mb-4 relative z-0 pointer-events-none"
             >
               <Image
                 src="/about/logow.png"
                 alt="Skylume Logo"
                 width={80}
                 height={80}
-                className="opacity-90"
+                className="opacity-80 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]"
                 style={{ height: 'auto' }}
               />
             </motion.div>
-            <h1 className="font-inter text-[clamp(2.5rem,10vw,6rem)] font-black leading-none uppercase tracking-[0.1em] text-white italic">
+            <motion.h1
+              initial={{ opacity: 0, y: 40, letterSpacing: '0.2em' }}
+              animate={{ opacity: 1, y: 0, letterSpacing: '0.08em' }}
+              transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 font-inter text-[clamp(2.5rem,10vw,6rem)] font-black leading-none uppercase leading-[0.9] text-white"
+            >
               SKYLUME
-            </h1>
-            <h2 className="font-inter text-[clamp(1.5rem,6vw,2.5rem)] font-bold leading-none uppercase tracking-[0.3em] text-white/90 mt-2">
+            </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 30, letterSpacing: '0.6em' }}
+              animate={{ opacity: 1, y: 0, letterSpacing: '0.35em' }}
+              transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="relative z-10 font-inter text-[clamp(1.5rem,6vw,2.5rem)] font-bold leading-none uppercase text-white/90 mt-2"
+            >
               PRODUCTION
-            </h2>
+            </motion.h2>
           </div>
 
           {/* Eyebrow / Location / Tagline */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col items-center justify-center gap-4 mb-12"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2, duration: 1.5 }}
+            className="flex flex-col items-center justify-center gap-4 mb-8"
           >
-            <span className="font-inter text-[11px] md:text-[14px] font-bold tracking-[0.4em] uppercase text-white/80">
+            <span className="font-inter text-[11px] md:text-[14px] font-semibold tracking-[0.5em] uppercase text-white/60">
               Dubai &bull; India &bull; UAE
             </span>
 
@@ -233,9 +247,9 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 1.5, duration: 1 }}
             className="flex gap-4 justify-center flex-wrap"
           >
             <Link href="#ourwork">
@@ -249,26 +263,25 @@ export default function Home() {
 
 
       {/* 2. BRAND LOGOS */}
-      <section className="py-24 bg-background relative overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 0.05 }}
-            transition={{ duration: 2 }}
-            viewport={{ once: true }}
-            className="font-inter text-[12vw] font-black text-white uppercase tracking-[-0.05em] leading-none text-center"
-            style={{
-              WebkitTextStroke: "1px rgba(250, 250, 250, 0.5)",
-              textShadow: "0 0 20px rgba(250, 250, 250, 0.2)"
-            }}
-          >
-            THE JOURNEY
-          </motion.h2>
-        </div>
+      <ScrollReveal animation="fade-up">
+        <section className="py-24 bg-background relative overflow-hidden border-b border-white/5">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+            <motion.h2
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 0.05 }}
+              transition={{ duration: 2 }}
+              viewport={{ once: true }}
+              className="font-inter text-[12vw] font-black text-white uppercase tracking-[-0.05em] leading-none text-center"
+              style={{
+                WebkitTextStroke: "1px rgba(250, 250, 250, 0.5)",
+                textShadow: "0 0 20px rgba(250, 250, 250, 0.2)"
+              }}
+            >
+              THE JOURNEY
+            </motion.h2>
+          </div>
 
-
-        <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
-          <ScrollReveal animation="fade-up">
+          <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
             <div className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-yellow-500 mb-8 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(255,215,0,0.35)]">
               <Layers size={14} className="text-white fill-white" />
               <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
@@ -279,45 +292,48 @@ export default function Home() {
               BRANDS UNDER <span className="text-yellow-500">OUR ROOF</span>
             </h2>
             <div className="w-12 h-px bg-yellow-500/30 mx-auto" />
-          </ScrollReveal>
-        </div>
-
-        <ScrollReveal animation="fade-in" delay={0.3} className="relative z-10 w-full">
-          <div className="flex overflow-hidden py-10">
-            <motion.div
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
-              className="flex items-center gap-16 md:gap-32 whitespace-nowrap px-12"
-            >
-              {[...logos, ...logos].map((logo, i) => (
-                <div
-                  key={i}
-                  className="relative flex items-center justify-center group"
-                >
-                  <div className="relative h-20 md:h-24 w-40 md:w-56 transition-all duration-500 scale-90 group-hover:scale-105 opacity-80 brightness-125 group-hover:opacity-100 group-hover:brightness-150">
-                    <Image
-                      src={logo}
-                      alt={`Client Logo ${i}`}
-                      fill
-                      className="object-contain"
-                      sizes="(max-width: 768px) 128px, 192px"
-                    />
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </div>
-        </ScrollReveal>
-      </section>
-      <OurWork />
+
+          <div className="relative z-10 w-full">
+            <div className="flex overflow-hidden py-10">
+              <motion.div
+                animate={{ x: ['0%', '-50%'] }}
+                transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
+                className="flex items-center gap-16 md:gap-32 whitespace-nowrap px-12"
+              >
+                {[...logos, ...logos].map((logo, i) => (
+                  <div
+                    key={i}
+                    className="relative flex items-center justify-center group"
+                  >
+                    <div className="relative h-20 md:h-24 w-40 md:w-56 transition-all duration-500 scale-90 group-hover:scale-105 opacity-80 brightness-125 group-hover:opacity-100 group-hover:brightness-150">
+                      <Image
+                        src={logo}
+                        alt={`Client Logo ${i}`}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 768px) 128px, 192px"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal animation="fade-up">
+        <OurWork />
+      </ScrollReveal>
 
       {/* 4. ABOUT THE STUDIO */}
-      <section className=" bg-background overflow-hidden border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-14">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-16 lg:gap-15 items-start">
+      <ScrollReveal animation="fade-up">
+        <section className=" bg-background overflow-hidden border-b border-white/5">
+          <div className="max-w-7xl mx-auto px-6 md:px-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-10 lg:gap-15 items-start">
 
-            {/* Left Content */}
-            <ScrollReveal animation="fade-up">
+              {/* Left Content */}
               <div className="sticky flex flex-col items-center text-center lg:items-start lg:text-left">
                 <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
                   <Info size={14} className="text-white fill-white/20" />
@@ -328,8 +344,8 @@ export default function Home() {
                 <h2 className="text-section-title text-white mb-4 uppercase">
                   BUILT AROUND <span className="text-yellow-500">STORY,</span> EXECUTION AND DETAIL.
                 </h2>
-                <div className="w-6 h-px bg-yellow-500 mb-10" />
-                <p className="font-inter font-light text-[1.05rem] text-center lg:text-justify text-white/90 leading-[1.8] tracking-wide mb-10">
+                <div className="w-6 h-px bg-yellow-500 mb-6 lg:mb-10" />
+                <p className="font-inter font-light text-[1.05rem] text-center lg:text-justify text-white/90 leading-[1.8] tracking-wide mb-8 lg:mb-10">
                   Skylume Productions was built on a simple belief - <span className=" font-semibold">Every frame must serve a purpose.</span>
                   We don’t create content for attention. We create visuals that drive meaning, memory, and measurable impact.
                   From concept to post-production, every detail is engineered with clarity, discipline, and cinematic precision.
@@ -342,130 +358,129 @@ export default function Home() {
                   </button>
                 </Link>
               </div>
-            </ScrollReveal>
 
-            {/* Right Pillars - 3 Column Grid */}
-            <div className="relative">
-              <AgencyPillars />
+              {/* Right Pillars - 3 Column Grid */}
+              <div className="relative mt-12 lg:mt-0">
+                <AgencyPillars />
 
-              {/* Added Tagline below the grid */}
-              <ScrollReveal animation="fade-up" delay={0.4}>
-                <div className="mt-12 flex items-center justify-end gap-3 group">
-                  <div className="w-1 h-7 bg-yellow-500  transition-all duration-300 group-hover:h-9" />
-                  <p className="font-inter text-[0.95rem] md:text-[1.1rem] tracking-[0.1em] text-white/50 uppercase text-right leading-tight">
-                    Craft work that cuts through noise — <br className="md:hidden" />
+                {/* Added Tagline below the grid */}
+                <div className="mt-8 lg:mt-12 flex items-center justify-center lg:justify-end gap-3 group">
+                  <div className="hidden lg:block w-1 h-7 bg-yellow-500 transition-all duration-300 group-hover:h-9" />
+                  <p className="font-inter text-[0.9rem] md:text-[1.1rem] tracking-[0.1em] text-white/50 uppercase text-center lg:text-right leading-tight">
+                    Craft work that cuts through noise — <br className="lg:hidden" />
                     <span className="text-yellow-500 font-medium">and elevates brands with intention.</span>
                   </p>
                 </div>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* <WhyVideography /> */}
 
-      <ServicesSection />
+      <ScrollReveal animation="fade-up">
+        <ServicesSection />
+      </ScrollReveal>
 
-      <ProcessSection />
+      <ScrollReveal animation="fade-up">
+        <ProcessSection />
+      </ScrollReveal>
 
       {/* 8. EQUIPMENT */}
-      <section className="py-24 bg-background relative overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] mx-4 md:mx-8">
-        {/* Section Background Image with a slight scale effect */}
-        <div className="absolute inset-0 z-0 opacity-40">
-          <Image
-            src="/equip/equipmentsmain.jpeg"
-            alt="Equipment Background"
-            fill
-            className="object-cover saturate-0 brightness-110"
-          />
-        </div>
+      <ScrollReveal animation="fade-up">
+        <section className="py-24 bg-background relative overflow-hidden rounded-[2.5rem] md:rounded-[4.5rem] mx-4 md:mx-8">
+          {/* Section Background Image with a slight scale effect */}
+          <div className="absolute inset-0 z-0 opacity-40">
+            <Image
+              src="/equip/equipmentsmain.jpeg"
+              alt="Equipment Background"
+              fill
+              className="object-cover saturate-0 brightness-110"
+            />
+          </div>
 
-        <div className="max-w-[1300px] mx-auto px-6 relative z-10">
-          <div className="text-center mb-24">
-            <ScrollReveal animation="fade-up">
+          <div className="max-w-[1300px] mx-auto px-6 relative z-10">
+            <div className="text-center mb-24">
               <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)] mx-auto">
                 <Video size={14} className="text-white fill-white/20" />
                 <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white">
                   Our Arsenal
                 </span>
               </div>
-            </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={0.2}>
               <h2 className="text-section-title text-white mb-8 uppercase">
                 CINEMA-GRADE <span className="text-yellow-500 italic">TOOLS.</span><br />
                 PROFESSIONAL OUTPUT.
               </h2>
-            </ScrollReveal>
 
-            <ScrollReveal animation="fade-up" delay={0.3}>
               <p className="font-inter font-light text-[1.1rem] text-white/70 leading-relaxed max-w-2xl mx-auto">
                 We operate with high-performance cinema systems and professional optics,
                 ensuring every frame delivers uncompromising quality and cinematic depth.
               </p>
-            </ScrollReveal>
-          </div>
+            </div>
 
-          {/* Equipment Grid */}
-          <ScrollReveal animation="stagger-list" stagger={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-              {equipmentList.slice(0, showAllEquip ? equipmentList.length : 6).map((item, i) => (
-                <div
-                  key={item.title}
-                  className="group relative bg-[#0a0a0a]/80 hover-lift backdrop-blur-xl border border-white/5 p-10 rounded-[2rem] hover:border-yellow-500/40 transition-all duration-700 hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
-                >
-                  {/* Image Wrap */}
-                  <div className="relative h-64 w-full mb-10 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-yellow-500/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-1000 ease-out"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
+            {/* Equipment Grid */}
+            <ScrollReveal animation="stagger-list" stagger={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {equipmentList.slice(0, showAllEquip ? equipmentList.length : 6).map((item, i) => (
+                  <div
+                    key={item.title}
+                    className="group relative bg-[#0a0a0a]/80 hover-lift backdrop-blur-xl border border-white/5 p-8 rounded-[1.5rem] hover:border-yellow-500/40 transition-all duration-700 hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] text-center md:text-center"
+                  >
+                    {/* Image Wrap */}
+                    <div className="relative h-64 w-full mb-10 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-yellow-500/10 blur-[80px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+                      <div className="relative w-full h-full">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-1000 ease-out"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="relative z-10">
+                      <h3 className="font-inter font-bold text-[1.8rem] tracking-tight text-white mb-4 group-hover:text-yellow-500 transition-colors duration-500 uppercase">
+                        {item.title}
+                      </h3>
+                      <p className="font-inter font-light text-[1rem] text-white/40 leading-relaxed group-hover:text-white/80 transition-colors duration-500">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
+                ))}
+              </div>
+            </ScrollReveal>
 
-                  <div className="relative z-10">
-                    <h3 className="font-inter font-bold text-[1.8rem] tracking-tight text-white mb-4 group-hover:text-yellow-500 transition-colors duration-500 uppercase">
-                      {item.title}
-                    </h3>
-                    <p className="font-inter font-light text-[1rem] text-white/40 leading-relaxed group-hover:text-white/80 transition-colors duration-500">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+            {!showAllEquip && equipmentList.length > 6 && (
+              <div className="mt-16 text-center">
+                <button
+                  onClick={() => setShowAllEquip(true)}
+                  className="font-inter font-bold text-[0.8rem] tracking-[0.2em] text-white border border-yellow-500 px-10 py-4 hover:bg-yellow-500 hover:text-black transition-all duration-300 uppercase [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
+                >
+                  See More →
+                </button>
+              </div>
+            )}
+          </div>
+        </section>
+      </ScrollReveal>
 
-          {!showAllEquip && equipmentList.length > 6 && (
-            <div className="mt-16 text-center">
-              <button
-                onClick={() => setShowAllEquip(true)}
-                className="font-inter font-bold text-[0.8rem] tracking-[0.2em] text-white border border-yellow-500 px-10 py-4 hover:bg-yellow-500 hover:text-black transition-all duration-300 uppercase [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))]"
-              >
-                See More →
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <TestimonialSection />
+      <ScrollReveal animation="fade-up">
+        <TestimonialSection />
+      </ScrollReveal>
 
       {/* 10. CONTACT FORM */}
-      <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
+      <ScrollReveal animation="fade-up">
+        <section className="pt-24 md:pt-32 pb-16 bg-background relative overflow-hidden">
 
-        <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-center">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20 items-center">
 
-            {/* Left Side: Image & Info */}
-            <ScrollReveal animation="slide-right">
+              {/* Left Side: Image & Info */}
               <div className="relative group">
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                   <Image
@@ -498,36 +513,28 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-            </ScrollReveal>
 
-            {/* Right Side: Form */}
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-              <div className="mb-10 w-full">
-                <ScrollReveal animation="fade-up">
+              {/* Right Side: Form */}
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="mb-10 w-full">
                   <div className="inline-flex items-center gap-2.5 px-5 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 mb-6 transition-all duration-300">
                     <MessageSquare size={12} className="text-yellow-500" />
                     <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-yellow-500">
                       Direct Briefing
                     </span>
                   </div>
-                </ScrollReveal>
 
-                <ScrollReveal animation="fade-up" delay={0.2}>
                   <h2 className="text-white font-black uppercase leading-[1.1] mb-5
-                           text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
+                             text-[clamp(1.8rem,4vw,2.8rem)] tracking-tight">
                     FUEL YOUR <span className="text-yellow-500 italic underline decoration-white/10 underline-offset-8">NEXT VISION</span>
                   </h2>
-                </ScrollReveal>
 
-                <ScrollReveal animation="fade-up" delay={0.3}>
                   <p className="font-inter text-white/50 text-[0.9rem] leading-relaxed max-w-lg mx-auto lg:mx-0">
                     Drop us a line about your production requirements. Our directors will
                     review and get back within 24 business hours.
                   </p>
-                </ScrollReveal>
-              </div>
+                </div>
 
-              <ScrollReveal animation="fade-up" delay={0.4}>
                 <form
                   onSubmit={handleSubmit}
                   className="bg-pf-card/20 border border-white/5 p-8 md:p-10 rounded-2xl backdrop-blur-sm shadow-2xl"
@@ -577,7 +584,7 @@ export default function Home() {
                     className="group relative w-full overflow-hidden rounded-xl bg-yellow-500 transition-all duration-300 hover:bg-yellow-400 active:scale-[0.98]"
                   >
                     <div className="relative font-inter font-bold uppercase text-black py-4
-                              text-[0.75rem] tracking-[0.15em] flex items-center justify-center gap-3">
+                                text-[0.75rem] tracking-[0.15em] flex items-center justify-center gap-3">
                       {status.loading ? 'Transmitting...' : 'Initiate Briefing'}
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -597,11 +604,11 @@ export default function Home() {
                     )}
                   </div>
                 </form>
-              </ScrollReveal>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
     </div>
   )
 }

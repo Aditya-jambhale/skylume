@@ -515,30 +515,30 @@ export default function About() {
           </p>
         </motion.div> */}
 
-        <section className="bg-background py-32 relative overflow-hidden border-y border-white/5">
+        <ScrollReveal animation="fade-up">
+          <section className="bg-background py-32 relative overflow-hidden border-y border-white/5">
 
-          {/* Background Image & Cinematic Overlay */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/vision.jpg"
-              alt="Vision Background"
-              fill
-              className="object-cover opacity-20 lg:opacity-30 grayscale saturate-0"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
-          </div>
+            {/* Background Image & Cinematic Overlay */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/vision.jpg"
+                alt="Vision Background"
+                fill
+                className="object-cover opacity-20 lg:opacity-30 grayscale saturate-0"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-background via-background/60 to-background" />
+            </div>
 
-          <div
-            className="about-vision-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                     font-bebas tracking-[0.15em] pointer-events-none select-none whitespace-nowrap
-                     text-[clamp(4rem,14vw,13rem)] text-white/[0.03] z-0"
-          >
-            VISION
-          </div>
+            <div
+              className="about-vision-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                       font-bebas tracking-[0.15em] pointer-events-none select-none whitespace-nowrap
+                       text-[clamp(4rem,14vw,13rem)] text-white/[0.03] z-0"
+            >
+              VISION
+            </div>
 
-          <div className="container mx-auto px-6 max-w-5xl text-center lg:text-left relative z-10">
-            <Reveal>
+            <div className="container mx-auto px-6 max-w-5xl text-center lg:text-left relative z-10">
               <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The Vision</span>
               <h2 className="text-section-title text-white mt-4 uppercase">
                 The Vision Behind <span className="text-yellow-500">Skylume</span>
@@ -546,58 +546,56 @@ export default function About() {
               <div
                 className="w-12 h-0.5 mx-auto lg:mx-0 my-5 bg-yellow-500"
               />
-            </Reveal>
 
-            <div className="grid md:grid-cols-3 gap-5 mt-10">
-              {[
-                { icon: '🎬', title: 'Global Standard', body: 'Build a production agency that competes globally while staying grounded in storytelling and execution.' },
-                { icon: '⚙️', title: 'Precision First', body: 'Combine editing precision with cinematic production. Every frame serves purpose — not just aesthetics.' },
-                { icon: '🏗️', title: 'Built on Structure', body: 'Skylume is built on structure, consistency, and creative clarity — not hype, not shortcuts.' },
-              ].map((v, i) => (
-                <Reveal key={i} delay={0.1 * i}>
+              <div className="grid md:grid-cols-3 gap-5 mt-10">
+                {[
+                  { icon: '🎬', title: 'Global Standard', body: 'Build a production agency that competes globally while staying grounded in storytelling and execution.' },
+                  { icon: '⚙️', title: 'Precision First', body: 'Combine editing precision with cinematic production. Every frame serves purpose — not just aesthetics.' },
+                  { icon: '🏗️', title: 'Built on Structure', body: 'Skylume is built on structure, consistency, and creative clarity — not hype, not shortcuts.' },
+                ].map((v, i) => (
                   <motion.div
+                    key={i}
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.3 }}
                     className="about-vision-card group relative rounded-xl p-7 text-justify border border-white/5
-                             bg-pf-card overflow-hidden transition-colors duration-300
-                             hover:border-yellow/30"
+                               bg-pf-card overflow-hidden transition-colors duration-300
+                               hover:border-yellow/30"
                   >
                     <div className="text-3xl mb-4">{v.icon}</div>
                     <h3 className="font-inter font-bold text-xl text-white tracking-[0.05em] mb-3 uppercase">{v.title}</h3>
                     <p className="text-white/90 text-sm leading-relaxed font-inter">{v.body}</p>
                     <div className="about-card-sweep absolute bottom-0 left-0 right-0 h-0.5 bg-yellow-500" />
                   </motion.div>
-                </Reveal>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </ScrollReveal>
 
         {/* ════════════════════════════════════
           TEAM
       ════════════════════════════════════ */}
-        <section className="bg-background py-28">
-          <div className="container mx-auto px-6 max-w-6xl text-center lg:text-left">
-            <Reveal className="mb-12">
+        <ScrollReveal animation="fade-up">
+          <section className="bg-background py-28">
+            <div className="container mx-auto px-6 max-w-6xl text-center lg:text-left">
               <span className="font-inter text-[0.72rem] font-bold tracking-[0.22em] uppercase text-yellow-400">The People</span>
               <h2 className="text-section-title text-white mt-4 mb-3 uppercase text-center lg:text-left">
                 Meet the Team
               </h2>
               <div className="w-10 h-0.5 mb-4 bg-yellow-500 mx-auto lg:mx-0" />
-              <p className="text-white/90 text-sm max-w-md leading-relaxed font-inter text-center lg:text-left">
+              <p className="text-white/90 text-sm max-w-md leading-relaxed font-inter text-center lg:text-left mb-12">
                 Every great production is a collective. Skylume is built by individuals who care deeply about their craft.
               </p>
-            </Reveal>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-              {team.map((member, i) => (
-                <Reveal key={i} delay={0.07 * i}>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                {team.map((member, i) => (
                   <motion.div
+                    key={i}
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.3 }}
                     className="about-team-card group hover-lift rounded-2xl overflow-hidden border border-white/5
-                             bg-background transition-colors duration-300
-                             hover:border-yellow/30"
+                               bg-background transition-colors duration-300
+                               hover:border-yellow/30"
                   >
                     <div className="relative aspect-square overflow-hidden">
                       <Image
@@ -618,11 +616,11 @@ export default function About() {
                       <p className="text-white/90 text-xs leading-relaxed font-inter">{member.note}</p>
                     </div>
                   </motion.div>
-                </Reveal>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </ScrollReveal>
 
         {/* ════════════════════════════════════
           FOUNDER QUOTE

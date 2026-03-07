@@ -9,9 +9,9 @@ import { motion } from 'framer-motion';
 export default function ScrollReveal({
     children,
     animation = 'fade-up',
-    duration = 0.8,
+    duration = 1.0,
     delay = 0,
-    y = 40,
+    y = 60,
     x = 0,
     stagger = 0.1,
     once = true,

@@ -67,12 +67,26 @@
 
     /* Brand Yellows */
     --yellow-500: #EAB308;
-    --yellow-500-hot: #EAB308;
+    --yellow-500-hot: #FACC15;
     --yellow-500-dim: rgba(234, 179, 8, 0.15);
+
+    /* Missing Navy/Dark tones used in components */
+    --navy-mid: #050505;
+    --navy-light: #0A0A0A;
+    --border-accent: rgba(234, 179, 8, 0.25);
+    --white: #FFFFFF;
+    --off-white: #FAFAFA;
   }
 }
 
 @layer base {
+
+  html,
+  body {
+    overflow-x: hidden;
+    @apply bg-black;
+  }
+
   * {
     @apply border-border selection:bg-primary/10 selection:text-primary transition-colors duration-300;
   }
@@ -302,28 +316,31 @@ html {
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  /* Slightly wider for better ux */
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--navy-mid);
-  border-left: 1px solid var(--border);
+  background: #000;
+  /* Solid black to match pure dark aesthetic */
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--yellow-500);
-  border-radius: 0px;
-  /* sharp edges to match clip-path design language */
+  border: 2px solid #000;
+  /* Create a 'floating' thumb effect */
+  border-radius: 10px;
+  /* Rounded for modern look */
   transition: background 0.25s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--yellow-500-hot);
+  background: #FACC15;
 }
 
 ::-webkit-scrollbar-corner {
-  background: var(--navy-mid);
+  background: #000;
 }
 
 /* Firefox */

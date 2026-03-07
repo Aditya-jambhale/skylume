@@ -1,87 +1,56 @@
-'use client'
-
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   FileText, Film, Smartphone, Users, Sparkles, Briefcase, TrendingUp,
-  MessageSquare, Zap, Radio, Home, Plane, Heart, Youtube, Globe, ArrowRight, ChevronDown
+  MessageSquare, Zap, Radio, Home, Plane, Heart, Youtube, Globe, ArrowRight, ChevronDown,
+  Palette, MonitorPlay, Camera, Clapperboard, Video
 } from 'lucide-react'
 import ScrollReveal from './ScrollReveal'
 
-const allServices = [
+const categorizedServices = [
   {
-    id: 'viral-shorts',
-    title: 'Viral social media Shorts',
-    description: 'High-impact, concise content engineered for rapid reach and algorithmic amplification.',
-    icon: Zap
+    category: "Production",
+    services: [
+      { id: 'commercial-films', title: 'Commercial & Brand Films', description: 'High-end cinematic films designed to solve business problems and elevate brand authority.', icon: Film },
+      { id: 'documentary-shoot', title: 'Documentary Production', description: 'Authentic storytelling that captures deep human experiences and brand history.', icon: Video },
+      { id: 'event-production', title: 'Event Photography & Videography', description: 'Comprehensive coverage of conferences and exhibitions with cinematic precision.', icon: Users },
+      { id: 'wedding-coverage', title: 'Wedding Films & Photography', description: 'Timeless, emotional storytelling preserving your most significant milestones.', icon: Heart },
+      { id: 'real-estate-visuals', title: 'Real Estate Visuals', description: 'Showmashing properties with cinematic drone and interior shots to drive sales.', icon: Home },
+      { id: 'tour-videography', title: 'Travel & Tourism Productions', description: 'Dynamic coverage for travel brands and destination-based narratives.', icon: Globe },
+      { id: 'drone-shoot', title: 'Aerial & Drone Cinematography', description: 'Cinema-grade aerial perspectives capturing cinematic scale and motion.', icon: Plane },
+    ]
   },
   {
-    id: 'event-production',
-    title: 'Event photography & videography',
-    description: 'Full-scale documentation of exhibitions, conferences, and large-scale gatherings with cinematic precision.',
-    icon: Users
+    category: "Content Production",
+    services: [
+      { id: 'podcast-production', title: 'Podcast Production', description: 'Professional multi-cam recordings and management for global distribution.', icon: Radio },
+      { id: 'long-form-youtube', title: 'YouTube Video Production', description: 'High-retention video productions optimized for digital authority.', icon: Youtube },
+      { id: 'viral-shorts', title: 'Social Media Content Creation', description: 'Viral shorts and reels engineered for reach and algorithmic amplification.', icon: Smartphone },
+    ]
   },
   {
-    id: 'wedding-coverage',
-    title: 'Wedding Coverage',
-    description: 'Timeless, emotional storytelling that preserves your most significant life milestones.',
-    icon: Heart
-  },
-  {
-    id: 'documentary-shoot',
-    title: 'Documentary Shoot',
-    description: 'Deep-dive storytelling that captures authentic human experiences and powerful narratives.',
-    icon: FileText
-  },
-  {
-    id: 'long-form-youtube',
-    title: 'Long form YouTube Videos',
-    description: 'Comprehensive video productions optimized for high-retention and digital authority.',
-    icon: Youtube
-  },
-  {
-    id: 'podcast-production',
-    title: 'Podcast Production',
-    description: 'Professional multi-cam recordings and end-to-end management for global distribution.',
-    icon: Radio
-  },
-  {
-    id: 'drone-shoot',
-    title: 'Drone Shoot',
-    description: 'Cinema-grade aerial perspectives capturing cinematic scale and dynamic motion.',
-    icon: Plane
-  },
-  {
-    id: 'tour-videography',
-    title: 'Tour Videography',
-    description: 'Dynamic coverage for travel, tourism, and destination-based brand narratives.',
-    icon: Globe
-  },
-  {
-    id: 'dubai-sightseeing',
-    title: 'Dubai Sightseeing Shoot',
-    description: 'Exclusive cinematic production capturing the grandeur of Dubai landmarks.',
-    icon: Sparkles
-  },
-  {
-    id: 'Real Estate Videography',
-    title: 'Real Estate Videography',
-    description: 'Showcase properties with cinematic drone and interior shots that drive faster sales.',
-    icon: Home
-  },
+    category: "Post-Production",
+    services: [
+      { id: 'long-edit', title: 'Long-Form Editing', description: 'Polished narrative editing for films, documentaries, and series.', icon: Clapperboard },
+      { id: 'short-edit', title: 'Short-Form Editing', description: 'Fast-paced, high-engagement editing for social media and ads.', icon: Zap },
+      { id: 'motion-graphics', title: 'Motion Graphics & VFX', description: 'Advanced dynamic visuals and title sequences for modern productions.', icon: Sparkles },
+      { id: 'color-grading', title: 'Professional Color Grading', description: 'Industry-standard color correction and cinematic look development.', icon: Palette },
+    ]
+  }
 ]
+const allServicesFlat = categorizedServices.flatMap(c => c.services)
 
 export default function ServicesSection() {
-  const [showAll, setShowAll] = useState(false)
-  const visibleServices = showAll ? allServices : allServices.slice(0, 8)
+  const [activeTab, setActiveTab] = useState(0)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <section className="py-24 bg-black/70 overflow-hidden border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header */}
-        <div className="flex flex-col items-center text-center gap-2 mb-20">
+        <div className="flex flex-col items-center text-center gap-2 mb-16">
           <ScrollReveal animation="fade-up">
             <div className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-yellow-500 mb-6 group transition-all duration-300 hover:scale-105 shadow-[0_0_25px_rgba(234,179,8,0.35)]">
               <Sparkles size={14} className="text-white fill-white" />
@@ -96,21 +65,102 @@ export default function ServicesSection() {
 
           <ScrollReveal animation="fade-up" delay={0.2}>
             <p className="font-inter font-light text-white/90 text-lg max-w-2xl leading-relaxed mt-4">
-              {allServices.length} specialized services engineered for authority, impact, and cinematic excellence.
+              Premium production workflows categorized for clarity and creative impact.
             </p>
           </ScrollReveal>
         </div>
 
-        {/* Grid */}
-        <ScrollReveal animation="stagger-list" stagger={0.05}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            <AnimatePresence mode="popLayout">
-              {visibleServices.map((service, index) => {
+        {/* Category Navigation - Mobile Dropdown / Desktop Tabs */}
+        <div className="mb-20 relative px-2">
+
+          {/* Mobile Filter View */}
+          <div className="sm:hidden w-full flex flex-col items-center">
+            <span className="font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/40 mb-4">
+              Filter by Category
+            </span>
+            <div className="relative w-full max-w-[280px]">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="w-full flex items-center justify-between bg-white/5 border border-white/10 px-6 py-4 rounded-xl font-inter text-[0.7rem] font-bold tracking-[0.15em] uppercase text-yellow-500 backdrop-blur-md"
+              >
+                {categorizedServices[activeTab].category}
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isMenuOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 5, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    className="absolute top-full left-0 right-0 z-[100] mt-2 bg-black border border-white/10 rounded-xl overflow-hidden shadow-2xl p-1"
+                  >
+                    {categorizedServices.map((cat, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setActiveTab(idx)
+                          setIsMenuOpen(false)
+                        }}
+                        className={`
+                          w-full text-left px-5 py-3.5 rounded-lg font-inter text-[0.7rem] font-bold tracking-[0.15em] uppercase transition-colors
+                          ${activeTab === idx ? 'bg-yellow-500 text-black' : 'text-white/60 hover:bg-white/5 hover:text-white'}
+                        `}
+                      >
+                        {cat.category}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Desktop Tabs View */}
+          <div className="hidden sm:flex justify-center">
+            <div className="flex bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-sm">
+              {categorizedServices.map((cat, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveTab(idx)}
+                  className={`
+                    relative px-8 py-2.5 rounded-full font-inter text-[0.7rem] font-bold tracking-[0.15em] uppercase transition-all duration-500
+                    ${activeTab === idx ? 'text-black' : 'text-white/40 hover:text-white'}
+                  `}
+                >
+                  {activeTab === idx && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-yellow-500 rounded-full z-0"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat.category}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+              {categorizedServices[activeTab].services.map((service, sIdx) => {
                 const Icon = service.icon
                 return (
                   <motion.div
                     key={service.id}
-                    layout
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: sIdx * 0.05 }}
                     className="group bg-black/95 border border-white/20 p-8 rounded-xl transition-all duration-500 hover:border-yellow-500/30 hover:bg-yellow-500/5 hover:-translate-y-1 relative overflow-hidden h-full"
                   >
                     {/* Decorative Glow */}
@@ -118,20 +168,20 @@ export default function ServicesSection() {
 
                     <div className="relative z-10 h-full flex flex-col items-center text-center lg:items-start lg:text-left">
                       <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center text-center justify-center mb-6 transition-colors group-hover:bg-yellow-500/10 border border-white/10 ">
-                        <Icon className="text-white-500" size={24} />
+                        <Icon className="text-white" size={24} />
                       </div>
 
-                      <h3 className="font-inter font-bold text-2xl text-white tracking-wide mb-3 transition-colors group-hover:text-yellow-500 uppercase">
+                      <h3 className="font-inter font-bold text-xl text-white tracking-wide mb-3 transition-colors group-hover:text-yellow-500 uppercase">
                         {service.title}
                       </h3>
 
-                      <p className="font-inter font-light text-sm text-white/90 leading-relaxed mb-8 flex-grow">
+                      <p className="font-inter font-light text-[0.85rem] text-white/70 leading-relaxed mb-6 flex-grow ">
                         {service.description}
                       </p>
 
                       <Link href={`/services#${service.id}`}>
-                        <button className="flex items-center gap-2 font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all ">
-                          Explore More
+                        <button className="flex items-center gap-2 font-inter text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white/50 group-hover:text-yellow-500 transition-all">
+                          See Details
                           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                         </button>
                       </Link>
@@ -139,42 +189,24 @@ export default function ServicesSection() {
                   </motion.div>
                 )
               })}
-            </AnimatePresence>
-          </div>
-        </ScrollReveal>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-        {/* See More Button */}
-        <div className="mt-12 flex justify-center">
-          <motion.button
-            onClick={() => setShowAll(!showAll)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-3 font-inter text-[0.7rem] font-bold tracking-[0.1em] uppercase text-yellow-500 bg-white/5 border border-white/10 px-6 py-3 rounded-full transition-all hover:bg-yellow-500/10 hover:border-yellow-500/30"
-          >
-            {showAll ? 'See Less' : 'See More Services'}
-            <motion.div
-              animate={{ rotate: showAll ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ChevronDown size={18} />
-            </motion.div>
-          </motion.button>
+      {/* Bottom Bar */}
+      <div className="mt-24 p-10 bg-pf-card border border-white/5 rounded-xl flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
+        <div className="flex flex-col items-center lg:items-start">
+          <h4 className="font-inter font-black text-2xl text-white tracking-tight mb-2 uppercase">
+            READY TO <span className="text-yellow-500">START?</span>
+          </h4>
+          <p className="font-inter font-light text-white/90">Book a session with our directors to discuss your requirements.</p>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-20 p-10 bg-pf-card border border-white/5 rounded-xl flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
-          <div className="flex flex-col items-center lg:items-start">
-            <h4 className="font-inter font-black text-2xl text-white tracking-tight mb-2 uppercase">
-              READY TO <span className="text-yellow-500">START?</span>
-            </h4>
-            <p className="font-inter font-light text-white/90">Book a session with our directors to discuss your requirements.</p>
-          </div>
-          <Link href="/contact">
-            <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-bold tracking-[0.12em] uppercase px-[36px] py-[14px] transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
-              Book Consultation
-            </button>
-          </Link>
-        </div>
+        <Link href="/contact">
+          <button className="bg-yellow-500 text-white font-inter text-[0.82rem] font-bold tracking-[0.12em] uppercase px-[36px] py-[14px] transition-all duration-300 [clip-path:polygon(0_0,calc(100%-10px)_0,100%_10px,100%_100%,10px_100%,0_calc(100%-10px))] hover:bg-yellow-600 hover:-translate-y-0.5">
+            Book Consultation
+          </button>
+        </Link>
       </div>
     </section>
   )

@@ -55,7 +55,7 @@ const works = [
         id: 2,
         title: 'Banaras Shoot',
         category: 'Cinematic Event',
-        youtubeUrl: 'https://youtu.be/q26hmHa1CmM',
+        youtubeUrl: 'https://youtu.be/xHH-6HuqLvk',
     },
     {
         id: 21,

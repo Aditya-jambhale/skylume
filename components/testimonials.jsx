@@ -97,11 +97,11 @@ export default function TestimonialSection() {
             </div>
           </ScrollReveal>
 
-          {/* Remaining Videos - Vertical */}
+          {/* Remaining Videos - Vertical Slider on Mobile, Grid on Desktop */}
           <ScrollReveal animation="stagger-list" stagger={0.15}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="flex md:grid md:grid-cols-3 gap-6 lg:gap-12 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory pb-4 md:pb-0 px-2 md:px-0">
               {videos.slice(1).map((video, i) => (
-                <div key={i} className="flex flex-col items-center">
+                <div key={i} className="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-full flex flex-col items-center snap-center">
                   <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02] bg-[#050505]">
                     <iframe
                       src={getYoutubeEmbedUrl(video.url)}
