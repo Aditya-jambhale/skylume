@@ -34,7 +34,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-background pt-10">
       <div className="bg-white text-black rounded-t-[3.5rem] md:rounded-t-[6rem] overflow-hidden">
-        <div className="relative z-10 pt-20 pb-12">
+        <div className="relative z-10 pt-8 pb-12">
 
           {/* ── Top CTA band ── */}
           {/* <div className="border-b border-white/5">

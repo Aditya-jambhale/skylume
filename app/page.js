@@ -155,7 +155,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-background text-foreground overflow-x-hidden">
+    <div className="bg-background text-foreground">
 
       {/* ══════════════════════════════════════════
           HERO
@@ -213,15 +213,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 40, letterSpacing: '0.2em' }}
               animate={{ opacity: 1, y: 0, letterSpacing: '0.08em' }}
               transition={{ delay: 0.2, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 font-inter text-[clamp(2.5rem,10vw,6rem)] font-black leading-none uppercase leading-[0.9] text-white"
+              className="relative z-10 font-inter text-[clamp(3.5rem,10vw,5rem)] font-black leading-none uppercase leading-[0.9] text-white"
             >
               SKYLUME
             </motion.h1>
             <motion.h2
               initial={{ opacity: 0, y: 30, letterSpacing: '0.6em' }}
-              animate={{ opacity: 1, y: 0, letterSpacing: '0.35em' }}
+              animate={{ opacity: 1, y: 0, letterSpacing: '0.3em' }}
               transition={{ delay: 0.4, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 font-inter text-[clamp(1.5rem,6vw,2.5rem)] font-bold leading-none uppercase text-white/90 mt-2"
+              className="relative z-10 font-inter text-[clamp(1.2rem,4vw,2rem)] font-bold tracking-[0.3em] uppercase text-white/80 mt-4"
             >
               PRODUCTION
             </motion.h2>

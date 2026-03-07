@@ -81,20 +81,20 @@
 
 @layer base {
 
-  html,
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
   body {
     overflow-x: hidden;
-    @apply bg-black;
+    @apply bg-black bg-background text-foreground antialiased;
+    font-family: var(--font-inter), 'inter', system-ui, sans-serif;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
   * {
     @apply border-border selection:bg-primary/10 selection:text-primary transition-colors duration-300;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-inter), 'inter', system-ui, sans-serif;
-    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
   h1,
@@ -344,7 +344,7 @@ html {
 }
 
 /* Firefox */
-* {
+html {
   scrollbar-width: thin;
   scrollbar-color: var(--yellow-500) var(--navy-mid);
 }
